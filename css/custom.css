@@ -1,0 +1,148 @@
+@charset "UTF-8";
+.nav {
+    /* font-size: 14px; */
+}
+.navbar {
+    /* font-size: 15px; */
+    padding: 0.8rem 1rem;
+    /* min-height: 50px; */
+}
+.sidebar .nav-item .nav-link .img-profile, 
+.topbar .container .navbar-nav .nav-item .nav-link .img-profile {
+    height: 2rem;
+    width: 2rem;
+}
+.topbar .container .navbar-nav .nav-item .nav-link {
+    /* color: #d1d3e2; */
+    color: snow;
+}
+.fa, .fas {
+    font-weight: 900;
+}
+.fa, .far, .fas {
+    font-family: "Font Awesome 5 Free";
+}
+.fa-fw {
+    text-align: center;
+    width: 1.25em;
+}
+.fa, .fab, .fad, .fal, .far, .fas {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+/* アンチuni/CSS */
+/* offcanvasが使えないので更新 */
+.fade.show {
+    opacity: 0.5;
+}
+/* ナビゲーションのリンク */
+.navbar .nav-item .nav-link::before {
+    position: unset;
+    right: unset;
+    bottom: unset;
+    left: unset;
+    width: unset;
+    margin: unset;
+    content: unset;
+    border-bottom-style: unset;
+    border-bottom-width: unset;
+    transition: unset;
+}
+.bg-dark.navbar-dark .navbar-nav .nav-link:focus,
+.bg-dark.navbar-dark .navbar-nav .nav-link:hover,
+.bg-dark.navbar-dark .navbar-nav .active > .nav-link {
+    /* color: snow !important; */
+    color: #d1d3e2 !important;
+}
+
+/* アンチBootstrap */
+/* SBAdmin2/CSS */
+.dropdown.no-arrow .dropdown-toggle::after {
+    display: none;
+}
+.topbar .topbar-divider {
+    width: 0;
+    border-right: 1px solid #e3e6f0;
+    height: calc(4.375rem - 2rem);
+    margin: auto 1rem;
+}
+
+
+
+/* .nav {
+    font-size: 14px;
+}
+.navbar {
+    min-height: 50px;
+}
+.navbar-expand {
+    height: 50px;
+    padding: 15px 15px;
+}
+.navbar-nav > li > .dropdown-menu {
+    margin-top: 0;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.navbar-fixed-bottom .navbar-nav > li > .dropdown-menu {
+    margin-bottom: 0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+.navbar-btn {
+    margin-top: 8px;
+    margin-bottom: 8px;
+}
+.navbar-btn.btn-sm {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.navbar-btn.btn-xs {
+    margin-top: 14px;
+    margin-bottom: 14px;
+}
+.navbar-text {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    line-height: 20px;
+}
+.navbar-custom-menu .navbar-nav > li > a {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.dropdown-menu {
+    font-size: 14px;
+} */
+/* body 内の背景色を白より少し色がついた色にする */
+/* .content-wrapper {
+    background-color: snow;
+} */
+/* text-sm が adminLTE だと 12px だが、小さすぎるので少し大きくする */
+/* .text-sm {
+    font-size: 14px;
+} */
+/* table の下の余白が大きいので小さくする */
+/* .table {
+    margin-bottom: 16px;
+} */
+/* alert の下の余白が大きいので小さくする */
+/* .alert {
+    margin-bottom: 16px;
+} */
+/* body と異なる背景色が設定されてしまているので無効化する */
+/* .breadcrumb {
+    background-color: unset;
+} */
