@@ -61,6 +61,16 @@
 }
 
 /* アンチBootstrap */
+/* スマホのナビゲーションを75%に変更 */
+@media screen and (max-width: 768px) {
+    .offcanvas {
+        width: 75%;
+    }
+}
+/* 右側のグレーボーダーをOFFにする */
+.offcanvas-start {
+    border-right: none;
+}
 /* SBAdmin2/CSS */
 .dropdown.no-arrow .dropdown-toggle::after {
     display: none;
