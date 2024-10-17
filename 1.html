@@ -9,6 +9,7 @@
 
     <!-- <link rel="stylesheet" type="text/css" href="css/custom_before.css"> -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/umi.css">
     <link rel="stylesheet" type="text/css" href="css/custom.css">
 
@@ -129,6 +130,95 @@
         .breadcrumb-item.active {
             color: #6c757d;
         }
+
+        /* 左部プロフィール */
+        .card-primary.card-outline {
+            border-top: 3px solid #007bff;
+        }
+        /* .img-circle {
+            border-radius: 50%;
+        } */
+        .profile-user-img {
+            border: 3px solid #adb5bd;
+            margin: 0 auto;
+            padding: 3px;
+            width: 100px;
+        }
+        .profile-username {
+            font-size: 21px;
+            margin-top: 5px;
+        }
+        .text-muted {
+            color: #6c757d!important;
+        }
+        .list-group {
+            display: -ms-flexbox;
+            -ms-flex-direction: column;
+            /* display: flex; */
+            /* flex-direction: column; */
+            /* padding-left: 0; */
+            /* margin-bottom: 0; */
+            /* border-radius: 0.25rem; */
+        }
+        .list-group-item {
+            /* position: relative;
+            display: block;
+            padding: 0.75rem 1.25rem; */
+            /* border: 1px solid rgba(0,0,0,.125); */
+            background-color: #fff;
+            margin-bottom: unset;
+        }
+        .list-group-unbordered>.list-group-item {
+            border-left: 0;
+            border-radius: 0;
+            border-right: 0;
+            padding-left: 0;
+            padding-right: 0;
+        }
+        /* .list-group-item+.list-group-item {
+            border-top-width: 0;
+        } */
+        a:not([href]):not([tabindex]) {
+            color: #007bff;
+            /* text-decoration: none; */
+        }
+        a {
+            color: #007bff;
+            text-decoration: none;
+            background-color: transparent;
+        }
+        .btn-primary {
+            color: #fff;
+            background-color: #007bff;
+            border-color: #007bff;
+            box-shadow: none;
+        }
+        /* .btn-block {
+            display: block;
+            width: 100%; */
+        /* } */
+
+        .card-primary:not(.card-outline)>.card-header, 
+        .card-primary:not(.card-outline)>.card-header a {
+            color: #fff;
+        }
+        .card-primary:not(.card-outline)>.card-header {
+            background-color: #007bff;
+        }
+        .card-title {
+            float: left;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 0;
+        }
+        /* .text-muted {
+            color: #6c757d!important;
+        } */
+        /* p {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        } */
+
     </style>
 
 </head>
@@ -301,7 +391,7 @@
         </div>
     </header>
     <!-- サイドバー -->
-    <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink p-3 bg-dark w-75" id="offcanvas">
+    <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink p-3 bg-dark" id="offcanvas">
         <div class="offcanvas-header text-white">
             <h5 class="offcanvas-title">Menu</h5>
             <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
