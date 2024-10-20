@@ -7,663 +7,162 @@
 
     <title>original</title>
 
-    <!-- <link rel="stylesheet" type="text/css" href="css/custom_before.css"> -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/umi.css">
-    <link rel="stylesheet" type="text/css" href="css/custom.css">
-    <style>
-        .card {
-            box-shadow: 0 0 1px rgba(0, 0, 0, .125), 0 1px 3px rgba(0, 0, 0, .2);
-            margin-bottom: 1rem;
-        }
+    <link rel="stylesheet" type="text/css" href="css/umi.min.css">
+    <link rel="stylesheet" type="text/css" href="css/custom_base.css">
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            $.get('https://holidays-jp.github.io/api/v1/2024/date.json', (holidaysData) => {
+                // 初期処理
+                const calendarEl = document.getElementById('calendar');
+                const calendar = new FullCalendar.Calendar(calendarEl, {
+                    views: {
+                        // 2週間表示
+                        dayGrid2Weeks: {
+                            type: 'dayGrid',
+                            duration: { weeks: 2 },
+                        },
+                    },
+                    // 日本語化
+                    locale: 'ja',
+                    // カレンダー自体の高さ指定
+                    height: 250,
+                    businessHours: [
+                        {
+                            daysOfWeek: [ 1, 2, 3, 4, 5, ],
+                            startTime: '9:00',
+                            endTime: '18:00',
+                        },
+                    ],
+                    // businessHours: true,
+                    // 初期選択ビュー
+                    initialView: 'dayGrid2Weeks',
+                    // 終日スロットを表示
+                    allDaySlot: true,
+                    // 終日スロットのタイトル
+                    allDayText: '終日',
+                    // 月曜始まりに設定
+                    firstDay: 1,
+                    // 全量表示させない(+Xmore...を表示)
+                    dayMaxEvents: true,
+                    // Toolbar無し
+                    headerToolbar: false,
+                    // イベント(予定)設定
+                    events: getEventDatas(holidaysData),
+                    // 日付毎の初期化処理
+                    dayCellContent: (e) => {
+                        // 「日」を非表示にする
+                        e.dayNumberText = e.dayNumberText.replace('日', '');
+                    },
+                    // ウィンドウリサイズイベント
+                    windowResize: (view) => {
+                        console.log('windowResize:', view)
+                    },
+                    // イベント(予定)毎の初期化処理
+                    eventContent: (element) => {
+                        $('.fc-daygrid-day[data-date=' + element.event.extendedProps.holiday + ']').addClass('holiday');
+                    },
+                    // 日付マスのクリックイベント
+                    dateClick: (e)=>{
+                        console.log("dateClick:", e);
+                    },
+                    // イベントクリック時の処理
+                    eventClick: (e) => {
+                        console.log("eventClick:", e);
+                    },
+                });
+                // キャンバスにレンダリング
+                calendar.render();
+            });
+        });
 
-        .card {
-            display: -ms-flexbox;
-            -ms-flex-direction: column;
-            border: 0 solid rgba(0, 0, 0, .125);
-        }
-
-        .card-header {
-            background-color: transparent;
-            position: relative;
-        }
-
-        .card-header>.card-tools {
-            float: right;
-            margin-right: -0.5rem;
-        }
-
-        .card-title {
-            float: left;
-            margin: 0;
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
-
-        .nav-pills .nav-link.active,
-        .nav-pills .show>.nav-link {
-            background-color: #007bff;
-        }
-
-        .nav-pills .nav-link {
-            color: #6c757d;
-        }
-
-        .card-body::after,
-        .card-footer::after,
-        .card-header::after {
-            display: block;
-            clear: both;
-            content: "";
-        }
-
-        .post {
-            border-bottom: 1px solid #adb5bd;
-            color: #666;
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-        }
-
-        .post .user-block {
-            margin-bottom: 15px;
-            width: 100%;
-        }
-
-        .user-block {
-            float: left;
-        }
-
-        .user-block img {
-            float: left;
-            height: 40px;
-            width: 40px;
-        }
-
-        .img-circle {
-            border-radius: 50%;
-        }
-
-        .img-bordered-sm {
-            border: 2px solid #adb5bd;
-            padding: 2px;
-        }
-
-        .user-block .username {
-            /* font-size: 16px; */
-            font-weight: 600;
-            margin-top: -1px;
-        }
-
-        .user-block .comment,
-        .user-block .description,
-        .user-block .username {
-            display: block;
-            margin-left: 50px;
-        }
-
-        a {
-            color: #007bff;
-        }
-
-        a:hover {
-            --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
-            /* ※追加したCSS */
-            /* color: #007bff;
-            opacity: 0.8; */
-            text-decoration: none;
-            /* color: unset; */
-            color: #0062CC;
-            /* color: #004999; */
-        }
-
-        a:not([href]):not([class]),
-        a:not([href]):not([class]):hover {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .user-block .description {
-            color: #6c757d;
-            /* 投稿日について(小さめにする) */
-            font-size: 13px;
-            margin-top: -3px;
-        }
-
-        .btn-tool {
-            background-color: transparent;
-            color: #adb5bd;
-            /* font-size: .875rem; */
-            margin: -0.75rem 0;
-            padding: 0.25rem 0.5rem;
-        }
-
-        .link-black {
-            color: #6c757d;
-        }
-
-        .text-sm {
-            font-size: .875rem !important;
-        }
-
-        .fa-comments:before {
-            content: "\f086";
-        }
-
-        .clearfix::after {
-            display: block;
-            clear: both;
-            content: "";
-        }
-
-        .post .row {
-            width: 100%;
-        }
-
-        .post:last-of-type {
-            border-bottom: 0;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .content-wrapper {
-            height: 100%;
-        }
-
-        .content-wrapper {
-            background-color: #f4f6f9;
-        }
-
-        .content-header {
-            padding: 15px 0.5rem;
-        }
-
-        .content-header .breadcrumb {
-            background-color: transparent;
-            line-height: 1.8rem;
-            margin-bottom: 0;
-            padding: 0;
-        }
-
-        .breadcrumb-item.active {
-            color: #6c757d;
-        }
-
-
-        @media (min-width: 576px) {
-            .topbar .dropdown {
-                position: relative;
+        const getEventDatas = (holidaysData) => {
+            let eventDatas = [
+                {
+                    id: '1', // ユニークID
+                    start: '2024-10-01', // イベント開始日
+                    end: '', // イベント終了日
+                    title: 'イベント1', // イベントタイトル
+                    description: 'イベント1の詳細です', // イベント詳細
+                    backgroundColor: "#3498DB",// 背景色
+		            borderColor: "#3498DB",// 枠線色
+                    // url: '#',
+                    // editable: true, // イベント操作の可否
+                },
+                {
+                    id: '2',
+                    title: 'イベント2',
+                    start: '2024-10-05',
+                    backgroundColor: "#18BC9C",// 背景色
+                    borderColor: "#18BC9C",// 枠線色
+                    // url: '#'
+                },
+                {
+                    id: '3',
+                    title: 'イベント3',
+                    start: '2024-10-07',
+                    end: '2024-10-11', // 2021-01-10 23:59:59で終了
+                    color: '#F39C12',
+                    // url: '#'
+                },
+                {
+                    id: '4',
+                    title: 'イベント4',
+                    start: '2024-10-15',
+                    end: '2024-10-15', // 2021-01-10 23:59:59で終了
+                    color: '#F39C12',
+                    // url: '#'
+                },
+                {
+                    id: '5',
+                    title: 'イベント5',
+                    start: '2024-10-15 09:00:00',
+                    end: '2024-10-15 18:00:00', // 2021-01-10 23:59:59で終了
+                    color: '#F39C12',
+                    // url: '#'
+                },
+                {
+                    id: '6',
+                    title: 'イベント6',
+                    start: '2024-10-15 09:00:00',
+                    end: '2024-10-15 18:00:00', // 2021-01-10 23:59:59で終了
+                    color: '#F39C12',
+                    // url: '#'
+                },
+            ];
+            // 祝日
+            let holidays = Object.keys(holidaysData);
+            for (let i = 0; i < holidays.length; i++) {
+                let holiday = {
+                    // 指定日付セル内の表示内容
+                    title: holidaysData[holidays[i]],
+                    // 指定日付
+                    start: holidays[i],
+                    // クラス名
+                    className: 'holiday',
+                    holiday: holidays[i],
+                    color: '#E74C3C',
+                };
+                eventDatas.push(holiday);
             }
+            // 【DEBUG】確認用
+            // console.log(eventDatas);
+            return eventDatas;
         }
 
-        .topbar .dropdown {
-            position: static;
-        }
 
-        .ml-1,
-        .mx-1 {
-            margin-left: 0.25rem !important;
-        }
 
-        .mr-1,
-        .mx-1 {
-            margin-right: 0.25rem !important;
-        }
-
-        .dropdown,
-        .dropleft,
-        .dropright,
-        .dropup {
-            position: relative;
-        }
-
-        .sidebar .nav-item .nav-link .badge-counter,
-        .topbar .nav-item .nav-link .badge-counter {
-            position: absolute;
-            transform: scale(.7);
-            transform-origin: top right;
-            right: 0.25rem;
-            margin-top: -0.25rem;
-        }
-
-        .badge-danger {
-            color: #fff;
-            background-color: #e74a3b;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 0.25em 0.4em;
-            font-size: 75%;
-            font-weight: 700;
-            line-height: 1;
-            text-align: center;
-            white-space: nowrap;
-            vertical-align: baseline;
-            border-radius: 0.35rem;
-            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-        }
-
-        .topbar.navbar-light .navbar-nav .nav-item .nav-link {
-            color: #d1d3e2;
-        }
-
-        .navbar-light .navbar-nav .active>.nav-link,
-        .navbar-light .navbar-nav .nav-link.active,
-        .navbar-light .navbar-nav .nav-link.show,
-        .navbar-light .navbar-nav .show>.nav-link {
-            color: rgba(0, 0, 0, .9);
-        }
-
-        .topbar .nav-item .nav-link {
-            /* height: 4.375rem; */
-            display: flex;
-            align-items: center;
-            padding: 0 0.75rem;
-        }
-
-        .sidebar .nav-item .nav-link,
-        .topbar .nav-item .nav-link {
-            position: relative;
-        }
-
-        .navbar-light .navbar-nav .nav-link {
-            color: rgba(0, 0, 0, .5);
-        }
-
-        .navbar-expand .navbar-nav .nav-link {
-            padding-right: 0.5rem;
-            padding-left: 0.5rem;
-        }
-
-        .navbar-nav .nav-link {
-            padding-right: 0;
-            padding-left: 0;
-        }
-
-        .nav-link {
-            display: block;
-            padding: 0.5rem 1rem;
-        }
-
-        .dropdown-toggle {
-            white-space: nowrap;
-        }
-
-        /* DashCards1 */
-        .info-box {
-            box-shadow: 0 0 1px rgba(var(--bs-body-color-rgb), 0.125), 0 1px 3px rgba(var(--bs-body-color-rgb), 0.2);
-            border-radius: 0.375rem;
-            position: relative;
-            display: flex;
-            width: 100%;
-            min-height: 80px;
-            padding: 0.5rem;
-            margin-bottom: 1rem;
-            color: var(--bs-body-color);
-            background-color: var(--bs-body-bg);
-        }
-
-        .text-bg-primary {
-            color: #fff !important;
-            background-color: RGBA(var(--bs-primary-rgb), var(--bs-bg-opacity, 1)) !important;
-        }
-
-        .text-bg-danger {
-            color: #fff !important;
-            background-color: RGBA(var(--bs-danger-rgb), var(--bs-bg-opacity, 1)) !important;
-        }
-
-        .text-bg-success {
-            color: #fff !important;
-            background-color: RGBA(var(--bs-success-rgb), var(--bs-bg-opacity, 1)) !important;
-        }
-
-        .text-bg-warning {
-            color: #000 !important;
-            background-color: RGBA(var(--bs-warning-rgb), var(--bs-bg-opacity, 1)) !important;
-        }
-
-        .card-primary,
-        .bg-primary,
-        .text-bg-primary {
-            --lte-card-variant-bg: #0d6efd;
-            --lte-card-variant-bg-rgb: 13, 110, 253;
-            --lte-card-variant-color: #fff;
-            --lte-card-variant-color-rgb: 255, 255, 255;
-        }
-
-        .card-danger,
-        .bg-danger,
-        .text-bg-danger {
-            --lte-card-variant-bg: #dc3545;
-            --lte-card-variant-bg-rgb: 220, 53, 69;
-            --lte-card-variant-color: #fff;
-            --lte-card-variant-color-rgb: 255, 255, 255;
-        }
-
-        .card-success,
-        .bg-success,
-        .text-bg-success {
-            --lte-card-variant-bg: #198754;
-            --lte-card-variant-bg-rgb: 25, 135, 84;
-            --lte-card-variant-color: #fff;
-            --lte-card-variant-color-rgb: 255, 255, 255;
-        }
-
-        .card-warning,
-        .bg-warning,
-        .text-bg-warning {
-            --lte-card-variant-bg: #ffc107;
-            --lte-card-variant-bg-rgb: 255, 193, 7;
-            --lte-card-variant-color: #000;
-            --lte-card-variant-color-rgb: 0, 0, 0;
-        }
-
-        .info-box .info-box-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 70px;
-            font-size: 1.875rem;
-            text-align: center;
-            border-radius: 0.375rem;
-        }
-
-        .info-box .info-box-content {
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 10px;
-            line-height: 1.8;
-        }
-
-        .info-box .progress-description,
-        .info-box .info-box-text {
-            display: block;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        .info-box .info-box-number {
-            display: block;
-            margin-top: 0.25rem;
-            font-weight: 700;
-        }
-
-        .bi-gear-fill::before {
-            content: "\f3e2";
-        }
-
-        .bi-hand-thumbs-up-fill::before {
-            content: "\f406";
-        }
-
-        .bi-cart-fill::before {
-            content: "\f23d";
-        }
-
-        .bi-people-fill::before {
-            content: "\f4cf";
-        }
-
-        .bi::before,
-        [class*=" bi-"]::before,
-        [class^=bi-]::before {
-            display: inline-block;
-            font-family: bootstrap-icons !important;
-            font-style: normal;
-            font-weight: 400 !important;
-            font-variant: normal;
-            text-transform: none;
-            line-height: 1;
-            vertical-align: -0.125em;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-        }
-
-        /* TimeLine */
-        .timeline {
-            margin: 0 0 45px;
-            padding: 0;
-            position: relative;
-        }
-        .timeline::before {
-            border-radius: 0.25rem;
-            background-color: #dee2e6;
-            bottom: 0;
-            content: "";
-            left: 31px;
-            margin: 0;
-            position: absolute;
-            top: 0;
-            width: 4px;
-        }
-        .timeline>div {
-            margin-bottom: 15px;
-            margin-right: 10px;
-            position: relative;
-        }
-        .timeline>div::after, .timeline>div::before {
-            content: "";
-            display: table;
-        }
-        .timeline>.time-label>span {
-            border-radius: 4px;
-            background-color: #fff;
-            display: inline-block;
-            font-weight: 600;
-            padding: 5px;
-        }
-        .timeline>div>.fa, 
-        .timeline>div>.fab, 
-        .timeline>div>.fad, 
-        .timeline>div>.fal, 
-        .timeline>div>.far, 
-        .timeline>div>.fas, 
-        .timeline>div>.ion, 
-        .timeline>div>.svg-inline--fa {
-            background-color: #adb5bd;
-            border-radius: 50%;
-            font-size: 16px;
-            height: 30px;
-            left: 18px;
-            line-height: 30px;
-            position: absolute;
-            text-align: center;
-            top: 0;
-            width: 30px;
-        }
-        .timeline>div>.timeline-item {
-            box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
-            border-radius: 0.25rem;
-            background-color: #fff;
-            color: #495057;
-            margin-left: 60px;
-            margin-right: 15px;
-            margin-top: 0;
-            padding: 0;
-            position: relative;
-        }
-        .timeline-inverse>div>.timeline-item {
-            box-shadow: none;
-            background-color: #f8f9fa;
-            border: 1px solid #dee2e6;
-        }
-        .timeline>div>.timeline-item>.time {
-            color: #999;
-            float: right;
-            font-size: 12px;
-            padding: 10px;
-        }
-        .timeline>div>.timeline-item>.timeline-header {
-            border-bottom: 1px solid rgba(0,0,0,.125);
-            color: #495057;
-            font-size: 16px;
-            line-height: 1.1;
-            margin: 0;
-            padding: 10px;
-        }
-        .timeline-inverse>div>.timeline-item>.timeline-header {
-            border-bottom-color: #dee2e6;
-        }
-        .timeline>div>.timeline-item>.timeline-header>a {
-            font-weight: 600;
-        }
-        .timeline>div>.timeline-item>.timeline-body, .timeline>div>.timeline-item>.timeline-footer {
-            padding: 10px;
-        }
-        .timeline>div>.timeline-item>.timeline-body, .timeline>div>.timeline-item>.timeline-footer {
-            padding: 10px;
-        }
-        .timeline>div>.timeline-item>.timeline-footer>a {
-            color: #fff;
-        }
-        .fa-envelope:before {
-            content: "\f0e0";
-        }
-        .fa-clock:before {
-            content: "\f017";
-        }
-        .fa-user:before {
-            content: "\f007";
-        }
-        .fa-comments:before {
-            content: "\f086";
-        }
-        .fa-camera:before {
-            content: "\f030";
-        }
-        .bg-primary {
-            background-color: #007bff!important;
-        }
-        .bg-primary, .bg-primary>a {
-            color: #fff!important;
-        }
-        .bg-info, .bg-info>a {
-            color: #fff!important;
-        }
-        .bg-info {
-            background-color: #17a2b8!important;
-        }
-        .bg-warning, .bg-warning>a {
-            color: #1f2d3d!important;
-        }
-        .bg-warning {
-            background-color: #ffc107!important;
-        }
-        .bg-purple, .bg-purple>a {
-            color: #fff!important;
-        }
-        .bg-purple {
-            background-color: #6f42c1!important;
-        }
-        .bg-gray, .bg-gray>a {
-            color: #fff!important;
-        }
-        .bg-gray {
-            background-color: #6c757d!important;
-        }
-        .bg-danger, .bg-danger>a {
-            color: #fff!important;
-        }
-        .bg-danger {
-            background-color: #dc3545!important;
-        }
-        .bg-success, .bg-success>a {
-            color: #fff!important;
-        }
-        .bg-success {
-            background-color: #28a745!important;
-        }
-        .btn-primary {
-            color: #fff;
-            background-color: #007bff;
-            border-color: #007bff;
-            box-shadow: none;
-        }
-        .btn-danger {
-            color: #fff;
-            background-color: #dc3545;
-            border-color: #dc3545;
-            box-shadow: none;
-        }
-        .btn-warning {
-            color: #1f2d3d;
-            background-color: #ffc107;
-            border-color: #ffc107;
-            box-shadow: none;
-        }
-        .timeline>div>.timeline-item>.timeline-body>img {
-            margin: 10px;
-        }
-
-        /* トークルーム */
-        .direct-chat-contacts, .direct-chat-messages {
-            transition: -webkit-transform .5s ease-in-out;
-            transition: transform .5s ease-in-out;
-            transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
-        }
-        .direct-chat-contacts {
-            background-color: #343a40;
-            bottom: 0;
-            color: #fff;
-            overflow: auto;
-            /* -webkit-transform: translate(101%,0);
-            transform: translate(101%,0); */
-            /* position: absolute; */
-            /* top: 0;
-            width: 100%; */
-
-            /* 新たに無効化 */
-            /* height: 250px; */
-        }
-        .direct-chat-contacts-open .direct-chat-contacts {
-            -webkit-transform: translate(0,0);
-            transform: translate(0,0);
-        }
-        .contacts-list {
-            padding-left: 0;
-            list-style: none;
-            margin-bottom: 0;
-        }
-        .contacts-list>li {
-            border-bottom: 1px solid rgba(0,0,0,.2);
-            margin: 0;
-            padding: 10px;
-        }
-        .contacts-list-img {
-            border-radius: 50%;
-            float: left;
-            width: 40px;
-        }
-        .contacts-list-info {
-            color: #fff;
-            margin-left: 45px;
-        }
-        .contacts-list-name, .contacts-list-status {
-            display: block;
-        }
-        .contacts-list-date {
-            color: #ced4da;
-            font-weight: 400;
-        }
-        .contacts-list-msg {
-            color: #b1bbc4;
-        }
-        .contacts-list>li::after {
-            display: block;
-            clear: both;
-            content: "";
-        }
-    </style>
+    </script>
 </head>
 
 <body id="page-top">
     <!-- ヘッダー -->
     <header class="topbar sticky-top navbar navbar-dark bg-dark shadow-sm">
+    <!-- <header class="topbar navbar navbar-dark bg-dark shadow-sm"> -->
         <div class="container">
             <ul class="navbar-nav align-items-center gap-3" style="flex-direction: row;">
                 <li class="nav-item">
@@ -674,41 +173,119 @@
                     </a>
                 </li>
                 <li class="nav-item d-none d-md-block">
-                    <a href="#" class="navbar-brand d-flex align-items-center">
+                    <a href="./home.html" class="navbar-brand d-flex align-items-center">
                         <strong>Sample</strong>
                     </a>
                 </li>
             </ul>
             <ul class="navbar-nav align-items-center ml-auto" style="flex-direction: row;">
                 <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <!-- <i class="fas fa-bell fa-fw"></i> -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="fas fa-fw">
-                            <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                            <path fill="currentColor"
-                                d="M224 512c35.3 0 64-28.7 64-64H160c0 35.4 28.7 64 64 64zm215.4-149.7c-19.3-20.8-55.5-52-55.5-154.3 0-77.7-54.5-139.9-127.9-155.2V32c0-17.7-14.3-32-32-32s-32 14.3-32 32v20.8C118.6 68.1 64.1 130.3 64.1 208c0 102.3-36.2 133.5-55.5 154.3-6 6.5-8.7 14.2-8.6 21.7 .1 16.4 13 32 32.1 32h383.8c19.1 0 32-15.6 32.1-32 .1-7.6-2.6-15.3-8.6-21.7z" />
-                        </svg>
+                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" 
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-bell fa-fw" style="font-size: 20px;"></i>
                         <!-- Counter - Alerts -->
                         <span class="badge badge-danger badge-counter">3+</span>
                     </a>
+                    <!-- Dropdown Aleats -->
+                    <div class="dropdown-list dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                        <h6 class="dropdown-header">
+                            お知らせ
+                        </h6>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="mr-3">
+                                <div class="icon-circle cb-sb__bg-primary">
+                                    <i class="fas fa-file-alt text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="small cb-lte__text-secondary">2024/10/21</div>
+                                <!-- <span class="font-weight-bold">XXXXが登録されました。</span> -->
+                                XXXXが登録されました。
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-success">
+                                    <i class="fas fa-donate text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="small cb-lte__text-secondary">2024/10/15</div>
+                                XXXXテナントが新たに売上を登録しました。
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="mr-3">
+                                <div class="icon-circle bg-warning">
+                                    <i class="fas fa-exclamation-triangle text-white"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="small cb-lte__text-secondary">2024/10/01</div>
+                                売上の登録に失敗しました。再度登録が必要です。
+                            </div>
+                        </a>
+                        <a class="dropdown-item text-center small cb-lte__text-secondary" href="#">もっと見る</a>
+                    </div>
                 </li>
                 <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <!-- <i class="fas fa-envelope fa-fw"></i> -->
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 25 512 512" class="fas fa-fw">
-                            <!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                            <path fill="currentColor"
-                                d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z" />
-                        </svg>
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fas fa-envelope fa-fw" style="font-size: 20px;"></i>
                         <!-- Counter - Messages -->
                         <span class="badge badge-danger badge-counter">7</span>
                     </a>
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                        <h6 class="dropdown-header">
+                            メッセージ通知
+                        </h6>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="dropdown-list-image mr-3">
+                                <img class="rounded-circle" src="assets/img/default-150x150.png" alt="...">
+                                <div class="status-indicator bg-success"></div>
+                            </div>
+                            <!-- <div class="font-weight-bold"> -->
+                            <div>
+                                <div class="text-truncate">これはサンプルメッセージです。</div>
+                                <div class="small cb-lte__text-secondary">サンプル用ユーザ1 · 58分前</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="dropdown-list-image mr-3">
+                                <img class="rounded-circle" src="assets/img/default-150x150.png" alt="...">
+                                <div class="status-indicator"></div>
+                            </div>
+                            <div>
+                                <div class="text-truncate">これはサンプルメッセージです。これはサンプルメッセージです。</div>
+                                <div class="small cb-lte__text-secondary">サンプル用ユーザ2 · 1日前</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="dropdown-list-image mr-3">
+                                <img class="rounded-circle" src="assets/img/default-150x150.png" alt="...">
+                                <div class="status-indicator bg-warning"></div>
+                            </div>
+                            <div>
+                                <div class="text-truncate">これはサンプルメッセージです。これはサンプルメッセージです。</div>
+                                <div class="small cb-lte__text-secondary">サンプル用ユーザ3 · 2日前</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item d-flex align-items-center" href="#">
+                            <div class="dropdown-list-image mr-3">
+                                <img class="rounded-circle" src="assets/img/default-150x150.png" alt="...">
+                                <div class="status-indicator bg-success"></div>
+                            </div>
+                            <div>
+                                <div class="text-truncate">これはサンプルメッセージです。これはサンプルメッセージです...</div>
+                                <div class="small cb-lte__text-secondary">サンプル用ユーザ4 · 2週間前</div>
+                            </div>
+                        </a>
+                        <a class="dropdown-item text-center small cb-lte__text-secondary" href="#">もっと見る</a>
+                    </div>
                 </li>
                 <div class="topbar-divider d-none d-sm-block"></div>
                 <li class="nav-item dropdown no-arrow">
-                    <a href="#" class="nav-link dropdown-toggle" role="button" data-toggle="dropdown"
+                    <a href="#" class="nav-link dropdown-toggle pt-1" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
                         <span class="mr-2 d-none d-lg-inline small" style="color: snow;">サンプル用ユーザ</span>
                         <img class="img-profile rounded-circle" src="assets/img/avatar.png" alt="avater.png">
@@ -717,20 +294,20 @@
                         aria-labelledby="userDropdown">
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Profile
+                            プロフィール
                         </a>
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Settings
+                            設定
                         </a>
                         <a class="dropdown-item" href="#">
                             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Activity Log
+                            アクティビティ
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                        <a class="dropdown-item" href="./login.html" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
+                            ログアウト
                         </a>
                     </div>
                 </li>
@@ -738,82 +315,77 @@
         </div>
     </header>
     <!-- サイドバー -->
-    <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink p-3 bg-dark" id="offcanvas">
+    <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink p-3 bg-dark sidebar" id="offcanvas">
         <div class="offcanvas-header text-white">
             <h5 class="offcanvas-title">Menu</h5>
-            <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+            <button 
+                type="button" 
+                class="btn-close btn-close-white text-reset" 
+                data-bs-dismiss="offcanvas" 
+                aria-label="Close"
+                ></button>
         </div>
-        <hr style="color:#eee;">
+        <hr style="border-top:1px solid; color:#eee;">
         <div class="offcanvas-body">
             <ul class="navbar-nav flex-column ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-house me-2" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-                            <path fill-rule="evenodd"
-                                d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-                        </svg>
+                    <a class="nav-link" aria-current="page" href="./base.html">
+                        <i class="bi bi-box me-2" style="font-size: 16px;"></i>
+                        Base
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./home.html">
+                        <i class="bi bi-house-fill me-2" style="font-size: 16px;"></i>
                         ホーム
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-award me-2" viewBox="0 0 16 16">
-                            <path
-                                d="M9.669.864 8 0 6.331.864l-1.858.282-.842 1.68-1.337 1.32L2.6 6l-.306 1.854 1.337 1.32.842 1.68 1.858.282L8 12l1.669-.864 1.858-.282.842-1.68 1.337-1.32L13.4 6l.306-1.854-1.337-1.32-.842-1.68L9.669.864zm1.196 1.193.684 1.365 1.086 1.072L12.387 6l.248 1.506-1.086 1.072-.684 1.365-1.51.229L8 10.874l-1.355-.702-1.51-.229-.684-1.365-1.086-1.072L3.614 6l-.25-1.506 1.087-1.072.684-1.365 1.51-.229L8 1.126l1.356.702 1.509.229z" />
-                            <path d="M4 11.794V16l4-1 4 1v-4.206l-2.018.306L8 13.126 6.018 12.1 4 11.794z" />
-                        </svg>
-                        メッセージ
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-list me-2" viewBox="0 0 16 16">
-                            <path fill-rule="evenodd"
-                                d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
-                        </svg>
+                    <a class="nav-link" href="./schedule.html">
+                        <i class="bi-calendar-date me-2" style="font-size: 16px;"></i>
                         スケジュール
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-pencil me-2" viewBox="0 0 16 16">
-                            <path
-                                d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z" />
-                        </svg>
+                        <i class="bi bi-chat-left me-2" style="font-size: 16px;"></i>
+                        メッセージ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <i class="bi bi-list-task me-2" style="font-size: 16px"></i>
                         タスク管理
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-heart me-2" viewBox="0 0 16 16">
-                            <path
-                                d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                        </svg>
+                        <i class="bi bi-people me-2" style="font-size: 16px;"></i>
                         グループ一覧
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./login.html">
+                        <i class="bi bi-box-arrow-left me-2" style="font-size: 16px;"></i>
+                        ログアウト
                     </a>
                 </li>
             </ul>
         </div>
     </div>
     <!-- ページコンテンツ -->
-    <main class="content-wrapper pt-4" style="min-height: 1604.08px;">
+    <!-- <main class="content-wrapper pt-4" style="min-height: 1604.08px;"> -->
+    <main class="cb-lte__content-wrapper pt-4" style="min-height: 100vh;">
         <div class="container">
-            <section class="content-header">
+            <!-- ヘッダー(タイトル/パンくずリスト) -->
+            <section class="cb-lte__content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="h3 text-gray-800" style="color:#5a5c69;">ホーム</h1>
+                            <h1 class="h3 cb__page-title">ホーム</h1>
                         </div>
                         <div class="col-sm-6">
-                            <ol class="breadcrumb float-sm-right">
+                            <ol class="breadcrumb cb-lte__breadcrumb float-sm-right">
                                 <li class="breadcrumb-item active">ホーム</li>
                             </ol>
                         </div>
@@ -822,563 +394,95 @@
 
             </section>
 
+            <!-- コンテンツ -->
             <section class="content">
 
-                <!-- Dashcards1 -->
+                <!-- info-boxs -->
                 <div class="row">
-
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box">
-                            <span class="info-box-icon text-bg-primary shadow-sm"> 
-                                <i class="bi bi-hand-thumbs-up-fill"></i>
-                            </span>
-                            <div class="info-box-content">
-                                <span class="info-box-text">本日タスク達成率</span>
-                                <span class="info-box-number">80<small>%</small></span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box">
-                            <span class="info-box-icon text-bg-danger shadow-sm">
+                        <div class="cb-lte__info-box">
+                            <span class="info-box-icon cb-sb__bg-primary shadow-sm">
                                 <i class="bi bi-gear-fill"></i>
                             </span>
                             <div class="info-box-content">
-                                <span class="info-box-text">-</span>
-                                <span class="info-box-number">-<small>-</small></span>
+                                <span class="info-box-text">タスク達成率</span>
+                                <span class="info-box-number">10<small>%</small></span>
                             </div>
                         </div>
                     </div>
-
-                    <!-- <div class="clearfix hidden-md-up"></div> -->
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box">
-                            <span class="info-box-icon text-bg-success shadow-sm">
+                        <div class="cb-lte__info-box">
+                            <span class="info-box-icon cb-lte__bg-danger shadow-sm">
+                                <i class="bi bi-hand-thumbs-up-fill"></i>
+                            </span>
+                            <div class="info-box-content">
+                                <span class="info-box-text">いいね数</span>
+                                <span class="info-box-number">41,410</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <div class="cb-lte__info-box">
+                            <span class="info-box-icon cb-lte__bg-success shadow-sm">
                                 <i class="bi bi-cart-fill"></i>
                             </span>
                             <div class="info-box-content">
-                                <span class="info-box-text">-</span>
-                                <span class="info-box-number">1,024</span>
+                                <span class="info-box-text">売上</span>
+                                <span class="info-box-number">760<small>千円</small></span>
                             </div>
                         </div>
                     </div>
-
                     <div class="col-12 col-sm-6 col-md-3">
-                        <div class="info-box">
-                            <span class="info-box-icon text-bg-warning shadow-sm">
+                        <div class="cb-lte__info-box">
+                            <span class="info-box-icon cb-lte__bg-warning shadow-sm">
                                 <i class="bi bi-people-fill"></i>
                             </span>
                             <div class="info-box-content">
-                                <span class="info-box-text">-</span>
+                                <span class="info-box-text">グループ総数</span>
                                 <span class="info-box-number">2,000</span>
                             </div>
                         </div>
                     </div>
-
                 </div>
 
-                
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="card direct-chat direct-chat-primary">
-                            <div class="card-header ui-sortable-handle" style="cursor: move;">
-                                <h3 class="card-title">未読メッセージ(34)</h3>
-                                <!-- <div class="card-tools">
-                                    <span title="3 New Messages" class="badge badge-primary">3</span>
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
-                                        <i class="fas fa-comments"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div> -->
-                            </div>
-        
-                            <div class="card-body">
-        
-                                <!-- <div class="direct-chat-messages">
-        
-                                    <div class="direct-chat-msg">
-                                        <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-left">サンプル用ユーザ1</span>
-                                            <span class="direct-chat-timestamp float-right">01/23 14:00</span>
-                                        </div>
-        
-                                        <img class="direct-chat-img" src="assets/img/user1-128x128.jpg" alt="message user image">
-        
-                                        <div class="direct-chat-text">
-                                            これはサンプルメッセージです。
-                                        </div>
-        
-                                    </div>
-        
-        
-                                    <div class="direct-chat-msg right">
-                                        <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-right">サンプル用ユーザ</span>
-                                            <span class="direct-chat-timestamp float-left">01/23 14:05</span>
-                                        </div>
-        
-                                        <img class="direct-chat-img" src="assets/img/user3-128x128.jpg" alt="message user image">
-        
-                                        <div class="direct-chat-text">
-                                            これはサンプルメッセージです。
-                                        </div>
-        
-                                    </div>
-        
-        
-                                    <div class="direct-chat-msg">
-                                        <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-left">サンプル用ユーザ1</span>
-                                            <span class="direct-chat-timestamp float-right">01/23 17:37</span>
-                                        </div>
-        
-                                        <img class="direct-chat-img" src="assets/img/user1-128x128.jpg" alt="message user image">
-        
-                                        <div class="direct-chat-text">
-                                            これはサンプルメッセージです。
-                                        </div>
-        
-                                    </div>
-        
-        
-                                    <div class="direct-chat-msg right">
-                                        <div class="direct-chat-infos clearfix">
-                                            <span class="direct-chat-name float-right">サンプル用ユーザ</span>
-                                            <span class="direct-chat-timestamp float-left">01/23 18:10</span>
-                                        </div>
-        
-                                        <img class="direct-chat-img" src="assets/img/user3-128x128.jpg" alt="message user image">
-        
-                                        <div class="direct-chat-text">
-                                            これはサンプルメッセージです。
-                                        </div>
-        
-                                    </div>
-        
-                                </div> -->
-        
-        
-                                <div class="direct-chat-contacts">
-                                    <ul class="contacts-list">
-                                        <li>
-                                            <a href="#">
-                                                <img class="contacts-list-img" src="assets/img/user1-128x128.jpg"
-                                                    alt="User Avatar">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                        サンプル用ユーザ1
-                                                        <small class="contacts-list-date float-right">2015/02/28</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">これはサンプルメッセージで...</span>
-                                                </div>
-        
-                                            </a>
-                                        </li>
-        
-                                        <li>
-                                            <a href="#">
-                                                <img class="contacts-list-img" src="assets/img/user7-128x128.jpg"
-                                                    alt="User Avatar">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                        サンプル用ユーザ2
-                                                        <small class="contacts-list-date float-right">2015/02/23</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">これはサンプルメッセージで...</span>
-                                                </div>
-        
-                                            </a>
-                                        </li>
-        
-                                        <li>
-                                            <a href="#">
-                                                <img class="contacts-list-img" src="assets/img/user3-128x128.jpg"
-                                                    alt="User Avatar">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                        サンプル用ユーザ3
-                                                        <small class="contacts-list-date float-right">2015/02/20</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">これはサンプルメッセージで...</span>
-                                                </div>
-        
-                                            </a>
-                                        </li>
-        
-                                        <li>
-                                            <a href="#">
-                                                <img class="contacts-list-img" src="assets/img/user5-128x128.jpg"
-                                                    alt="User Avatar">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                        サンプル用ユーザ4
-                                                        <small class="contacts-list-date float-right">2015/02/10</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">これはサンプルメッセージで...</span>
-                                                </div>
-        
-                                            </a>
-                                        </li>
-        
-                                        <li>
-                                            <a href="#">
-                                                <img class="contacts-list-img" src="assets/img/user6-128x128.jpg"
-                                                    alt="User Avatar">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                        サンプル用ユーザ5
-                                                        <small class="contacts-list-date float-right">2015/01/27</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">これはサンプルメッセージで...</span>
-                                                </div>
-        
-                                            </a>
-                                        </li>
-        
-                                        <li>
-                                            <a href="#">
-                                                <img class="contacts-list-img" src="assets/img/user8-128x128.jpg"
-                                                    alt="User Avatar">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                        サンプル用ユーザ6
-                                                        <small class="contacts-list-date float-right">2015/01/04</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">これはサンプルメッセージで...</span>
-                                                </div>
-        
-                                            </a>
-                                        </li>
-        
-                                    </ul>
-        
-                                </div>
-        
-                            </div>
-        
-                            <!-- <div class="card-footer">
-                                <form action="#" method="post">
-                                    <div class="input-group">
-                                        <input type="text" name="message" placeholder="メッセージを入力 ..." class="form-control">
-                                        <span class="input-group-append">
-                                            <button type="button" class="btn btn-primary">送信</button>
-                                        </span>
-                                    </div>
-                                </form>
-                            </div> -->
-        
-                        </div>
-                        
-                    </div>
-
-                    <!-- TimeLine -->
-                    <div class="col-md-8">
-                        <div class="card">
-                            <div class="card-header p-2">
-                                <ul class="nav nav-pills">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#activity" data-toggle="tab">本日のスケジュール</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="#timeline" data-toggle="tab">直近のアクティビティ</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#settings" data-toggle="tab">Settings</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="card-body">
-                                <div class="tab-content">
-                                    <div class="tab-pane" id="activity">
-        
-                                        <div class="post">
-                                            <div class="user-block">
-                                                <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg"
-                                                    alt="user image">
-                                                <span class="username">
-                                                    <a href="#">Jonathan Burke Jr.</a>
-                                                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                                                </span>
-                                                <span class="description">Shared publicly - 7:30 PM today</span>
-                                            </div>
-        
-                                            <p>
-                                                Lorem ipsum represents a long-held tradition for designers,
-                                                typographers and the like. Some people hate it and argue for
-                                                its demise, but others ignore the hate as they create awesome
-                                                tools to help create filler text for everyone from bacon lovers
-                                                to Charlie Sheen fans.
-                                            </p>
-                                            <p>
-                                                <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i>
-                                                    Share</a>
-                                                <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i>
-                                                    Like</a>
-                                                <span class="float-right">
-                                                    <a href="#" class="link-black text-sm">
-                                                        <i class="far fa-comments mr-1"></i> Comments (5)
-                                                    </a>
-                                                </span>
-                                            </p>
-                                            <input class="form-control form-control-sm" type="text"
-                                                placeholder="Type a comment">
-                                        </div>
-        
-        
-                                        <div class="post clearfix">
-                                            <div class="user-block">
-                                                <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg"
-                                                    alt="User Image">
-                                                <span class="username">
-                                                    <a href="#">Sarah Ross</a>
-                                                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                                                </span>
-                                                <span class="description">Sent you a message - 3 days ago</span>
-                                            </div>
-        
-                                            <p>
-                                                Lorem ipsum represents a long-held tradition for designers,
-                                                typographers and the like. Some people hate it and argue for
-                                                its demise, but others ignore the hate as they create awesome
-                                                tools to help create filler text for everyone from bacon lovers
-                                                to Charlie Sheen fans.
-                                            </p>
-                                            <form class="form-horizontal">
-                                                <div class="input-group input-group-sm mb-0">
-                                                    <input class="form-control form-control-sm" placeholder="Response">
-                                                    <div class="input-group-append">
-                                                        <button type="submit" class="btn btn-danger">Send</button>
-                                                    </div>
-                                                </div>
-                                            </form>
-                                        </div>
-        
-        
-                                        <div class="post">
-                                            <div class="user-block">
-                                                <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg"
-                                                    alt="User Image">
-                                                <span class="username">
-                                                    <a href="#">Adam Jones</a>
-                                                    <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                                                </span>
-                                                <span class="description">Posted 5 photos - 5 days ago</span>
-                                            </div>
-        
-                                            <div class="row mb-3">
-                                                <div class="col-sm-6">
-                                                    <img class="img-fluid" src="../../dist/img/photo1.png" alt="Photo">
-                                                </div>
-        
-                                                <div class="col-sm-6">
-                                                    <div class="row">
-                                                        <div class="col-sm-6">
-                                                            <img class="img-fluid mb-3" src="../../dist/img/photo2.png"
-                                                                alt="Photo">
-                                                            <img class="img-fluid" src="../../dist/img/photo3.jpg" alt="Photo">
-                                                        </div>
-        
-                                                        <div class="col-sm-6">
-                                                            <img class="img-fluid mb-3" src="../../dist/img/photo4.jpg"
-                                                                alt="Photo">
-                                                            <img class="img-fluid" src="../../dist/img/photo1.png" alt="Photo">
-                                                        </div>
-        
-                                                    </div>
-        
-                                                </div>
-        
-                                            </div>
-        
-                                            <p>
-                                                <a href="#" class="link-black text-sm mr-2"><i class="fas fa-share mr-1"></i>
-                                                    Share</a>
-                                                <a href="#" class="link-black text-sm"><i class="far fa-thumbs-up mr-1"></i>
-                                                    Like</a>
-                                                <span class="float-right">
-                                                    <a href="#" class="link-black text-sm">
-                                                        <i class="far fa-comments mr-1"></i> Comments (5)
-                                                    </a>
-                                                </span>
-                                            </p>
-                                            <input class="form-control form-control-sm" type="text"
-                                                placeholder="Type a comment">
-                                        </div>
-        
-                                    </div>
-        
-                                    <div class="tab-pane active" id="timeline">
-        
-                                        <div class="timeline timeline-inverse">
-        
-                                            <div class="time-label">
-                                                <span class="bg-danger">
-                                                    10 Feb. 2014
-                                                </span>
-                                            </div>
-        
-        
-                                            <div>
-                                                <i class="fas fa-envelope bg-primary"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="far fa-clock"></i> 12:05</span>
-                                                    <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email
-                                                    </h3>
-                                                    <div class="timeline-body">
-                                                        Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                                        weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                                        jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                                        quora plaxo ideeli hulu weebly balihoo...
-                                                    </div>
-                                                    <div class="timeline-footer">
-                                                        <a href="#" class="btn btn-primary btn-sm">Read more</a>
-                                                        <a href="#" class="btn btn-danger btn-sm">Delete</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-        
-        
-                                            <div>
-                                                <i class="fas fa-user bg-info"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="far fa-clock"></i> 5 mins ago</span>
-                                                    <h3 class="timeline-header border-0"><a href="#">Sarah Young</a> accepted
-                                                        your friend request
-                                                    </h3>
-                                                </div>
-                                            </div>
-        
-        
-                                            <div>
-                                                <i class="fas fa-comments bg-warning"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="far fa-clock"></i> 27 mins ago</span>
-                                                    <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post
-                                                    </h3>
-                                                    <div class="timeline-body">
-                                                        Take me to your leader!
-                                                        Switzerland is small and neutral!
-                                                        We are more like Germany, ambitious and misunderstood!
-                                                    </div>
-                                                    <div class="timeline-footer">
-                                                        <a href="#" class="btn btn-warning btn-flat btn-sm">View comment</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-        
-        
-                                            <div class="time-label">
-                                                <span class="bg-success">
-                                                    3 Jan. 2014
-                                                </span>
-                                            </div>
-        
-        
-                                            <div>
-                                                <i class="fas fa-camera bg-purple"></i>
-                                                <div class="timeline-item">
-                                                    <span class="time"><i class="far fa-clock"></i> 2 days ago</span>
-                                                    <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos
-                                                    </h3>
-                                                    <div class="timeline-body">
-                                                        <img src="https://placehold.it/150x100" alt="...">
-                                                        <img src="https://placehold.it/150x100" alt="...">
-                                                        <img src="https://placehold.it/150x100" alt="...">
-                                                        <img src="https://placehold.it/150x100" alt="...">
-                                                    </div>
-                                                </div>
-                                            </div>
-        
-                                            <div>
-                                                <i class="far fa-clock bg-gray"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-        
-                                    <div class="tab-pane" id="settings">
-                                        <form class="form-horizontal">
-                                            <div class="form-group row">
-                                                <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                                                <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                                                <div class="col-sm-10">
-                                                    <input type="email" class="form-control" id="inputEmail"
-                                                        placeholder="Email">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputName2" class="col-sm-2 col-form-label">Name</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputName2" placeholder="Name">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
-                                                <div class="col-sm-10">
-                                                    <textarea class="form-control" id="inputExperience"
-                                                        placeholder="Experience"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
-                                                <div class="col-sm-10">
-                                                    <input type="text" class="form-control" id="inputSkills"
-                                                        placeholder="Skills">
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="offset-sm-2 col-sm-10">
-                                                    <div class="checkbox">
-                                                        <label>
-                                                            <input type="checkbox"> I agree to the <a href="#">terms and
-                                                                conditions</a>
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="form-group row">
-                                                <div class="offset-sm-2 col-sm-10">
-                                                    <button type="submit" class="btn btn-danger">Submit</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
-        
-                                </div>
-        
-                            </div>
+                <!-- Schedule -->
+                <div class="card cb-lte__card">
+                    <div class="card-body pb-2">
+                        <div id='calendar'></div>
+                        <div class="text-end mt-2">
+                            <a href="./schedule.html">※スケジュール画面へ</a>
                         </div>
                     </div>
                 </div>
+
             </section>
+            <!-- トップに戻るボタン -->
+            <a id="back-to-top" href="#" class="btn btn-primary--umi cb-lte__back-to-top" role="button" aria-label="Scroll to top">
+                <i class="fas fa-chevron-up"></i>
+            </a>
         </div>
     </main>
     <footer class="text-muted py-4">
         <div class="container">
             <!-- トップへ戻る -->
-            <div class="text-end">
+            <!-- <div class="text-end">
                 <a href="#">トップへ戻る</a>
-            </div>
+            </div> -->
         </div>
     </footer>
+    <!-- Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 
+        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
     <!-- Jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- Custom JS -->
-    <script></script>
+        <!-- Custom JS -->
+    <script>
 
+    </script>
 </body>
 
 </html>
