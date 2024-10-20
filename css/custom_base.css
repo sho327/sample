@@ -147,8 +147,8 @@
 .topbar .nav-item .nav-link {
     display: flex;
     align-items: center;
-    padding: 0 0.75rem;
     height: 40px;
+    /* box-sizing: content-box; */
 }
 .topbar .nav-item .nav-link, 
 .sidebar .nav-item .nav-link {
@@ -157,6 +157,9 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
 }
+/* .topbar .nav-item.nav-item-user .nav-link {
+    padding: 0 0;
+} */
 .topbar .nav-item .nav-link  {
     /* color: #d1d3e2; */
     color: snow;
