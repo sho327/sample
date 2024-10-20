@@ -1,0 +1,655 @@
+@charset "UTF-8";
+/* ※OriginalCSS(Based: AdminLTE v3/v4)※ */
+/*!
+ *   AdminLTE v3.2.0 / v4.0.0-beta2
+ *   Author: Colorlib
+ *   Website: AdminLTE.io <https://adminlte.io>
+ *   License: Open source - MIT <https://opensource.org/licenses/MIT>
+ */
+/*!
+ * Start Bootstrap - SB Admin 2 v4.1.3 (https://startbootstrap.com/theme/sb-admin-2)
+ * Copyright 2013-2021 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin-2/blob/master/LICENSE)
+ */
+/* AdminLTE v3.2.0 / SbAdmin2 配色 */
+/* 以下とbootstrap/umi(--bs-xxxx/--xxxx)の配色がベースとなる */
+:root {
+    /* 黒に関しては「--bs-dark」を使用 */
+    /* AdminLte3 配色 */
+    --cb-lte__indigo: #6610f2;
+    --cb-lte__purple: #6f42c1;
+    --cb-lte__pink: #e83e8c;
+    --cb-lte__orange: #fd7e14;
+    --cb-lte__teal: #20c997;
+    --cb-lte__primary: #007bff;
+    --cb-lte__secondary: #6c757d;
+    --cb-lte__success: #28a745;
+    --cb-lte__info: #17a2b8;
+    --cb-lte__warning: #ffc107;
+    --cb-lte__danger: #dc3545;
+    --cb-lte__light: #f8f9fa;
+    /* --cb-lte__dark: #343a40; */ /* umi: gray-darkと同一配色 */
+    /* メディアクエリ内でCSS変数は使用できない(サイズ感だけ基本的に以下に沿って作成) */
+    /* --cb-lte__breakpoint-xs: 0;
+    --cb-lte__breakpoint-sm: 576px;
+    --cb-lte__breakpoint-md: 768px;
+    --cb-lte__breakpoint-lg: 992px;
+    --cb-lte__breakpoint-xl: 1200px; */
+    --cb-lte__font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --cb-lte__font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+    /* SbAdmin2 配色(ベースはumi/AdminLteの配色とする/基本的に使わない) */
+    --cb-sb__teal: #20c9a6;
+    --cb-sb__primary: #4e73df;
+    --cb-sb__secondary: #858796;
+    --cb-sb__success: #1cc88a;
+    --cb-sb__info: #36b9cc;
+    --cb-sb__warning: #f6c23e;
+    --cb-sb__danger: #e74a3b;
+    --cb-sb__light: #f8f9fc;
+    --cb-sb__dark: #5a5c69;
+    --cb-sb__font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --cb-sb__font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+/* ※アンチ(umi/Bootstrap)CSS※ */
+/* ----- umi ----- */
+/* offcanvasが使えないので更新 */
+.fade.show {
+    opacity: 0.5;
+}
+/* ナビゲーションのリンク(下線を消す) */
+.navbar .nav-item .nav-link::before {
+    position: unset;
+    right: unset;
+    bottom: unset;
+    left: unset;
+    width: unset;
+    margin: unset;
+    content: unset;
+    border-bottom-style: unset;
+    border-bottom-width: unset;
+    transition: unset;
+}
+/* 上部ナビゲーションリンク */
+.bg-dark.navbar-dark .navbar-nav .nav-link:focus,
+.bg-dark.navbar-dark .navbar-nav .nav-link:hover,
+.bg-dark.navbar-dark .navbar-nav .active > .nav-link {
+    opacity: 0.8;
+    color: var(--light) !important;
+}
+.navbar-brand:hover {
+    opacity: 0.8;
+    color: var(--light) !important;
+}
+/* umi primaryボタンクラス修正 */
+.btn-primary--umi {
+    color: var(--white);
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.btn-primary--umi:hover {
+    color: var(--white);
+    background-color: #1e2b37;
+    border-color: #1a252f;
+}
+.btn-primary--umi:focus, 
+.btn-primary--umi.focus {
+    box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.5);
+}
+.btn-primary--umi.disabled, 
+.btn-primary--umi:disabled {
+    color: var(--white);
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.btn-primary--umi:not(:disabled):not(.disabled):active, 
+.btn-primary--umi:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+    color: var(--white);
+    background-color: #1a252f;
+    border-color: #151e27;
+}
+.btn-primary--umi:not(:disabled):not(.disabled):active:focus, 
+.btn-primary--umi:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary--umi.dropdown-toggle:focus {
+    box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.5);
+}
+/* ----- Bootstrap v5.3 ----- */
+/* スマホのナビゲーションを75%に変更 */
+.offcanvas-start {
+    width: 300px !important;
+    /* 右側のグレーボーダーをOFFにする */
+    border-right: none !important;
+}
+@media screen and (max-width: 576px) {
+    .offcanvas-start {
+        width: 75% !important;
+    }
+}
+
+/*!
+ * Start Bootstrap - SB Admin 2 v4.1.3 (https://startbootstrap.com/theme/sb-admin-2)
+ * Copyright 2013-2021 Start Bootstrap
+ * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin-2/blob/master/LICENSE)
+ */
+.navbar {
+    padding: 15px 1rem;
+    box-sizing: content-box;
+    height: 40px;
+}
+.sidebar .nav-item .nav-link .img-profile, 
+.topbar .container .navbar-nav .nav-item .nav-link .img-profile {
+    height: 2rem;
+    width: 2rem;
+    /* height: 20px;
+    width: 20px; */
+}
+.topbar .nav-item .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 0 0.75rem;
+    height: 40px;
+}
+.topbar .nav-item .nav-link, 
+.sidebar .nav-item .nav-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+}
+.topbar .nav-item .nav-link  {
+    /* color: #d1d3e2; */
+    color: snow;
+}
+.sidebar .nav-item .nav-link  {
+    color: var(--white);
+}
+.sidebar .nav-link:hover {
+    opacity: 0.8;
+    color: var(--light);
+}
+.nav-link.active {
+    color: var(--primary) !important;
+}
+/* ヘッダー(ドロップダウンボタン) */
+.dropdown.no-arrow .dropdown-toggle::after {
+    display: none;
+}
+.dropdown,
+.dropleft,
+.dropright,
+.dropup {
+    position: relative;
+}
+.topbar .dropdown {
+    position: static;
+}
+@media (min-width: 576px) {
+    .topbar .dropdown {
+        position: relative;
+    }
+}
+/* ヘッダー(ドロップダウン) */
+.animated--grow-in, .sidebar .nav-item .collapse {
+    -webkit-animation-name: growIn;
+    animation-name: growIn;
+    -webkit-animation-duration: .2s;
+    animation-duration: .2s;
+    -webkit-animation-timing-function: transform cubic-bezier(.18,1.25,.4,1),opacity cubic-bezier(0,1,.4,1);
+    animation-timing-function: transform cubic-bezier(.18,1.25,.4,1),opacity cubic-bezier(0,1,.4,1);
+}
+.dropdown .dropdown-menu {
+    font-size: .85rem;
+}
+.topbar .dropdown .dropdown-menu {
+    position: absolute;
+    width: calc(100% - 1.5rem);
+    top: 55px;
+    left: 0.75rem;
+    right: 0.75rem;
+    margin-top: 0;
+}
+@media (min-width: 576px) {
+    .topbar .dropdown .dropdown-menu {
+        top: 40px;
+        width: 20rem!important;
+        right: 0;
+        left: auto;
+    }
+}
+.topbar .dropdown-list {
+    padding: 0;
+    border: none;
+    overflow: hidden;
+}
+/* .dropdown-header {
+    color: #858796;
+} */
+.dropdown .dropdown-menu .dropdown-header, 
+.sidebar .sidebar-heading, .text-uppercase {
+    text-transform: uppercase!important;
+}
+.dropdown .dropdown-menu .dropdown-header {
+    font-weight: 800;
+    font-size: .8rem;
+}
+.topbar .dropdown-list .dropdown-header {
+    background-color: var(--teal);
+    border: 1px solid var(--teal);
+    padding: 0.85rem;
+    padding-bottom: 0.85rem;
+    color: snow;
+}
+.dropdown-item {
+    /* color: #3a3b45; */
+    color: var(--bs-dark);
+}
+.dropdown-item:hover, 
+.dropdown-item:focus {
+    color: var(--bs-dark);
+    text-decoration: none;
+    background-color: var(--light);
+}
+.dropdown-item.active, 
+.dropdown-item:active {
+    color: var(--bs-dark);
+    text-decoration: none;
+    background-color: var(--light);
+}
+.topbar .dropdown-list .dropdown-item {
+    white-space: normal;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-left: 1px solid #e3e6f0;
+    border-right: 1px solid #e3e6f0;
+    border-bottom: 1px solid #e3e6f0;
+    line-height: 1.3rem;
+}
+.icon-circle {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* ヘッダードロップダウン(メッセージ通知) */
+.topbar .dropdown-list .dropdown-item .dropdown-list-image img {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.topbar .dropdown-list .dropdown-item .dropdown-list-image {
+    position: relative;
+    height: 2.5rem;
+    width: 2.5rem;
+}
+.topbar .dropdown-list .dropdown-item .dropdown-list-image .status-indicator {
+    background-color: #eaecf4;
+    height: 0.75rem;
+    width: 0.75rem;
+    border-radius: 100%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border: 0.125rem solid #fff;
+}
+.text-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.topbar .dropdown-list .dropdown-item .text-truncate {
+    max-width: 10rem;
+}
+@media (min-width: 576px){
+    .topbar .dropdown-list .dropdown-item .text-truncate {
+        max-width: 13.375rem;
+    }
+}
+/* ヘッダー(境界線) */
+.topbar .topbar-divider {
+    width: 0;
+    border-right: 1px solid #e3e6f0;
+    height: calc(4.375rem - 2rem);
+    margin: auto 1rem;
+}
+/* ヘッダー(件数バッジ) */
+.sidebar .nav-item .nav-link .badge-counter,
+.topbar .nav-item .nav-link .badge-counter {
+    position: absolute;
+    transform: scale(.7);
+    transform-origin: top right;
+    /* right: 0.25rem; */
+    right: 0.75rem;
+    /* margin-top: -0.25rem; */
+    margin-top: -0.15rem;
+}
+.badge-danger {
+    color: var(--white);
+    background-color: var(--danger);
+}
+.badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.35rem;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+
+/* ※OriginalCSS(Based: AdminLTE v3/v4)※ */
+/*!
+ *   AdminLTE v3.2.0 / v4.0.0-beta2
+ *   Author: Colorlib
+ *   Website: AdminLTE.io <https://adminlte.io>
+ *   License: Open source - MIT <https://opensource.org/licenses/MIT>
+ */
+/* ----- ページ共通クラス ----- */
+.cb-lte__content-wrapper {
+    height: 100%;
+    background-color: #f4f6f9;
+}
+.cb-lte__content-header {
+    padding: 15px 0.5rem;
+}
+.cb-lte__content-header .cb-lte__breadcrumb {
+    background-color: transparent;
+    line-height: 1.8rem;
+    margin-bottom: 0;
+    padding: 0;
+}
+/* ***** パンくずリスト ***** */
+.cb-lte__breadcrumb .breadcrumb-item.active {
+    color: var(--cb-lte__secondary);
+}
+/* ***** トップに戻るボタン ***** */
+.cb-lte__back-to-top {
+    bottom: 1.25rem;
+    position: fixed;
+    right: 1.25rem;
+    z-index: 1032;
+}
+/* ***** カード ***** */
+.cb-lte__card {
+    box-shadow: 0 0 1px rgba(0,0,0,.125), 0 1px 3px rgba(0,0,0,.2);
+    margin-bottom: 1rem;
+    display: -ms-flexbox;
+    -ms-flex-direction: column;
+    border: 0 solid rgba(0,0,0,.125);
+}
+.cb-lte__card .card-header {
+    background-color: transparent;
+    position: relative;
+}
+.cb-lte__card .card-title {
+    float: left;
+    font-size: 1.1rem;
+    font-weight: 400;
+    margin: 0;
+}
+.cb-lte__card .card-body {
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+.cb-lte__card .card-body::after, 
+.cb-lte__card .card-footer::after, 
+.cb-lte__card .card-header::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+/* ***** bgColors ***** */
+/* 元祖Bootstrap配色は「text-bg-primary」等で使用可能 */
+.cb-sb__bg-primary {
+    background-color: var(--cb-sb__primary)!important;
+}
+.cb-sb__bg-primary, .cb-sb__bg-primary > a {
+    color: var(--white)!important;
+}
+.cb-lte__bg-success {
+    background-color: var(--cb-lte__success)!important;
+}
+.cb-lte__bg-success, .cb-lte__bg-success > a {
+    color: var(--white)!important;
+}
+.cb-lte__bg-warning {
+    background-color: var(--cb-lte__warning)!important;
+}
+.cb-lte__bg-warning, .cb-lte__bg-warning > a {
+    color: #1f2d3d!important;
+}
+.cb-lte__bg-danger {
+    background-color: var(--cb-lte__danger)!important;
+}
+.cb-lte__bg-danger, .cb-lte__bg-danger > a {
+    color: var(--white)!important;
+}
+/* ***** textColors ***** */
+.cb-lte__text-secondary {
+    color: var(--cb-lte__secondary)!important;
+}
+/* ***** アイコンがない場合の表示設定 ***** */
+.bi-gear-fill::before {
+    content: "\f3e2";
+}
+.bi-hand-thumbs-up-fill::before {
+    content: "\f406";
+}
+.bi-cart-fill::before {
+    content: "\f23d";
+}
+.bi-people-fill::before {
+    content: "\f4cf";
+}
+/* ----- ページ固有クラス ----- */
+/* ***** スケジュール ****** */
+.fc {
+    margin-top: 5px;
+}
+@media screen and (max-width: 576px) {
+    /* スマホ版のフォントサイズ調整 */
+    .fc .fc-toolbar-title {
+        /* font-size: 1.75em; */
+        font-size: 1.5em;
+    }
+    .fc .fc-button {
+        /* font-size: 1em; */
+        font-size: 0.9em;
+    }
+}
+.fc .fc-scrollgrid {
+    /* 外側の枠線を消す */
+    /* border-width: 0 0 0 0; */
+    font-size: 18px;
+    font-weight: normal;
+}
+.fc-theme-standard td, 
+.fc-theme-standard th {
+    /* 枠の高さを指定 */
+    height: 60px; 
+    /* 枠のボーダーを消す */
+    /* border: none;  */
+    /* paddingの調整 */
+    /* padding: 0 5px 5px; */
+    padding: 0 2.5px 2.5px;
+}
+.fc-theme-standard th {
+    height: auto;
+}
+.fc td, 
+.fc th {
+    vertical-align: middle;
+}
+/* スケジュール内のlink設定の更新 */
+.fc a {
+    color: #333333;
+}
+/* 今日の背景 */
+.fc .fc-daygrid-day.fc-day-today {
+    background: none;
+}
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-frame {
+    background-color: #FFFACD;
+}
+/* 日付を枠の中心に */
+.fc .fc-daygrid-day-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 100%;
+}
+/* 祝日の背景 */
+.fc .fc-daygrid-day.holiday .fc-daygrid-day-frame {
+    background-color: #FFE4E1;
+}
+/* 土曜日 */
+.fc-day-sat .fc-daygrid-day-top, 
+.fc-day-sat .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion, 
+.fc-day-sat .fc-list-day-cushion {
+    color: var(--info);
+}
+/* 日曜日 */
+.fc-day-sun .fc-daygrid-day-top, 
+.fc-day-sun .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion, 
+.fc-day-sun .fc-list-day-cushion {
+    color: var(--danger);
+}
+/* カスタムビュー(今月の予定一覧リスト) */
+.fc .fc-custom-view.custom-view table{
+    width: 100%;
+}
+.fc .fc-custom-view.custom-view thead th {
+    padding: 10px;
+    text-align: left;
+}
+.cb-lte__card .card-body .fc .fc-custom-view.custom-view tbody th,
+.cb-lte__card .card-body .fc .fc-custom-view.custom-view tbody td {
+    padding: 10px;
+    text-align: left;
+}
+.fc .fc-custom-view.custom-view .no-data {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 80px;
+    background: #d0d0d04d;
+    border: 1px solid #ddd;
+}
+/* 当月以外の日（月カレンダーに一緒に表示される前後の月） */
+/* .fc-day-other .fc-daygrid-day-top, 
+.fc-day-other .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion, 
+.fc-day-other .fc-list-day-cushion {
+    color: #FFE4E1;
+    background-color: #FFE4E1;
+} */
+/* 日付を枠の高さいっぱいにする(イベントがどれも入らなくなる) */
+/* .fc .fc-daygrid-day-frame {
+    height: 100%;
+} */
+/* ***** info-box ****** */
+.cb-lte__info-box {
+    box-shadow: 0 0 1px rgba(var(--bs-body-color-rgb), 0.125), 0 1px 3px rgba(var(--bs-body-color-rgb), 0.2);
+    position: relative;
+    display: flex;
+    width: 100%;
+    min-height: 80px;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    color: var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    /* adminlte4 */
+    border-radius: 0.375rem;
+    /* adminlte3 */
+    /* border-radius: 0.25rem;  */
+}
+.cb-lte__info-box .info-box-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    font-size: 1.875rem;
+    text-align: center;
+    /* adminlte4 */
+    border-radius: 0.375rem;
+    /* adminlte3 */
+    /* border-radius: 0.25rem; */
+}
+.cb-lte__info-box .info-box-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10px;
+    line-height: 1.8;
+}
+/* .cb-lte__info-box .progress-description, */
+.cb-lte__info-box .info-box-text {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.cb-lte__info-box .info-box-number {
+    display: block;
+    margin-top: 0.25rem;
+    font-weight: 700;
+}
+
+/* ※OriginalCSS(CustomOverRide)※ */
+/* ----- ページ共通クラス ----- */
+.cb__page-title {
+    color:#5a5c69;
+}
+/* ***** チェックボックス ****** */
+.cb__checkbox-primary:checked {
+    background-color: var(--primary);
+    border-color: var(--primary);
+}
+.cb__checkbox-secondary:checked {
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+}
+.cb__checkbox-success:checked {
+    background-color: var(--success);
+    border-color: var(--success);
+}
+.cb__checkbox-danger:checked {
+    background-color: var(--danger);
+    border-color: var(--danger);
+}
+.cb__checkbox-warning:checked {
+    background-color: var(--warning);
+    border-color: var(--warning);
+}
+.cb__checkbox-info:checked {
+    background-color: var(--info);
+    border-color: var(--info);
+}
+/* ***** ポジション設定 ***** */
+.cb__relative {
+    position: relative;
+}
+
+/* ----- ページ固有クラス ----- */
+/* ***** スケジュール ****** */
+.cb__schedule-prev-btn {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    z-index: 2;
+}
+.cb__schedule-next-btn {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    z-index: 2;
+}
