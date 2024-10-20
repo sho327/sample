@@ -551,11 +551,25 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="./schedule.html">
+                    <a class="nav-link active" data-bs-toggle="collapse" href="#collapse-submenu1" role="button" aria-expanded="false" aria-controls="collapse-submenu1">
                         <i class="bi-calendar-date me-2" style="font-size: 16px;"></i>
                         スケジュール
+                        <!-- <i class="bi bi-chevron-down ms-2" style="font-size: 14px;"></i> -->
+                        <i class="bi bi-chevron-down ms-2"  style="font-size: 14px;"></i>
                     </a>
                 </li>
+                <div class="collapse ms-3" id="collapse-submenu1">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./schedule.html">
+                            スケジュール一覧
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./schedule_save.html">
+                            スケジュール新規登録
+                        </a>
+                    </li>
+                </div>
                 <li class="nav-item">
                     <a class="nav-link" href="">
                         <i class="bi bi-chat-left me-2" style="font-size: 16px;"></i>
