@@ -114,6 +114,13 @@
 .show > .btn-primary--umi.dropdown-toggle:focus {
     box-shadow: 0 0 0 0.2rem rgba(44, 62, 80, 0.5);
 }
+/* form-controlの色を濃くする */
+.form-control {
+    color: var(--bs-dark);
+}
+.form-control:focus {
+    color: var(--bs-dark);
+}
 /* ----- Bootstrap v5.3 ----- */
 /* スマホのナビゲーションを75%に変更 */
 .offcanvas-start {
@@ -220,7 +227,8 @@
     overflow: hidden;
 }
 .dropdown .dropdown-menu .dropdown-header, 
-.sidebar .sidebar-heading, .text-uppercase {
+.sidebar .sidebar-heading, 
+.text-uppercase {
     text-transform: uppercase!important;
 }
 .dropdown .dropdown-menu .dropdown-header {
