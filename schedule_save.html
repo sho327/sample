@@ -34,14 +34,15 @@
             </ul>
             <ul class="navbar-nav align-items-center ml-auto" style="flex-direction: row;">
                 <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" 
+                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bell fa-fw" style="font-size: 22px;"></i>
                         <!-- Counter - Alerts -->
                         <span class="badge badge-danger badge-counter">3+</span>
                     </a>
                     <!-- Dropdown Aleats -->
-                    <div class="dropdown-list dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="alertsDropdown">
+                    <div class="dropdown-list dropdown-menu dropdown-menu-end shadow animated--grow-in"
+                        aria-labelledby="alertsDropdown">
                         <h6 class="dropdown-header">
                             お知らせ
                         </h6>
@@ -89,7 +90,8 @@
                         <!-- Counter - Messages -->
                         <span class="badge badge-danger badge-counter">7</span>
                     </a>
-                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                        aria-labelledby="messagesDropdown">
                         <h6 class="dropdown-header">
                             メッセージ通知
                         </h6>
@@ -172,18 +174,14 @@
     <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink p-3 bg-dark sidebar" id="offcanvas">
         <div class="offcanvas-header text-white">
             <h5 class="offcanvas-title">Menu</h5>
-            <button 
-                type="button" 
-                class="btn-close btn-close-white text-reset" 
-                data-bs-dismiss="offcanvas" 
-                aria-label="Close"
-                ></button>
+            <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
+                aria-label="Close"></button>
         </div>
         <hr style="border-top:1px solid; color:#eee;">
         <div class="offcanvas-body">
             <ul class="navbar-nav flex-column ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./base.html">
+                    <a class="nav-link" aria-current="page" href="./base.html">
                         <i class="bi bi-box me-2" style="font-size: 16px;"></i>
                         Base
                     </a>
@@ -195,7 +193,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./schedule.html">
+                    <a class="nav-link active" href="./schedule.html">
                         <i class="bi-calendar-date me-2" style="font-size: 16px;"></i>
                         スケジュール
                     </a>
@@ -236,12 +234,13 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="h3 cb__page-title">Base</h1>
+                            <h1 class="h3 cb__page-title">スケジュール登録</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb cb-lte__breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./home.html">ホーム</a></li>
-                                <li class="breadcrumb-item active">Base</li>
+                                <li class="breadcrumb-item"><a href="./schedule.html">スケジュール</a></li>
+                                <li class="breadcrumb-item active">スケジュール登録</li>
                             </ol>
                         </div>
                     </div>
@@ -250,9 +249,133 @@
             </section>
 
             <!-- コンテンツ -->
-            <section class="content"></section>
+            <section class="content">
+                <!-- スケジュール登録フォーム -->
+                <div class="card cb-lte__card card-primary card-outline">
+                    <div class="card-body mx-auto my-4" style="width:95%;">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="validationCustom01" class="form-label">開始時間<small style="color:red">(必須)</small></label>
+                                <!-- <input type="text" class="form-control" id="validationCustom01" value="Mark" required=""> -->
+                                <input type="datetime-local" class="form-control" id="validationCustom01" value="Mark" required="">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom02" class="form-label">終了時間<small style="color:red">(必須)</small></label>
+                                <!-- <input type="text" class="form-control" id="validationCustom02" value="Otto" required=""> -->
+                                <input type="datetime-local" class="form-control" id="validationCustom02" value="Otto" required="">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="validationCustom1" class="form-label">タイトル<small style="color:red">(必須)</small></label>
+                                <input type="text" class="form-control" id="validationCustom1" value="Mark" required="">
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="validationCustom2" class="form-label">詳細</label>
+                                <!-- <input type="text" class="form-control" id="validationCustom02" value="Otto" required=""> -->
+                                <textarea class="form-control" id="validationCustom2" cols="30" rows="10" required="">Otto</textarea>
+                                <div class="valid-feedback">Looks good!</div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="validationCustom04" class="form-label">場所</label>
+                                <select class="form-select" id="validationCustom04" required="">
+                                    <option selected="" disabled="" value="">Choose...</option>
+                                    <option>...</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid state.
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="validationCustom04" class="form-label">グループ</label>
+                                <select class="form-select" id="validationCustom04" required="">
+                                    <option selected="" disabled="" value="">Choose...</option>
+                                    <option>...</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid state.
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required="">
+                                    <label class="form-check-label" for="invalidCheck">
+                                        グループへ通知する
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree before submitting.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="validationCustom04" class="form-label">色設定</label>
+                                <select class="form-select" id="validationCustom04" required="">
+                                    <option selected="" disabled="" value="">Choose...</option>
+                                    <option>...</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid state.
+                                </div>
+                            </div>
+                            <!-- <div class="col-md-6">
+                                <label for="validationCustomUsername" class="form-label">Username</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                    <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required="">
+                                    <div class="invalid-feedback">
+                                        Please choose a username.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom03" class="form-label">City</label>
+                                <input type="text" class="form-control" id="validationCustom03" required="">
+                                <div class="invalid-feedback">
+                                    Please provide a valid city.
+                                </div>
+                            </div> -->
+                            <!-- <div class="col-md-6">
+                                <label for="validationCustom04" class="form-label">State</label>
+                                <select class="form-select" id="validationCustom04" required="">
+                                    <option selected="" disabled="" value="">Choose...</option>
+                                    <option>...</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid state.
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="validationCustom05" class="form-label">Zip</label>
+                                <input type="text" class="form-control" id="validationCustom05" required="">
+                                <div class="invalid-feedback">
+                                    Please provide a valid zip.
+                                </div>
+                            </div> -->
+                            <!-- <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required="">
+                                    <label class="form-check-label" for="invalidCheck">
+                                        Agree to terms and conditions
+                                    </label>
+                                    <div class="invalid-feedback">
+                                        You must agree before submitting.
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <div class="mt-4 text-end">
+                            <a href="./schedule.html" class="btn btn-light py-2 px-5 me-2">戻る</a>
+                            <a href="./schedule.html" class="btn btn-primary py-2 px-5">登録</a>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
             <!-- トップに戻るボタン -->
-            <a id="back-to-top" href="#" class="btn btn-primary--umi cb-lte__back-to-top" role="button" aria-label="Scroll to top">
+            <a id="back-to-top" href="#" class="btn btn-primary--umi cb-lte__back-to-top" role="button"
+                aria-label="Scroll to top">
                 <i class="fas fa-chevron-up"></i>
             </a>
         </div>
