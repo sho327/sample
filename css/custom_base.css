@@ -141,14 +141,11 @@
 .topbar .container .navbar-nav .nav-item .nav-link .img-profile {
     height: 2rem;
     width: 2rem;
-    /* height: 20px;
-    width: 20px; */
 }
 .topbar .nav-item .nav-link {
     display: flex;
     align-items: center;
     height: 40px;
-    /* box-sizing: content-box; */
 }
 .topbar .nav-item .nav-link, 
 .sidebar .nav-item .nav-link {
@@ -157,9 +154,6 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
 }
-/* .topbar .nav-item.nav-item-user .nav-link {
-    padding: 0 0;
-} */
 .topbar .nav-item .nav-link  {
     /* color: #d1d3e2; */
     color: snow;
@@ -225,9 +219,6 @@
     border: none;
     overflow: hidden;
 }
-/* .dropdown-header {
-    color: #858796;
-} */
 .dropdown .dropdown-menu .dropdown-header, 
 .sidebar .sidebar-heading, .text-uppercase {
     text-transform: uppercase!important;
@@ -307,6 +298,12 @@
 @media (min-width: 576px){
     .topbar .dropdown-list .dropdown-item .text-truncate {
         max-width: 13.375rem;
+    }
+}
+/* ヘッダードロップダウン(ユーザメニュー) */
+@media (min-width: 576px){
+    .topbar .nav-item.nav-item-user .dropdown-menu {
+        width: auto !important;
     }
 }
 /* ヘッダー(境界線) */
@@ -408,6 +405,9 @@
     clear: both;
     content: "";
 }
+.cb-lte__card.card-primary.card-outline {
+    border-top: 3px solid var(--primary);
+}
 /* ***** bgColors ***** */
 /* 元祖Bootstrap配色は「text-bg-primary」等で使用可能 */
 .cb-sb__bg-primary {
@@ -450,6 +450,18 @@
 }
 .bi-people-fill::before {
     content: "\f4cf";
+}
+.fa-user:before {
+    content: "\f007";
+}
+.fa-cogs:before {
+    content: "\f085";
+}
+.fa-list:before {
+    content: "\f03a";
+}
+.fa-sign-out-alt:before {
+    content: "\f2f5";
 }
 /* ----- ページ固有クラス ----- */
 /* ***** スケジュール ****** */
@@ -494,20 +506,21 @@
 .fc a {
     color: #333333;
 }
-/* 今日の背景 */
-.fc .fc-daygrid-day.fc-day-today {
-    background: none;
-}
-.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-frame {
-    background-color: #FFFACD;
-}
 /* 日付を枠の中心に */
-.fc .fc-daygrid-day-top {
+/* .fc .fc-daygrid-day-top {
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     min-height: 100%;
+} */
+/* 本日の背景(元のスタイルの初期化) */
+.fc .fc-daygrid-day.fc-day-today {
+    background: none;
+}
+/* 本日の背景(新しくフレームに設定) */
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-frame {
+    background-color: #FFFACD;
 }
 /* 祝日の背景 */
 .fc .fc-daygrid-day.holiday .fc-daygrid-day-frame {
@@ -524,6 +537,10 @@
 .fc-day-sun .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion, 
 .fc-day-sun .fc-list-day-cushion {
     color: var(--danger);
+}
+/* ヘッダーの背景色を変更 */
+.fc .fc-scrollgrid .fc-col-header tbody tr {
+    background-color: var(--cb-sb__light);
 }
 /* カスタムビュー(今月の予定一覧リスト) */
 .fc .fc-custom-view.custom-view table{
@@ -611,6 +628,22 @@
 /* ----- ページ共通クラス ----- */
 .cb__page-title {
     color:#5a5c69;
+}
+/* ***** fontSize ***** */
+.cb__text-lg {
+    font-size: 1.1rem;
+}
+.cb__text-md {
+    font-size: 1.05rem;
+}
+.cb__text-base {
+    font-size: 1rem;
+}
+.cb__text-sm {
+    font-size: .95rem;
+}
+.cb__text-xs {
+    font-size: .9rem;
 }
 /* ***** チェックボックス ****** */
 .cb__checkbox-primary:checked {
