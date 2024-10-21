@@ -289,18 +289,18 @@
             </section>
 
             <!-- コンテンツ -->
-            <section class="content mx-auto" style="width:90%;">
+            <section class="content mx-md-5">
                 <!-- スケジュール登録フォーム -->
                 <div class="card cb-lte__card card-primary card-outline">
-                    <div class="card-body mx-auto my-4">
-                        <div class="row g-3 mx-auto" style="width:95%;">
+                    <div class="card-body my-4">
+                        <div class="row g-3 px-md-4">
                             <div class="col-md-5">
                                 <label for="validationCustom01" class="form-label">開始日時<small style="color:red">(必須)</small></label>
                                 <!-- <input type="text" class="form-control" id="validationCustom01" value="Mark" required=""> -->
                                 <input type="datetime-local" class="form-control" id="validationCustom01" value="Mark" required="">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
-                            <div class="col-md-2 text-center align-self-center mt-4 mt-md-5">
+                            <div class="col-md-1 text-center align-self-center mt-4 mt-md-5">
                                 〜
                             </div>
                             <div class="col-md-5">
@@ -310,7 +310,8 @@
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
                             <div class="col-12 mt-2">
-                                <div class="form-check">
+                                <!-- <div class="form-check form-check-reverse"> -->
+                                <div class="form-check text-start">
                                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required="">
                                     <label class="form-check-label" for="invalidCheck">
                                         終日
@@ -333,30 +334,51 @@
                             </div>
                             <div class="col-md-12 mt-4">
                                 <label for="validationCustom04" class="form-label">場所</label>
-                                <!-- <select class="form-select" id="validationCustom04" required=""> -->
-                                <select class="form-control" id="validationCustom04" required="">
-                                    <option selected="" disabled="" value="">未選択</option>
-                                    <option>...</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid state.
+                                <div class="input-group mb-3">
+                                    <label class="input-group-text" for="validationCustom04">
+                                        <i class="bi bi-pin-map"></i>
+                                    </label>
+                                    <!-- <select class="form-select" id="validationCustom04" required=""> -->
+                                    <select class="form-control form-select" id="validationCustom04" required="">
+                                        <option selected="" disabled="" value="">未選択</option>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                    </select>
+                                    <div class="invalid-feedback">
+                                        Please select a valid state.
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-12 mt-4">
-                                <label for="validationCustom06" class="form-label">色設定</label>
-                                <!-- <select class="form-select" id="validationCustom06" required=""> -->
-                                <select class="form-control" id="validationCustom06" required="">
-                                    <option selected="" disabled="" value="">未選択</option>
-                                    <option>...</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid state.
+                            
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <label for="validationCustom06" class="form-label">色設定</label>
+                                    <!-- col-autoへのパディング上書きが必要 -->
+                                    <div class="col-auto pe-0">
+                                        <label for="radio-001">
+                                            <input type="radio" id="radio-001" class="form-check-input" value="C001" required hidden checked/>
+                                            <!--  -->
+                                            <span class="d-inline-block" style="width:20px;height:20px;cursor:pointer; position:relative; border-radius:20%; background-color:#000;">
+                                                <span style="position:absolute;top:4px;left:7px;width:6px;height:10px;border-width:0px 2px 2px 0px; border-style:solid;border-color:white;border-image: initial;transform: rotate(45deg)">
+                                                </span>
+                                            </span>
+                                        </label>
+                                    </div>
+                                    <div class="col-auto ps-2 pe-1">
+                                        <label for="radio-001">
+                                            <input type="radio" id="radio-001" class="form-check-input" value="C001" required hidden checked/>
+                                            <span class="d-inline-block" style="width:20px; height:20px; cursor:pointer; position:relative; border-radius:20%; background-color:red;">
+                                            </span>
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
+
                             <div class="col-md-12 mt-4">
                                 <label for="validationCustom05" class="form-label">グループ</label>
                                 <!-- <select class="form-select" id="validationCustom05" required=""> -->
-                                <select class="form-control" id="validationCustom05" required="">
+                                <select class="form-control form-select" id="validationCustom05" required="">
                                     <option selected="" disabled="" value="">未選択</option>
                                     <option>...</option>
                                 </select>
@@ -375,6 +397,48 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- <div class="col-md-12 mt-4"> -->
+                                <!-- <label for="validationCustom06" class="form-label">色設定</label> -->
+                                <!-- <select class="form-select" id="validationCustom06" required=""> -->
+                                <!-- <select class="form-control form-select" id="validationCustom06" required=""> -->
+                                    <!-- <option selected="" disabled="" value="">未選択</option> -->
+                                    <!-- <option>...</option> -->
+                                <!-- </select> -->
+                                <!-- <div class="invalid-feedback"> -->
+                                    <!-- Please select a valid state. -->
+                                <!-- </div> -->
+                            <!-- </div> -->
+
+                            <!-- <div class="form-group">
+                                <style>
+                                    .group-list .group-label {
+                                        display: flex;
+                                        align-items: center;
+                                        margin-bottom: 5px;
+                                    }
+                                    .group-list .check-box {
+                                        min-width:20px;
+                                    }
+                                    .group-list .group-name {
+                                        margin-left:5px;
+                                        font-size:1.2rem;
+                                        word-break: break-all;
+                                    }
+                                </style>
+                                <div class="group-list pb-md-1">
+                                    <label for="" class="group-label">
+                                        <input type="checkbox" class="checkbox-0" name="group-list-checkbox-0" hidden checked>
+                                        <span class="custom-checkbox checkbox" style="display:inline-block;width:20px;height:20px;cursor:pointer;position:relative;border-radius:30%;background-color:red;">
+                                            <span class="custom-checkbox-checkmark" style="position:absolute;top:4px;left:7px;width:6px;height:10px;border-width:0px 2px 2px 0px;border-style:solid;border-color:white;border-image:initial;transform:rotate(45deg);"></span>
+                                        </span>                                        
+                                        <span class="group-name">全巻</span>
+                                        
+                                    </label>
+
+                                </div>
+                            </div> -->
+                            
                             <!-- <div class="row col-11 my-5 mx-auto">
                                 
                             </div> -->
