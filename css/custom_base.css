@@ -36,7 +36,7 @@
     --cb-lte__breakpoint-lg: 992px;
     --cb-lte__breakpoint-xl: 1200px; */
     --cb-lte__font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    --cb-lte__font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    /* --cb-lte__font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
 
     /* SbAdmin2 配色(ベースはumi/AdminLteの配色とする/基本的に使わない) */
     --cb-sb__teal: #20c9a6;
@@ -49,7 +49,7 @@
     --cb-sb__light: #f8f9fc;
     --cb-sb__dark: #5a5c69;
     --cb-sb__font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --cb-sb__font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    /* --cb-sb__font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
 }
 /* ※アンチ(umi/Bootstrap)CSS※ */
 /* ----- umi ----- */
@@ -475,6 +475,102 @@
 /* ***** スケジュール ****** */
 .fc {
     margin-top: 5px;
+    border-color: #EAEAEA;
+}
+/* 月表示：ヘッダーの曜日表示セル */
+.fc th.fc-col-header-cell {
+    font-weight: normal;
+    /* font-size: 1rem; */
+    font-size: 0.9rem;
+    /* color: #C1B9B9; */
+    color: var(--gray);
+    padding-top: 3px;
+}
+/* 月表示：各tdセル要素 */
+.fc .fc-day {
+    /* font-family: var(--font-family-sans-serif); */
+    font-family: var(--font-family-monospace);
+    /* font-size: 1.5rem; */
+    font-size: 1.05rem;
+    /* font-size: .9rem; */
+}
+/* 月表示：各tdセル要素(過去分) */
+.fc .fc-day-past {
+    /* color: #C1B9B9; */
+    color: var(--gray);
+}
+/* 月表示：日付セル日付要素 */
+.fc .fc-daygrid-number {
+    margin: 3px 5px 0 0;
+}
+/* 月表示：本日セル日付要素 */
+.fc .fc-day-today .fc-daygrid-day-number {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    flex-flow: column;
+    /* background: #EC6C45; */
+    background: var(--cb-lte__orange);
+    color: white;
+    font-size: .95rem;
+    width: 24px;
+    height: 24px;
+    margin: 5px 5px 0 0;
+    /* padding-top: 6px; */
+}
+/* 月表示：イベント枠の余白設定 */
+.fc .fc-daygrid-event {
+    margin-top:3px;
+    margin-right:4px !important;
+    margin-left:4px !important;
+}
+/* 終日イベントの文字色を指定 */
+.fc .fc-daygrid-event-dot {
+    display: none;
+}
+/* 時間指定イベントの文字色を指定 */
+.fc .fc-daygrid-dot-event {
+    border: 1px solid #EAEAEA;
+}
+/* 月表示：イベント枠のスタイル */
+.fc .fc-event {
+    box-shadow: 0 1px 3px rgba(0,0,0,.05);
+    border-radius: 5px;
+    flex-wrap:wrap;
+    padding: 1.5px 5px;
+    /* padding: 6px; */
+}
+/* 月表示：イベントタイトルのスタイル */
+.fc .fc-event-title {
+    /* font-size: 1rem; */
+    font-size: 0.8rem;
+    font-family: var(--font-family-sans-serif);
+    font-weight: bold;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/* 月表示：イベント時間のスタイル */
+.fc .fc-event-time {
+    width: 100%;
+    order: 9;
+    /* font-size: 1.4rem; */
+    font-size: .8rem;
+    font-family: var(--font-family-monospace);
+    color: #C1B9B9;
+    /* margin-top: 6px; */
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+/* もっと見るリンク */
+.fc .fc-daygrid-more-link {
+    margin: 4px;
+    font-family: var(--font-family-sans-serif);
+}
+.fc .fc-toolbar-title {
+    font-weight: medium;
 }
 @media screen and (max-width: 576px) {
     /* スマホ版のフォントサイズ調整 */
@@ -514,14 +610,6 @@
 .fc a {
     color: #333333;
 }
-/* 日付を枠の中心に */
-/* .fc .fc-daygrid-day-top {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    min-height: 100%;
-} */
 /* 本日の背景(元のスタイルの初期化) */
 .fc .fc-daygrid-day.fc-day-today {
     background: none;
@@ -534,55 +622,18 @@
 .fc .fc-daygrid-day.holiday .fc-daygrid-day-frame {
     background-color: #FFE4E1;
 }
-/* 土曜日 */
+/* 月表示：土曜日 */
 .fc-day-sat .fc-daygrid-day-top, 
 .fc-day-sat .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion, 
 .fc-day-sat .fc-list-day-cushion {
     color: var(--info);
 }
-/* 日曜日 */
+/* 月表示：日曜日 */
 .fc-day-sun .fc-daygrid-day-top, 
 .fc-day-sun .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion, 
 .fc-day-sun .fc-list-day-cushion {
     color: var(--danger);
 }
-/* ヘッダーの背景色を変更 */
-.fc .fc-scrollgrid .fc-col-header tbody tr {
-    background-color: var(--cb-sb__light);
-}
-/* カスタムビュー(今月の予定一覧リスト) */
-.fc .fc-custom-view.custom-view table{
-    width: 100%;
-}
-.fc .fc-custom-view.custom-view thead th {
-    padding: 10px;
-    text-align: left;
-}
-.cb-lte__card .card-body .fc .fc-custom-view.custom-view tbody th,
-.cb-lte__card .card-body .fc .fc-custom-view.custom-view tbody td {
-    padding: 10px;
-    text-align: left;
-}
-.fc .fc-custom-view.custom-view .no-data {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    padding: 80px;
-    background: #d0d0d04d;
-    border: 1px solid #ddd;
-}
-/* 当月以外の日（月カレンダーに一緒に表示される前後の月） */
-/* .fc-day-other .fc-daygrid-day-top, 
-.fc-day-other .fc-scrollgrid-sync-inner .fc-col-header-cell-cushion, 
-.fc-day-other .fc-list-day-cushion {
-    color: #FFE4E1;
-    background-color: #FFE4E1;
-} */
-/* 日付を枠の高さいっぱいにする(イベントがどれも入らなくなる) */
-/* .fc .fc-daygrid-day-frame {
-    height: 100%;
-} */
 /* ***** info-box ****** */
 .cb-lte__info-box {
     box-shadow: 0 0 1px rgba(var(--bs-body-color-rgb), 0.125), 0 1px 3px rgba(var(--bs-body-color-rgb), 0.2);
@@ -697,3 +748,4 @@
     right: 5px;
     z-index: 2;
 }
+
