@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>original</title>
+    <title>Sample</title>
 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css">
@@ -161,18 +161,24 @@
 
 <body id="page-top">
     <!-- ヘッダー -->
-    <header class="topbar sticky-top navbar navbar-dark bg-dark shadow-sm">
-    <!-- <header class="topbar navbar navbar-dark bg-dark shadow-sm"> -->
+    <header class="topbar navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
-            <ul class="navbar-nav align-items-center gap-3" style="flex-direction: row;">
-                <li class="nav-item">
-                    <!-- <a class="nav-link navbar-toggler" role="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-expanded="false" aria-label="Toggle navigation"> -->
-                    <a class="nav-link" role="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
-                        aria-controls="offcanvas" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
+            <ul class="navbar-nav align-items-center gap-4 ps-2" style="flex-direction: row;">
+                <li id="sidebar-toggle" class="nav-item">
+                    <a 
+                        id="sidebar-toggle-btn" 
+                        class="nav-link px-0 mx-0" 
+                        role="btn" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#offcanvas"
+                        aria-controls="offcanvas" 
+                        aria-expanded="false" 
+                        aria-label="sidebarToggle" 
+                        >
+                        <span id="sidebar-toggle-icon" class="navbar-toggler-icon"></span>
                     </a>
                 </li>
-                <li class="nav-item d-none d-md-block">
+                <li class="nav-item ms-3 d-none d-md-block">
                     <a href="./home.html" class="navbar-brand d-flex align-items-center">
                         <strong>Sample</strong>
                     </a>
@@ -496,9 +502,49 @@
     <!-- Jquery CDN -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-        <!-- Custom JS -->
+    <!-- Custom JS -->
     <script>
-
+        $(document).ready(function() {
+            let isHiddenIgnition = true;
+            $('#sidebar-toggle-btn').on('click', function() {
+                // 【DEBUG】確認用
+                console.log('click');
+                console.log(isHiddenIgnition);
+                const topbar = $('.topbar');
+                const icon = $('#sidebar-toggle #sidebar-toggle-icon');
+                if (icon.hasClass('navbar-toggler-icon')) {
+                    icon.removeClass('navbar-toggler-icon').addClass('bi bi-x-lg'); // ハンバーガーボタンからクローズボタンに切り替え
+                    topbar.toggleClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
+                } else {
+                    icon.removeClass('bi bi-x-lg').addClass('navbar-toggler-icon'); // クローズボタンからハンバーガーボタンに切り替え
+                    topbar.toggleClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
+                    // Closeボタンイベントが動いた際はhiddenイベントは不要
+                    isHiddenIgnition = false;
+                }
+            });
+            $('#offcanvas').on('hidden.bs.offcanvas', function () {
+                // 【DEBUG】確認用
+                console.log('hidden');
+                console.log(isHiddenIgnition);
+                if (isHiddenIgnition) {
+                    const topbar = $('.topbar');
+                    const icon = $('#sidebar-toggle #sidebar-toggle-icon');
+                    if (icon.hasClass('navbar-toggler-icon')) {
+                        icon.removeClass('navbar-toggler-icon').addClass('bi bi-x-lg'); // ハンバーガーボタンからクローズボタンに切り替え
+                        if (topbar.hasClass('shadow-sm')) {
+                            topbar.removeClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
+                        }
+                    } else {
+                        icon.removeClass('bi bi-x-lg').addClass('navbar-toggler-icon'); // クローズボタンからハンバーガーボタンに切り替え
+                        if (!topbar.hasClass('shadow-sm')) {
+                            topbar.addClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
+                        }
+                    }
+                }
+                // trueに戻す
+                isHiddenIgnition = true;
+            });
+        });
     </script>
 </body>
 
