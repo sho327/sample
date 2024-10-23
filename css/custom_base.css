@@ -72,8 +72,7 @@
 }
 /* 上部ナビゲーションリンク */
 .bg-dark.navbar-dark .navbar-nav .nav-link:focus,
-.bg-dark.navbar-dark .navbar-nav .nav-link:hover,
-.bg-dark.navbar-dark .navbar-nav .active > .nav-link {
+.bg-dark.navbar-dark .navbar-nav .nav-link:hover {
     opacity: 0.8;
     color: var(--light) !important;
 }
@@ -133,6 +132,14 @@
         width: 75% !important;
     }
 }
+/* offcanvasの上部マージンをヘッダー分ずらす/transitionもデフォルトより早く変更する */
+.offcanvas {
+    /* margin-top: 70px; */
+    transition: transform 0.15s ease-in-out; /* デフォルトより速くする */
+}
+/* .header-shadow-sm {
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075) !important;
+} */
 
 /*!
  * Start Bootstrap - SB Admin 2 v4.1.3 (https://startbootstrap.com/theme/sb-admin-2)
@@ -143,8 +150,9 @@
     padding: 15px 1rem;
     box-sizing: content-box;
     height: 40px;
+    /* ヘッダーのz-indexを高く設定 */
+    /* z-index: 1050; */
 }
-.sidebar .nav-item .nav-link .img-profile, 
 .topbar .container .navbar-nav .nav-item .nav-link .img-profile {
     height: 2rem;
     width: 2rem;
@@ -161,19 +169,25 @@
     padding: 0.5rem 1rem;
     cursor: pointer;
 }
-.topbar .nav-item .nav-link  {
-    /* color: #d1d3e2; */
+.topbar .nav-item .nav-link, 
+.sidebar .nav-item .nav-link {
     color: snow;
+    /* color: var(--white); */
 }
-.sidebar .nav-item .nav-link  {
-    color: var(--white);
-}
+/* ナビゲーションhover/active時のスタイル(topbarはumiのオーバーライドの所で設定) */
 .sidebar .nav-link:hover {
     opacity: 0.8;
     color: var(--light);
 }
-.nav-link.active {
+.sidebar .nav-link.active {
     color: var(--primary) !important;
+}
+/* topbarバーガーボタンタイトル */
+.topbar #sidebar-toggle {
+    width: 24px;
+}
+.topbar #sidebar-toggle #sidebar-toggle-icon.bi.bi-x-lg {
+    font-size: 20px;
 }
 /* ヘッダー(ドロップダウンボタン) */
 .dropdown.no-arrow .dropdown-toggle::after {
