@@ -329,9 +329,14 @@
                             </div>
                             <div class="col-md-5  col-12">
                                 <label for="validationCustom02" class="form-label">終了日時<small style="color:red">(必須)</small></label>
-                                <!-- <input type="text" class="form-control" id="validationCustom02" value="Otto" required=""> -->
-                                <input type="datetime-local" class="form-control w-100" id="validationCustom02" value="" required="">
-                                <div class="valid-feedback">Looks good!</div>
+                                <div class="input-group">
+                                    <!-- <input type="text" class="form-control" id="validationCustom02" value="Otto" required=""> -->
+                                    <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+                                    </div>
+                                    <input type="datetime-local" class="form-control" id="validationCustom02" value="" required="">
+                                    <div class="valid-feedback">Looks good!</div>
+                                </div>
                             </div>
                             <div class="col-12 mt-2">
                                 <!-- <div class="form-check form-check-reverse"> -->
