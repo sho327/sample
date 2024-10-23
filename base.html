@@ -3,30 +3,60 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <title>original</title>
-
+    <title>Sample</title>
+    <!-- Base CSS -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- ※5.1.3だとoffcanvasが使用不可 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"> -->
     <link rel="stylesheet" type="text/css" href="css/umi.min.css">
+    <!-- Package CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css"> -->
+    <!-- Custom Base CSS -->
     <link rel="stylesheet" type="text/css" href="css/custom_base.css">
+    <!-- fullCalender.js -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script> -->
 </head>
 
 <body id="page-top">
     <!-- ヘッダー -->
-    <header class="topbar sticky-top navbar navbar-dark bg-dark shadow-sm">
+    <header class="topbar navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
-            <ul class="navbar-nav align-items-center gap-3" style="flex-direction: row;">
-                <li class="nav-item">
-                    <!-- <a class="nav-link navbar-toggler" role="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-expanded="false" aria-label="Toggle navigation"> -->
-                    <a class="nav-link" role="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
-                        aria-controls="offcanvas" aria-expanded="false" aria-label="Toggle navigation">
+            <ul class="navbar-nav align-items-center gap-4 ps-2" style="flex-direction: row;">
+                <!-- スマホのみ表示 -->
+                <li id="sidebar-toggle" class="nav-item  d-block d-md-none">
+                    <a 
+                        id="sidebar-toggle-btn" 
+                        class="nav-link px-0 mx-0" 
+                        role="btn" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#offcanvas"
+                        aria-controls="offcanvas" 
+                        aria-expanded="false" 
+                        aria-label="sidebarToggle" 
+                        >
+                        <span id="sidebar-toggle-icon" class="navbar-toggler-icon"></span>
+                    </a>
+                </li>
+                <!-- PCのみ表示 -->
+                <li class="nav-item d-none d-md-block">
+                    <a 
+                        class="nav-link px-0 mx-0" 
+                        role="btn" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#offcanvas"
+                        aria-controls="offcanvas" 
+                        aria-expanded="false" 
+                        aria-label="sidebarToggle" 
+                        >
                         <span class="navbar-toggler-icon"></span>
                     </a>
                 </li>
-                <li class="nav-item d-none d-md-block">
+                <li class="nav-item ms-3 d-none d-md-block">
                     <a href="./home.html" class="navbar-brand d-flex align-items-center">
                         <strong>Sample</strong>
                     </a>
@@ -169,78 +199,84 @@
         </div>
     </header>
     <!-- サイドバー -->
-    <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink p-3 bg-dark sidebar" id="offcanvas">
-        <div class="offcanvas-header text-white">
-            <h5 class="offcanvas-title">Menu</h5>
-            <button 
-                type="button" 
-                class="btn-close btn-close-white text-reset" 
-                data-bs-dismiss="offcanvas" 
-                aria-label="Close"
-                ></button>
-        </div>
-        <hr style="border-top:1px solid; color:#eee;">
-        <div class="offcanvas-body">
-            <div class="offcanvas-body">
-                <ul class="navbar-nav flex-column ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="./base.html">
-                            <i class="bi bi-box me-2" style="font-size: 16px;"></i>
-                            Base
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="./home.html">
-                            <i class="bi bi-house-fill me-2" style="font-size: 16px;"></i>
-                            ホーム
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="collapse" href="#collapse-submenu1" role="button" aria-expanded="false" aria-controls="collapse-submenu1">
-                            <i class="bi-calendar-date me-2" style="font-size: 16px;"></i>
-                            スケジュール
-                            <!-- <i class="bi bi-chevron-down ms-2" style="font-size: 14px;"></i> -->
-                            <i class="bi bi-chevron-down ms-2"  style="font-size: 14px;"></i>
-                        </a>
-                    </li>
-                    <div class="collapse ms-3" id="collapse-submenu1">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./schedule.html">
-                                スケジュール一覧
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./schedule_save.html">
-                                スケジュール新規登録
-                            </a>
-                        </li>
-                    </div>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
-                            <i class="bi bi-chat-left me-2" style="font-size: 16px;"></i>
-                            メッセージ
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">
-                            <i class="bi bi-list-task me-2" style="font-size: 16px"></i>
-                            タスク管理
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">
-                            <i class="bi bi-people me-2" style="font-size: 16px;"></i>
-                            グループ一覧
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./login.html">
-                            <i class="bi bi-box-arrow-left me-2" style="font-size: 16px;"></i>
-                            ログアウト
-                        </a>
-                    </li>
-                </ul>
+    <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink bg-dark sidebar" id="offcanvas">
+        <!-- header -->
+        <div class="offcanvas-header text-white py-4 shadow-sm justify-content-end">
+            <!-- PCのみ表示 -->
+            <!-- <h5 class="offcanvas-title d-none d-md-block">Menu</h5> -->
+            <div class="nav-item text-end mt-1">
+                <a 
+                    class="nav-link btn-close btn-close-white text-reset d-none d-md-block" 
+                    role="btn" 
+                    data-bs-dismiss="offcanvas"
+                    aria-controls="offcanvas" 
+                    aria-expanded="false" 
+                    aria-label="sidebarClose" 
+                    ></a>
             </div>
+        </div>
+        <!-- body -->
+        <div class="offcanvas-body">
+            <ul class="navbar-nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="./base.html">
+                        <i class="bi bi-box me-2" style="font-size: 16px;"></i>
+                        Base
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" href="./home.html">
+                        <i class="bi bi-house-fill me-2" style="font-size: 16px;"></i>
+                        ホーム
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#collapse-submenu1" role="button" aria-expanded="false" aria-controls="collapse-submenu1">
+                        <i class="bi-calendar-date me-2" style="font-size: 16px;"></i>
+                        スケジュール
+                        <!-- Open時 -->
+                        <!-- <i class="bi bi-chevron-up ms-2" style="font-size: 14px;"></i> -->
+                        <!-- Close時 -->
+                        <i class="bi bi-chevron-down ms-2"  style="font-size: 14px;"></i>
+                    </a>
+                </li>
+                <div id="collapse-submenu1" class="submenu collapse">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./schedule.html">
+                            スケジュール一覧
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./schedule_save.html">
+                            スケジュール新規登録
+                        </a>
+                    </li>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <i class="bi bi-chat-left me-2" style="font-size: 16px;"></i>
+                        メッセージ
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <i class="bi bi-list-task me-2" style="font-size: 16px"></i>
+                        タスク管理
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">
+                        <i class="bi bi-people me-2" style="font-size: 16px;"></i>
+                        グループ一覧
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="./login.html">
+                        <i class="bi bi-box-arrow-left me-2" style="font-size: 16px;"></i>
+                        ログアウト
+                    </a>
+                </li>
+            </ul>
         </div>
     </div>
     <!-- ページコンテンツ -->
@@ -281,13 +317,14 @@
             </div> -->
         </div>
     </footer>
-    <!-- Bootstrap core JS-->
+    <!-- Jquery -->
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <!-- Popper.js -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script> -->
+    <!-- Bootstrap.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Jquery CDN -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
     <!-- Custom JS -->
-    <!-- <script></script> -->
+    <script src="./js/custom_base.js"></script>
 </body>
 
 </html>

@@ -5,55 +5,64 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-
-    <title>original</title>
-
+    <title>Sample</title>
+    <!-- Base CSS -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="build/css/bootstrap-datetimepicker.min.css"> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- ※5.1.3だとoffcanvasが使用不可 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"> -->
     <link rel="stylesheet" type="text/css" href="css/umi.min.css">
+    <!-- Package CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css">
+    <!-- Custom Base CSS -->
     <link rel="stylesheet" type="text/css" href="css/custom_base.css">
-
-    <!-- Popper.js -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
-    <!-- Bootstrap core JS-->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
-    <!-- Jquery CDN -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-    <!-- moment.js -->
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/locale/ja.js" type="text/javascript"></script>
-
-    <script src="build/js/bootstrap-datetimepicker.min.js"></script> -->
-
-    <!-- <style type="text/css">
-        .datepicker-days th.dow:first-child,
-        .datepicker-days td:first-child {
-            color: #f00;
+    <!-- fullCalender.js -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script> -->
+    <style>
+        .datepicker {
+            z-index: 9999 !important; /* Datepickerのz-indexを高く設定する */
         }
-        .datepicker-days th.dow:last-child,
-        .datepicker-days td:last-child {
-            color: #00f;
-        }
-    </style> -->
+    </style>
 </head>
 
 <body id="page-top">
     <!-- ヘッダー -->
-    <header class="topbar sticky-top navbar navbar-dark bg-dark shadow-sm">
+    <header class="topbar navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
-            <ul class="navbar-nav align-items-center gap-3" style="flex-direction: row;">
-                <li class="nav-item">
-                    <!-- <a class="nav-link navbar-toggler" role="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-expanded="false" aria-label="Toggle navigation"> -->
-                    <a class="nav-link" role="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
-                        aria-controls="offcanvas" aria-expanded="false" aria-label="Toggle navigation">
+            <ul class="navbar-nav align-items-center gap-4 ps-2" style="flex-direction: row;">
+                <!-- スマホのみ表示 -->
+                <li id="sidebar-toggle" class="nav-item  d-block d-md-none">
+                    <a 
+                        id="sidebar-toggle-btn" 
+                        class="nav-link px-0 mx-0" 
+                        role="btn" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#offcanvas"
+                        aria-controls="offcanvas" 
+                        aria-expanded="false" 
+                        aria-label="sidebarToggle" 
+                        >
+                        <span id="sidebar-toggle-icon" class="navbar-toggler-icon"></span>
+                    </a>
+                </li>
+                <!-- PCのみ表示 -->
+                <li class="nav-item d-none d-md-block">
+                    <a 
+                        class="nav-link px-0 mx-0" 
+                        role="btn" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#offcanvas"
+                        aria-controls="offcanvas" 
+                        aria-expanded="false" 
+                        aria-label="sidebarToggle" 
+                        >
                         <span class="navbar-toggler-icon"></span>
                     </a>
                 </li>
-                <li class="nav-item d-none d-md-block">
+                <li class="nav-item ms-3 d-none d-md-block">
                     <a href="./home.html" class="navbar-brand d-flex align-items-center">
                         <strong>Sample</strong>
                     </a>
@@ -61,15 +70,14 @@
             </ul>
             <ul class="navbar-nav align-items-center ml-auto" style="flex-direction: row;">
                 <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" 
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bell fa-fw" style="font-size: 22px;"></i>
                         <!-- Counter - Alerts -->
                         <span class="badge badge-danger badge-counter">3+</span>
                     </a>
                     <!-- Dropdown Aleats -->
-                    <div class="dropdown-list dropdown-menu dropdown-menu-end shadow animated--grow-in"
-                        aria-labelledby="alertsDropdown">
+                    <div class="dropdown-list dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="alertsDropdown">
                         <h6 class="dropdown-header">
                             お知らせ
                         </h6>
@@ -117,8 +125,7 @@
                         <!-- Counter - Messages -->
                         <span class="badge badge-danger badge-counter">7</span>
                     </a>
-                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                        aria-labelledby="messagesDropdown">
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                         <h6 class="dropdown-header">
                             メッセージ通知
                         </h6>
@@ -198,15 +205,25 @@
         </div>
     </header>
     <!-- サイドバー -->
-    <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink p-3 bg-dark sidebar" id="offcanvas">
-        <div class="offcanvas-header text-white">
-            <h5 class="offcanvas-title">Menu</h5>
-            <button type="button" class="btn-close btn-close-white text-reset" data-bs-dismiss="offcanvas"
-                aria-label="Close"></button>
+    <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink bg-dark sidebar" id="offcanvas">
+        <!-- header -->
+        <div class="offcanvas-header text-white py-4 shadow-sm justify-content-end">
+            <!-- PCのみ表示 -->
+            <!-- <h5 class="offcanvas-title d-none d-md-block">Menu</h5> -->
+            <div class="nav-item text-end mt-1">
+                <a 
+                    class="nav-link btn-close btn-close-white text-reset d-none d-md-block" 
+                    role="btn" 
+                    data-bs-dismiss="offcanvas"
+                    aria-controls="offcanvas" 
+                    aria-expanded="false" 
+                    aria-label="sidebarClose" 
+                    ></a>
+            </div>
         </div>
-        <hr style="border-top:1px solid; color:#eee;">
+        <!-- body -->
         <div class="offcanvas-body">
-            <ul class="navbar-nav flex-column ms-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="./base.html">
                         <i class="bi bi-box me-2" style="font-size: 16px;"></i>
@@ -223,11 +240,13 @@
                     <a class="nav-link active" data-bs-toggle="collapse" href="#collapse-submenu1" role="button" aria-expanded="false" aria-controls="collapse-submenu1">
                         <i class="bi-calendar-date me-2" style="font-size: 16px;"></i>
                         スケジュール
-                        <!-- <i class="bi bi-chevron-down ms-2" style="font-size: 14px;"></i> -->
+                        <!-- Open時 -->
+                        <!-- <i class="bi bi-chevron-up ms-2" style="font-size: 14px;"></i> -->
+                        <!-- Close時 -->
                         <i class="bi bi-chevron-down ms-2"  style="font-size: 14px;"></i>
                     </a>
                 </li>
-                <div class="collapse ms-3" id="collapse-submenu1">
+                <div id="collapse-submenu1" class="submenu collapse">
                     <li class="nav-item">
                         <a class="nav-link" href="./schedule.html">
                             スケジュール一覧
@@ -295,11 +314,15 @@
                 <div class="card cb-lte__card card-primary card-outline">
                     <div class="card-body my-4">
                         <div class="row g-3 px-md-4">
+                            
                             <div class="col-md-5 col-12">
                                 <label for="validationCustom01" class="form-label">開始日時<small style="color:red">(必須)</small></label>
-                                <!-- <input type="text" class="form-control" id="validationCustom01" value="Mark" required=""> -->
-                                <input type="datetime-local" class="form-control-lg w-100" id="validationCustom01" value="Mark" required="">
-                                <div class="valid-feedback">Looks good!</div>
+                                <div id="datetimepicker" class="input-group date" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker" placeholder="yyyy/mm/dd hh:mm:ss"/>
+                                    <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                                        <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-md-1  col-12 text-center align-self-center mt-4 mt-md-5">
                                 〜
@@ -307,7 +330,7 @@
                             <div class="col-md-5  col-12">
                                 <label for="validationCustom02" class="form-label">終了日時<small style="color:red">(必須)</small></label>
                                 <!-- <input type="text" class="form-control" id="validationCustom02" value="Otto" required=""> -->
-                                <input type="datetime-local" class="form-control-lg w-100" id="validationCustom02" value="" required="">
+                                <input type="datetime-local" class="form-control w-100" id="validationCustom02" value="" required="">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
                             <div class="col-12 mt-2">
@@ -513,16 +536,79 @@
             </div> -->
         </div>
     </footer>
-
+    <!-- Base JS -->
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Packages JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempus-dominus/6.0.0/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ja.min.js"></script>
+    <!-- Custom Base JS -->
+    <script src="./js/custom_base.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+        $('#datetimepicker').datepicker({
+            format: 'yyyy/mm/dd hh:mm:ss',
+            todayHighlight: true,
+            autoclose: true,
+            language: 'ja',
+            todayBtn: true,
+            orientation: "bottom auto", // デートピッカーが自動的に表示位置を調整します
+            icons: {
+                time: 'fa fa-clock',
+                date: 'fa fa-calendar-alt',
+                up: 'fa fa-arrow-up',
+                down: 'fa fa-arrow-down',
+                previous: 'fa fa-chevron-left',
+                next: 'fa fa-chevron-right',
+                today: 'fa fa-calendar-check-o',
+                clear: 'fa fa-trash',
+                close: 'fa fa-times'
+            },
+        });
+        // ('#datetimepicker').datetimepicker({
+        //         format: 'YYYY/MM/DD HH:mm:ss',
+        //         locale: 'ja',
+        //         icons: {
+        //             time: 'fa fa-clock',
+        //             date: 'fa fa-calendar-alt',
+        //             up: 'fa fa-arrow-up',
+        //             down: 'fa fa-arrow-down',
+        //             previous: 'fa fa-chevron-left',
+        //             next: 'fa fa-chevron-right',
+        //             today: 'fa fa-calendar-check-o',
+        //             clear: 'fa fa-trash',
+        //             close: 'fa fa-times'
+        //         }
+        //     });
+        });
+    </script>
+    
     <!-- Jquery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+    <!-- Bootstrap core JS-->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
+    <!-- Popper.js -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
     <!-- Custom JS -->
+    <!-- <script type="text/javascript">
+        $(document).ready(function(){
+          $('#datepicker').datepicker({
+            format: 'yyyy-mm-dd',
+            todayHighlight: true,
+            autoclose: true
+          });
+        });
+      </script> -->
     <!-- <script>
         $(function() {
             $('#datetimepicker3').datetimepicker({

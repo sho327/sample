@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>Bootstrap Datepicker in Japanese</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/umi.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="css/custom_base.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/css/tempusdominus-bootstrap-4.min.css">
+  <style>
+    .datepicker {
+      z-index: 9999 !important; /* Datepickerのz-indexを高く設定する */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Bootstrap Datepicker in Japanese</h2>
+    <div class="input-group date" id="datetimepicker" data-target-input="nearest">
+      <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker"/>
+      <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
+      </div>
+    </div>
+  </div>
+  半角数値とか/とかの合っている文字は直入力できても良いかと思いますがそれはできますか？
+Copilot
+もちろん、それも可能です。特定の文字入力を許可するために、入力制限を少し緩和するようにしましょう。以下の修正を加えました：
+これで、数字、コロン、スラッシュのみを直接入力できるようになります。試してみてください！
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      $('#datetimepicker').datetimepicker({
+        format: 'YYYY/MM/DD HH:mm:ss',
+        locale: 'ja',
+        icons: {
+          time: 'fa fa-clock',
+          date: 'fa fa-calendar-alt',
+          up: 'fa fa-arrow-up',
+          down: 'fa fa-arrow-down',
+          previous: 'fa fa-chevron-left',
+          next: 'fa fa-chevron-right',
+          today: 'fa fa-calendar-check-o',
+          clear: 'fa fa-trash',
+          close: 'fa fa-times'
+        }
+      });
+
+      // 文字入力を制限
+      $('#datetimepicker input').on('input', function(e) {
+        var value = $(this).val();
+        var validCharacters = '0123456789/: ';
+        for (var i = 0; i < value.length; i++) {
+          if (validCharacters.indexOf(value.charAt(i)) === -1) {
+            $(this).val(value.slice(0, i) + value.slice(i + 1));
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>

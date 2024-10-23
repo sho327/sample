@@ -3,16 +3,22 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <title>Sample</title>
-
+    <!-- Base CSS -->
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
-    <link href="https://use.fontawesome.com/releases/v6.2.0/css/all.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"> -->
+    <!-- ※5.1.3だとoffcanvasが使用不可 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css"> -->
     <link rel="stylesheet" type="text/css" href="css/umi.min.css">
+    <!-- Package CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.2.0/css/all.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.css">
+    <!-- Custom Base CSS -->
     <link rel="stylesheet" type="text/css" href="css/custom_base.css">
+    <!-- fullCalender.js -->
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.5.0/main.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -164,7 +170,8 @@
     <header class="topbar navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
             <ul class="navbar-nav align-items-center gap-4 ps-2" style="flex-direction: row;">
-                <li id="sidebar-toggle" class="nav-item">
+                <!-- スマホのみ表示 -->
+                <li id="sidebar-toggle" class="nav-item  d-block d-md-none">
                     <a 
                         id="sidebar-toggle-btn" 
                         class="nav-link px-0 mx-0" 
@@ -176,6 +183,20 @@
                         aria-label="sidebarToggle" 
                         >
                         <span id="sidebar-toggle-icon" class="navbar-toggler-icon"></span>
+                    </a>
+                </li>
+                <!-- PCのみ表示 -->
+                <li class="nav-item d-none d-md-block">
+                    <a 
+                        class="nav-link px-0 mx-0" 
+                        role="btn" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#offcanvas"
+                        aria-controls="offcanvas" 
+                        aria-expanded="false" 
+                        aria-label="sidebarToggle" 
+                        >
+                        <span class="navbar-toggler-icon"></span>
                     </a>
                 </li>
                 <li class="nav-item ms-3 d-none d-md-block">
@@ -321,19 +342,25 @@
         </div>
     </header>
     <!-- サイドバー -->
-    <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink p-3 bg-dark sidebar" id="offcanvas">
-        <div class="offcanvas-header text-white">
-            <h5 class="offcanvas-title"></h5>
-            <button 
-                type="button" 
-                class="btn-close btn-close-white text-reset" 
-                data-bs-dismiss="offcanvas" 
-                aria-label="Close"
-                ></button>
+    <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink bg-dark sidebar" id="offcanvas">
+        <!-- header -->
+        <div class="offcanvas-header text-white py-4 shadow-sm justify-content-end">
+            <!-- PCのみ表示 -->
+            <!-- <h5 class="offcanvas-title d-none d-md-block">Menu</h5> -->
+            <div class="nav-item text-end mt-1">
+                <a 
+                    class="nav-link btn-close btn-close-white text-reset d-none d-md-block" 
+                    role="btn" 
+                    data-bs-dismiss="offcanvas"
+                    aria-controls="offcanvas" 
+                    aria-expanded="false" 
+                    aria-label="sidebarClose" 
+                    ></a>
+            </div>
         </div>
-        <hr style="border-top:1px solid; color:#eee;">
+        <!-- body -->
         <div class="offcanvas-body">
-            <ul class="navbar-nav flex-column ms-auto mb-2 mb-lg-0">
+            <ul class="navbar-nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="./base.html">
                         <i class="bi bi-box me-2" style="font-size: 16px;"></i>
@@ -350,11 +377,13 @@
                     <a class="nav-link" data-bs-toggle="collapse" href="#collapse-submenu1" role="button" aria-expanded="false" aria-controls="collapse-submenu1">
                         <i class="bi-calendar-date me-2" style="font-size: 16px;"></i>
                         スケジュール
-                        <!-- <i class="bi bi-chevron-down ms-2" style="font-size: 14px;"></i> -->
+                        <!-- Open時 -->
+                        <!-- <i class="bi bi-chevron-up ms-2" style="font-size: 14px;"></i> -->
+                        <!-- Close時 -->
                         <i class="bi bi-chevron-down ms-2"  style="font-size: 14px;"></i>
                     </a>
                 </li>
-                <div class="collapse ms-3" id="collapse-submenu1">
+                <div id="collapse-submenu1" class="submenu collapse">
                     <li class="nav-item">
                         <a class="nav-link" href="./schedule.html">
                             スケジュール一覧
@@ -425,7 +454,7 @@
                                 <i class="bi bi-gear-fill"></i>
                             </span>
                             <div class="info-box-content">
-                                <span class="info-box-text">本日のタスク達成率</span>
+                                <span class="info-box-text">タスク達成率</span>
                                 <span class="info-box-number">80<small>%</small></span>
                             </div>
                         </div>
@@ -493,59 +522,15 @@
             </div> -->
         </div>
     </footer>
+    <!-- Base JS -->
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <!-- Popper.js -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js" 
-        integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS" crossorigin="anonymous"></script>
-    <!-- Jquery CDN -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <!-- Bootstrap.js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
-    <script>
-        $(document).ready(function() {
-            let isHiddenIgnition = true;
-            $('#sidebar-toggle-btn').on('click', function() {
-                // 【DEBUG】確認用
-                console.log('click');
-                console.log(isHiddenIgnition);
-                const topbar = $('.topbar');
-                const icon = $('#sidebar-toggle #sidebar-toggle-icon');
-                if (icon.hasClass('navbar-toggler-icon')) {
-                    icon.removeClass('navbar-toggler-icon').addClass('bi bi-x-lg'); // ハンバーガーボタンからクローズボタンに切り替え
-                    topbar.toggleClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
-                } else {
-                    icon.removeClass('bi bi-x-lg').addClass('navbar-toggler-icon'); // クローズボタンからハンバーガーボタンに切り替え
-                    topbar.toggleClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
-                    // Closeボタンイベントが動いた際はhiddenイベントは不要
-                    isHiddenIgnition = false;
-                }
-            });
-            $('#offcanvas').on('hidden.bs.offcanvas', function () {
-                // 【DEBUG】確認用
-                console.log('hidden');
-                console.log(isHiddenIgnition);
-                if (isHiddenIgnition) {
-                    const topbar = $('.topbar');
-                    const icon = $('#sidebar-toggle #sidebar-toggle-icon');
-                    if (icon.hasClass('navbar-toggler-icon')) {
-                        icon.removeClass('navbar-toggler-icon').addClass('bi bi-x-lg'); // ハンバーガーボタンからクローズボタンに切り替え
-                        if (topbar.hasClass('shadow-sm')) {
-                            topbar.removeClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
-                        }
-                    } else {
-                        icon.removeClass('bi bi-x-lg').addClass('navbar-toggler-icon'); // クローズボタンからハンバーガーボタンに切り替え
-                        if (!topbar.hasClass('shadow-sm')) {
-                            topbar.addClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
-                        }
-                    }
-                }
-                // trueに戻す
-                isHiddenIgnition = true;
-            });
-        });
-    </script>
+    <script src="./js/custom_base.js"></script>
 </body>
 
 </html>
