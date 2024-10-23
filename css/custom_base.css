@@ -185,6 +185,7 @@
 /* topbarバーガーボタンタイトル */
 .topbar #sidebar-toggle {
     width: 24px;
+    z-index: 1050;
 }
 .topbar #sidebar-toggle #sidebar-toggle-icon.bi.bi-x-lg {
     font-size: 20px;
