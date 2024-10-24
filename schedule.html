@@ -382,11 +382,10 @@
 
 <body id="page-top">
     <!-- ヘッダー -->
-    <header class="fixed-top topbar navbar navbar-dark bg-dark shadow-sm">
+    <header class="topbar navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
             <ul class="navbar-nav align-items-center gap-4 ps-2" style="flex-direction: row;">
-                <!-- スマホのみ表示 -->
-                <li id="sidebar-toggle" class="nav-item  d-block d-md-none">
+                <li id="sidebar-toggle" class="nav-item">
                     <a 
                         id="sidebar-toggle-btn" 
                         class="nav-link px-0 mx-0" 
@@ -398,20 +397,6 @@
                         aria-label="sidebarToggle" 
                         >
                         <span id="sidebar-toggle-icon" class="navbar-toggler-icon"></span>
-                    </a>
-                </li>
-                <!-- PCのみ表示 -->
-                <li class="nav-item d-none d-md-block">
-                    <a 
-                        class="nav-link px-0 mx-0" 
-                        role="btn" 
-                        data-bs-toggle="offcanvas" 
-                        data-bs-target="#offcanvas"
-                        aria-controls="offcanvas" 
-                        aria-expanded="false" 
-                        aria-label="sidebarToggle" 
-                        >
-                        <span class="navbar-toggler-icon"></span>
                     </a>
                 </li>
                 <li class="nav-item ms-3 d-none d-md-block">
@@ -557,24 +542,7 @@
         </div>
     </header>
     <!-- サイドバー -->
-    <!-- サイドバー -->
     <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink bg-dark sidebar" id="offcanvas">
-        <!-- header -->
-        <div class="offcanvas-header text-white py-4 shadow-sm justify-content-end">
-            <!-- PCのみ表示 -->
-            <!-- <h5 class="offcanvas-title d-none d-md-block">Menu</h5> -->
-            <div class="nav-item text-end mt-1">
-                <a 
-                    class="nav-link btn-close btn-close-white text-reset d-none d-md-block" 
-                    role="btn" 
-                    data-bs-dismiss="offcanvas"
-                    aria-controls="offcanvas" 
-                    aria-expanded="false" 
-                    aria-label="sidebarClose" 
-                    ></a>
-            </div>
-        </div>
-        <!-- body -->
         <div class="offcanvas-body">
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">

@@ -30,11 +30,10 @@
 
 <body id="page-top">
     <!-- ヘッダー -->
-    <header class="fixed-top topbar navbar navbar-dark bg-dark shadow-sm">
+    <header class="topbar navbar navbar-dark bg-dark shadow-sm">
         <div class="container">
             <ul class="navbar-nav align-items-center gap-4 ps-2" style="flex-direction: row;">
-                <!-- スマホのみ表示 -->
-                <li id="sidebar-toggle" class="nav-item  d-block d-md-none">
+                <li id="sidebar-toggle" class="nav-item">
                     <a 
                         id="sidebar-toggle-btn" 
                         class="nav-link px-0 mx-0" 
@@ -46,20 +45,6 @@
                         aria-label="sidebarToggle" 
                         >
                         <span id="sidebar-toggle-icon" class="navbar-toggler-icon"></span>
-                    </a>
-                </li>
-                <!-- PCのみ表示 -->
-                <li class="nav-item d-none d-md-block">
-                    <a 
-                        class="nav-link px-0 mx-0" 
-                        role="btn" 
-                        data-bs-toggle="offcanvas" 
-                        data-bs-target="#offcanvas"
-                        aria-controls="offcanvas" 
-                        aria-expanded="false" 
-                        aria-label="sidebarToggle" 
-                        >
-                        <span class="navbar-toggler-icon"></span>
                     </a>
                 </li>
                 <li class="nav-item ms-3 d-none d-md-block">
@@ -206,22 +191,6 @@
     </header>
     <!-- サイドバー -->
     <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink bg-dark sidebar" id="offcanvas">
-        <!-- header -->
-        <div class="offcanvas-header text-white py-4 shadow-sm justify-content-end">
-            <!-- PCのみ表示 -->
-            <!-- <h5 class="offcanvas-title d-none d-md-block">Menu</h5> -->
-            <div class="nav-item text-end mt-1">
-                <a 
-                    class="nav-link btn-close btn-close-white text-reset d-none d-md-block" 
-                    role="btn" 
-                    data-bs-dismiss="offcanvas"
-                    aria-controls="offcanvas" 
-                    aria-expanded="false" 
-                    aria-label="sidebarClose" 
-                    ></a>
-            </div>
-        </div>
-        <!-- body -->
         <div class="offcanvas-body">
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
@@ -314,22 +283,17 @@
                 <div class="card cb-lte__card card-primary card-outline">
                     <div class="card-body my-4">
                         <div class="row g-3 px-md-4">
-
-                            <div class="col-md-12 mt-4">
-                                <label for="validationCustom1" class="form-label">タイトル<small style="color:red">(必須)</small></label>
-                                <input type="text" class="form-control" id="validationCustom1" value="" required="" placeholder="タイトル">
+                            
+                            <div class="col-md-5 col-12">
+                                <label for="validationCustom01" class="form-label">開始日時<small style="color:red">(必須)</small></label>
+                                <input type="datetime-local" class="form-control" id="validationCustom02" required style="font-size:1rem;">
                                 <div class="valid-feedback">Looks good!</div>
-                            </div>
-                            <div class="col-md-5  col-12">
-                                <label for="validationCustom02" class="form-label">開始日時<small style="color:red">(必須)</small></label>
-                                <div class="input-group">
-                                    <!-- <input type="text" class="form-control" id="validationCustom02" value="Otto" required=""> -->
+                                <!-- <div id="datetimepicker" class="input-group date" data-target-input="nearest">
+                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker" placeholder="yyyy/mm/dd hh:mm:ss"/>
                                     <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
                                     </div>
-                                    <input type="datetime-local" class="form-control" id="validationCustom02" value="" required="">
-                                    <div class="valid-feedback">Looks good!</div>
-                                </div>
+                                </div> -->
                             </div>
                             <div class="col-md-1  col-12 text-center align-self-center mt-4 mt-md-5">
                                 〜
@@ -338,9 +302,9 @@
                                 <label for="validationCustom02" class="form-label">終了日時<small style="color:red">(必須)</small></label>
                                 <div class="input-group">
                                     <!-- <input type="text" class="form-control" id="validationCustom02" value="Otto" required=""> -->
-                                    <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
+                                    <!-- <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
                                         <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
-                                    </div>
+                                    </div> -->
                                     <input type="datetime-local" class="form-control" id="validationCustom02" value="" required="">
                                     <div class="valid-feedback">Looks good!</div>
                                 </div>
@@ -356,6 +320,11 @@
                                         You must agree before submitting.
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <label for="validationCustom1" class="form-label">タイトル<small style="color:red">(必須)</small></label>
+                                <input type="text" class="form-control" id="validationCustom1" value="" required="" placeholder="タイトル">
+                                <div class="valid-feedback">Looks good!</div>
                             </div>
                             <div class="col-md-12 mt-4">
                                 <label for="validationCustom2" class="form-label">詳細</label>
@@ -382,7 +351,7 @@
                                 </div>
                             </div>
                             
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-4">
                                 <div class="row">
                                     <label for="validationCustom06" class="form-label">色設定</label>
                                     <!-- col-autoへのパディング上書きが必要 -->
