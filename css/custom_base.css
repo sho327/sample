@@ -130,7 +130,7 @@
 /* ----- Bootstrap v5.3 ----- */
 /* スマホのナビゲーションを75%に変更 */
 .offcanvas-start {
-    width: 315px !important;
+    width: 300px !important;
     /* 右側のグレーボーダーをOFFにする */
     border-right: none !important;
 }
@@ -141,10 +141,8 @@
 }
 /* offcanvasの上部マージンをヘッダー分ずらす/transitionもデフォルトより早く変更する */
 .offcanvas {
+    /* margin-top: 70px; */
     transition: transform 0.15s ease-in-out; /* デフォルトより速くする */
-}
-.offcanvas .offcanvas-header {
-    height: 70px;
 }
 .offcanvas .offcanvas-body {
     padding-left: 0;
@@ -161,10 +159,17 @@
  * Copyright 2013-2021 Start Bootstrap
  * Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-sb-admin-2/blob/master/LICENSE)
  */
-.navbar {
+/* ヘッダーの固定 */
+.topbar.navbar {
     padding: 15px 1rem;
     box-sizing: content-box;
     height: 40px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    /* ovvcanvasよりも高くする */
+    z-index: 1050;
 }
 /* topBar/sideBar共通 */
 .topbar .container .navbar-nav .nav-item .nav-link .img-profile {
@@ -210,8 +215,6 @@
 /* topbarバーガーボタンタイトル */
 .topbar #sidebar-toggle {
     width: 24px;
-    /* トップバーボタンのz-indexをoffcanvasよりも高く設定 */
-    z-index: 1050;
 }
 .topbar #sidebar-toggle #sidebar-toggle-icon.bi.bi-x-lg {
     font-size: 20px;
@@ -400,6 +403,7 @@
  */
 /* ----- ページ共通クラス ----- */
 .cb-lte__content-wrapper {
+    margin-top: 70px;
     height: 100%;
     background-color: #f4f6f9;
 }
