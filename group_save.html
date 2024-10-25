@@ -206,7 +206,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" data-bs-toggle="collapse" href="#collapse-submenu1" role="button" aria-expanded="false" aria-controls="collapse-submenu1">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#collapse-submenu1" role="button" aria-expanded="false" aria-controls="collapse-submenu1">
                         <i class="bi-calendar-date me-2" style="font-size: 16px;"></i>
                         スケジュール
                         <!-- Open時 -->
@@ -222,7 +222,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="./schedule_save.html">
+                        <a class="nav-link" href="./schedule_save.html">
                             スケジュール新規登録
                         </a>
                     </li>
@@ -240,7 +240,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#collapse-submenu2" role="button" aria-expanded="false" aria-controls="collapse-submenu2">
+                    <a class="nav-link active" data-bs-toggle="collapse" href="#collapse-submenu2" role="button" aria-expanded="false" aria-controls="collapse-submenu2">
                         <i class="bi bi-people me-2" style="font-size: 16px;"></i>
                         グループ
                         <!-- Open時 -->
@@ -256,7 +256,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="./group_save.html">
+                        <a class="nav-link active" href="./group_save.html">
                             グループ新規登録
                         </a>
                     </li>
@@ -279,13 +279,13 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="h3 cb__page-title">スケジュール登録</h1>
+                            <h1 class="h3 cb__page-title">グループ登録</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb cb-lte__breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./home.html">ホーム</a></li>
-                                <li class="breadcrumb-item"><a href="./schedule.html">スケジュール</a></li>
-                                <li class="breadcrumb-item active">スケジュール登録</li>
+                                <li class="breadcrumb-item"><a href="./group_list.html">グループ</a></li>
+                                <li class="breadcrumb-item active">グループ登録</li>
                             </ol>
                         </div>
                     </div>
@@ -295,81 +295,39 @@
 
             <!-- コンテンツ -->
             <section class="content mx-md-5">
-                <!-- スケジュール登録フォーム -->
+                <!-- グループ登録フォーム -->
                 <div class="card cb-lte__card card-primary card-outline">
                     <div class="card-body my-4">
                         <form class="row g-3 px-md-4 needs-validation" novalidate>
                             
-                            <div class="col-md-5 col-12">
-                                <label for="validationCustom01" class="form-label">開始日時<small style="color:red">(必須)</small></label>
-                                <input type="datetime-local" class="form-control" id="validationCustom02" required style="font-size:1rem;">
-                                <div class="valid-feedback">Looks good!</div>
-                                <!-- <div id="datetimepicker" class="input-group date" data-target-input="nearest">
-                                    <input type="text" class="form-control datetimepicker-input" data-target="#datetimepicker" placeholder="yyyy/mm/dd hh:mm:ss"/>
-                                    <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
-                                    </div>
-                                </div> -->
-                            </div>
-                            <div class="col-md-1  col-12 text-center align-self-center mt-4 mt-md-5">
-                                〜
-                            </div>
-                            <div class="col-md-5  col-12">
-                                <label for="validationCustom02" class="form-label">終了日時<small style="color:red">(必須)</small></label>
-                                <div class="input-group">
-                                    <!-- <input type="text" class="form-control" id="validationCustom02" value="Otto" required=""> -->
-                                    <!-- <div class="input-group-append" data-target="#datetimepicker" data-toggle="datetimepicker">
-                                        <div class="input-group-text"><i class="fa fa-calendar-alt"></i></div>
-                                    </div> -->
-                                    <input type="datetime-local" class="form-control" id="validationCustom02" value="" required="">
-                                    <div class="invalid-feedback">Looks good!</div>
-                                </div>
-                            </div>
-                            <div class="col-12 mt-2">
-                                <!-- <div class="form-check form-check-reverse"> -->
-                                <div class="form-check text-start">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required="">
-                                    <label class="form-check-label" for="invalidCheck">
-                                        終日
-                                    </label>
-                                    <div class="invalid-feedback">
-                                        You must agree before submitting.
-                                    </div>
-                                </div>
-                            </div>
                             <div class="col-md-12 mt-4">
-                                <label for="validationCustom1" class="form-label">タイトル<small style="color:red">(必須)</small></label>
+                                <label for="validationCustom1" class="form-label">グループ名<small style="color:red">(必須)</small></label>
                                 <input type="text" class="form-control" id="validationCustom1" value="" required="" placeholder="タイトル">
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
+
                             <div class="col-md-12 mt-4">
                                 <label for="validationCustom2" class="form-label">詳細</label>
                                 <!-- <input type="text" class="form-control" id="validationCustom02" value="Otto" required=""> -->
                                 <textarea class="form-control" id="validationCustom2" cols="30" rows="10" required="" placeholder="詳細"></textarea>
                                 <div class="valid-feedback">Looks good!</div>
                             </div>
+
                             <div class="col-md-12 mt-4">
-                                <label for="validationCustom04" class="form-label">場所</label>
-                                <div class="input-group mb-3">
-                                    <label class="input-group-text" for="validationCustom04">
-                                        <i class="bi bi-pin-map"></i>
-                                    </label>
-                                    <!-- <select class="form-select" id="validationCustom04" required=""> -->
-                                    <select class="form-control form-select" id="validationCustom04" required="">
-                                        <option selected="" disabled="" value="">未選択</option>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select>
-                                    <div class="invalid-feedback">
-                                        Please select a valid state.
-                                    </div>
+                                <label for="validationCustom05" class="form-label">カテゴリ</label>
+                                <!-- <select class="form-select" id="validationCustom05" required=""> -->
+                                <select class="form-control form-select is-invalid" id="validationCustom05" required="">
+                                    <option selected="" disabled="" value="">未選択</option>
+                                    <option>...</option>
+                                </select>
+                                <div class="invalid-feedback">
+                                    Please select a valid state.
                                 </div>
                             </div>
                             
                             <div class="col-md-12 mt-4">
                                 <div class="row">
-                                    <label for="validationCustom06" class="form-label">色設定</label>
+                                    <label for="validationCustom06" class="form-label">グループ色設定</label>
                                     <!-- col-autoへのパディング上書きが必要 -->
                                     <div class="col-auto pe-0">
                                         <label for="radio-001">
@@ -390,33 +348,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-md-12 mt-4">
-                                <label for="validationCustom05" class="form-label">グループ</label>
-                                <!-- <select class="form-select" id="validationCustom05" required=""> -->
-                                <select class="form-control form-select is-invalid" id="validationCustom05" required="">
-                                    <option selected="" disabled="" value="">未選択</option>
-                                    <option>...</option>
-                                </select>
-                                <div class="invalid-feedback">
-                                    Please select a valid state.
-                                </div>
-                            </div>
-                            <div class="col-12 mt-2">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required="">
-                                    <label class="form-check-label" for="invalidCheck">
-                                        グループへ通知する
-                                    </label>
-                                    <div class="invalid-feedback">
-                                        You must agree before submitting.
-                                    </div>
-                                </div>
-                            </div>
-                            <p>共有しない/共有する/共有する(ユーザ)/共有する(グループ)</p>
-                            <p>通知する/通知する(メッセージ)/通知する(メール)</p>
-                            <p>繰り返し設定</p>
-                            <p>※場所は自由記述(同じ場所が出てくるならマスタ)</p>
 
                             <!-- <div class="col-md-12 mt-4"> -->
                                 <!-- <label for="validationCustom06" class="form-label">色設定</label> -->
@@ -510,7 +441,6 @@
                             <div class="mt-4 text-end">
                                 <a href="./schedule.html" class="btn btn-light py-2 px-5 me-2">戻る</a>
                                 <a href="./schedule.html" class="btn btn-primary py-2 px-5">登録</a>
-                                <button class="btn btn-primary" type="submit">Submit form</button>
                             </div>
                         </form>
                     </div>
@@ -539,116 +469,13 @@
     <!-- Bootstrap.js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Packages JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script> -->
     <!-- <script src="https://cdn.jsdelivr.net/npm/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tempus-dominus/6.0.0/js/tempusdominus-bootstrap-4.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ja.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tempus-dominus/6.0.0/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/locales/bootstrap-datepicker.ja.min.js"></script> -->
     <!-- Custom Base JS -->
     <script src="./js/custom_base.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-        $('#datetimepicker').datepicker({
-            format: 'yyyy/mm/dd hh:mm:ss',
-            todayHighlight: true,
-            autoclose: true,
-            language: 'ja',
-            todayBtn: true,
-            orientation: "bottom auto", // デートピッカーが自動的に表示位置を調整します
-            icons: {
-                time: 'fa fa-clock',
-                date: 'fa fa-calendar-alt',
-                up: 'fa fa-arrow-up',
-                down: 'fa fa-arrow-down',
-                previous: 'fa fa-chevron-left',
-                next: 'fa fa-chevron-right',
-                today: 'fa fa-calendar-check-o',
-                clear: 'fa fa-trash',
-                close: 'fa fa-times'
-            },
-        });
-        // ('#datetimepicker').datetimepicker({
-        //         format: 'YYYY/MM/DD HH:mm:ss',
-        //         locale: 'ja',
-        //         icons: {
-        //             time: 'fa fa-clock',
-        //             date: 'fa fa-calendar-alt',
-        //             up: 'fa fa-arrow-up',
-        //             down: 'fa fa-arrow-down',
-        //             previous: 'fa fa-chevron-left',
-        //             next: 'fa fa-chevron-right',
-        //             today: 'fa fa-calendar-check-o',
-        //             clear: 'fa fa-trash',
-        //             close: 'fa fa-times'
-        //         }
-        //     });
-        });
-    </script>
-    
-    <!-- Jquery CDN -->
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"
-        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
-    <!-- Bootstrap core JS-->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script> -->
-    <!-- Popper.js -->
-    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" 
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script> -->
-    <!-- Custom JS -->
-    <!-- <script type="text/javascript">
-        $(document).ready(function(){
-          $('#datepicker').datepicker({
-            format: 'yyyy-mm-dd',
-            todayHighlight: true,
-            autoclose: true
-          });
-        });
-      </script> -->
-    <!-- <script>
-        $(function() {
-            $('#datetimepicker3').datetimepicker({
-                dayViewHeaderFormat: 'YYYY年 MMMM',
-                tooltips: {
-                close: '閉じる',
-                selectMonth: '月を選択',
-                prevMonth: '前月',
-                nextMonth: '次月',
-                selectYear: '年を選択',
-                prevYear: '前年',
-                nextYear: '次年',
-                selectTime: '時間を選択',
-                selectDate: '日付を選択',
-                prevDecade: '前期間',
-                nextDecade: '次期間',
-                selectDecade: '期間を選択',
-                prevCentury: '前世紀',
-                nextCentury: '次世紀',
-                pickHour: '時間を取得',
-                incrementHour: '時間を増加',
-                decrementHour: '時間を減少',
-                pickMinute: '分を取得',
-                incrementMinute: '分を増加',
-                decrementMinute: '分を減少',
-                pickSecond: '秒を取得',
-                incrementSecond: '秒を増加',
-                decrementSecond: '秒を減少',
-                togglePeriod: '午前/午後切替',
-                selectTime: '時間を選択',
-                },
-                format: 'YYYY/MM/DD HH:mm',
-                locale: 'ja',
-                icons: {
-                time: 'far fa-clock',
-                date: 'far fa-calendar-alt',
-                up: 'fas fa-arrow-up',
-                down: 'fas fa-arrow-down',
-                },
-                buttons: {
-                showClose: true,
-                },
-            });
-        });
-    </script> -->
 </body>
 
 </html>

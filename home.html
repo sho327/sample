@@ -328,7 +328,7 @@
     </header>
     <!-- サイドバー -->
     <div class="offcanvas offcanvas-start d-flex flex-colomn flex-shrink bg-dark sidebar" id="offcanvas">
-        <div class="offcanvas-body">
+        <div class="offcanvas-body pt-4">
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="./base.html">
@@ -377,11 +377,27 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#collapse-submenu2" role="button" aria-expanded="false" aria-controls="collapse-submenu2">
                         <i class="bi bi-people me-2" style="font-size: 16px;"></i>
-                        グループ一覧
+                        グループ
+                        <!-- Open時 -->
+                        <!-- <i class="bi bi-chevron-up ms-2" style="font-size: 14px;"></i> -->
+                        <!-- Close時 -->
+                        <i class="bi bi-chevron-down ms-2"  style="font-size: 14px;"></i>
                     </a>
                 </li>
+                <div id="collapse-submenu2" class="submenu collapse">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./group_list.html">
+                            所属グループ一覧
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./group_save.html">
+                            グループ新規登録
+                        </a>
+                    </li>
+                </div>
                 <li class="nav-item">
                     <a class="nav-link" href="./login.html">
                         <i class="bi bi-box-arrow-left me-2" style="font-size: 16px;"></i>
