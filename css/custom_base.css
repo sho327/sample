@@ -153,6 +153,13 @@
 .datepicker {
     z-index: 9999 !important; /* Datepickerのz-indexを高く設定する */
 }
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    padding-right: unset;
+    background-image: unset;
+    background-repeat: unset;
+    background-position: unset;
+    background-size: unset;
+}
 
 /*!
  * Start Bootstrap - SB Admin 2 v4.1.3 (https://startbootstrap.com/theme/sb-admin-2)
@@ -438,6 +445,10 @@
 .cb-lte__card .card-header {
     background-color: transparent;
     position: relative;
+}
+.cb-lte__card .card-header > .card-tools {
+    float: right;
+    margin-right: -0.5rem;
 }
 .cb-lte__card .card-title {
     float: left;
