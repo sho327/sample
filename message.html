@@ -28,9 +28,16 @@
         <div class="container">
             <ul class="navbar-nav align-items-center gap-4 ps-2" style="flex-direction: row;">
                 <li id="sidebar-toggle" class="nav-item">
-                    <a id="sidebar-toggle-btn" class="nav-link px-0 mx-0" role="btn" data-bs-toggle="offcanvas"
-                        data-bs-target="#offcanvas" aria-controls="offcanvas" aria-expanded="false"
-                        aria-label="sidebarToggle">
+                    <a 
+                        id="sidebar-toggle-btn" 
+                        class="nav-link px-0 mx-0" 
+                        role="btn" 
+                        data-bs-toggle="offcanvas" 
+                        data-bs-target="#offcanvas"
+                        aria-controls="offcanvas" 
+                        aria-expanded="false" 
+                        aria-label="sidebarToggle" 
+                        >
                         <span id="sidebar-toggle-icon" class="navbar-toggler-icon"></span>
                     </a>
                 </li>
@@ -42,15 +49,14 @@
             </ul>
             <ul class="navbar-nav align-items-center ml-auto" style="flex-direction: row;">
                 <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
+                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" 
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i class="fas fa-bell fa-fw" style="font-size: 22px;"></i>
                         <!-- Counter - Alerts -->
                         <span class="badge badge-danger badge-counter">3+</span>
                     </a>
                     <!-- Dropdown Aleats -->
-                    <div class="dropdown-list dropdown-menu dropdown-menu-end shadow animated--grow-in"
-                        aria-labelledby="alertsDropdown">
+                    <div class="dropdown-list dropdown-menu dropdown-menu-end shadow animated--grow-in" aria-labelledby="alertsDropdown">
                         <h6 class="dropdown-header">
                             お知らせ
                         </h6>
@@ -98,8 +104,7 @@
                         <!-- Counter - Messages -->
                         <span class="badge badge-danger badge-counter">7</span>
                     </a>
-                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                        aria-labelledby="messagesDropdown">
+                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                         <h6 class="dropdown-header">
                             メッセージ通知
                         </h6>
@@ -183,7 +188,7 @@
         <div class="offcanvas-body">
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="./base.html">
+                    <a class="nav-link active" aria-current="page" href="./base.html">
                         <i class="bi bi-box me-2" style="font-size: 16px;"></i>
                         Base
                     </a>
@@ -195,14 +200,13 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="collapse" href="#collapse-submenu1" role="button"
-                        aria-expanded="false" aria-controls="collapse-submenu1">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#collapse-submenu1" role="button" aria-expanded="false" aria-controls="collapse-submenu1">
                         <i class="bi-calendar-date me-2" style="font-size: 16px;"></i>
                         スケジュール
                         <!-- Open時 -->
                         <!-- <i class="bi bi-chevron-up ms-2" style="font-size: 14px;"></i> -->
                         <!-- Close時 -->
-                        <i class="bi bi-chevron-down ms-2" style="font-size: 14px;"></i>
+                        <i class="bi bi-chevron-down ms-2"  style="font-size: 14px;"></i>
                     </a>
                 </li>
                 <div id="collapse-submenu1" class="submenu collapse">
@@ -230,7 +234,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" data-bs-toggle="collapse" href="#collapse-submenu2" role="button" aria-expanded="false" aria-controls="collapse-submenu2">
+                    <a class="nav-link" data-bs-toggle="collapse" href="#collapse-submenu2" role="button" aria-expanded="false" aria-controls="collapse-submenu2">
                         <i class="bi bi-people me-2" style="font-size: 16px;"></i>
                         グループ
                         <!-- Open時 -->
@@ -241,7 +245,7 @@
                 </li>
                 <div id="collapse-submenu2" class="submenu collapse">
                     <li class="nav-item">
-                        <a class="nav-link active" href="./group_list.html">
+                        <a class="nav-link" href="./group_list.html">
                             所属グループ一覧
                         </a>
                     </li>
@@ -269,12 +273,12 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="h3 cb__page-title">グループ</h1>
+                            <h1 class="h3 cb__page-title">メッセージ</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb cb-lte__breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./home.html">ホーム</a></li>
-                                <li class="breadcrumb-item active">グループ</li>
+                                <li class="breadcrumb-item active">メッセージ</li>
                             </ol>
                         </div>
                     </div>
@@ -284,139 +288,169 @@
 
             <!-- コンテンツ -->
             <section class="content">
-                <div class="mb-2 text-end d-block">
-                    <a href="#" class="btn btn-secondary">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        招待コードで検索
-                    </a>
-                    <a href="./group_save.html" class="btn btn-warning">
-                        <i class="fa fa-plus" aria-hidden="true"></i>
-                        新規登録
-                    </a>
-                </div>
-                <!-- リストグループ -->
-                <div class="card cb-lte__card">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="card-title">所属グループ一覧</h3>
-                    </div>
-                    <div class="card-body p-0">
-                        <div class="px-2">
-                            <div class="border-top py-2 pt-3 px-1">
-                                <div class="d-flex">
-                                    <img src="assets//img/default-150x150.png" alt="Default Image" style="width: 50px;height:50px;" class="rounded-circle mx-2 mx-md-3 align-self-center">
-                                    <div class="">
-                                        <a href="#" class="fw-bold">
-                                            サンプルグループ1
-                                        </a>
-                                        <div class="text-truncate cb__text-xs mt-1">
-                                            これはサンプル用のグループです。
-                                        </div>
-                                        <div class="d-flex mt-1 gap-1">
-                                            <span class="badge text-primary border border-primary">
-                                                <i class="fa-regular fa-eye me-1"></i>
-                                                3,000
-                                            </span>
-                                            <span class="badge text-primary border border-primary">
-                                                <i class="fa-regular fa-user me-1"></i>
-                                                200
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="ms-auto me-3 align-self-center">
-                                        <span class="badge text-bg-primary float-end">サンプル1</span>
-                                    </div>
-                                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- トークルーム選択 -->
+                        <div class="card cb-lte__card">
+                        <!-- <div class="card direct-chat direct-chat-primary"> -->
+                            <!-- <div class="card-header ui-sortable-handle" style="cursor: move;"> -->
+                            <div class="card-header">
+                                <h3 class="card-title">ユーザ/グループ</h3>
+                                <!-- <div class="card-tools">
+                                    <span title="3 New Messages" class="badge badge-primary">3</span>
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
+                                        <i class="fas fa-comments"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div> -->
                             </div>
-                            <div class="border-top py-2 pt-3 px-1">
-                                <div class="d-flex">
-                                    <img src="assets//img/default-150x150.png" alt="Default Image" style="width: 50px;height:50px;" class="rounded-circle mx-2 mx-md-3 align-self-center">
-                                    <div class="">
-                                        <a href="#" class="fw-bold">
-                                            サンプルグループ2
-                                        </a>
-                                        <div class="text-truncate cb__text-xs  mt-1">
-                                            これはサンプル用のグループです。
-                                        </div>
-                                        <div class="d-flex mt-1 gap-1">
-                                            <span class="badge text-primary border border-primary">
-                                                <i class="fa-regular fa-eye me-1"></i>
-                                                3,000
-                                            </span>
-                                            <span class="badge text-primary border border-primary">
-                                                <i class="fa-regular fa-user me-1"></i>
-                                                200
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="ms-auto me-3 align-self-center">
-                                        <span class="badge text-bg-success float-end">サンプル2</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-top py-2 pt-3 px-1">
-                                <div class="d-flex">
-                                    <img src="assets//img/default-150x150.png" alt="Default Image" style="width: 50px;height:50px;" class="rounded-circle mx-2 mx-md-3 align-self-center">
-                                    <div class="">
-                                        <a href="#" class="fw-bold">
-                                            サンプルグループ3
-                                        </a>
-                                        <div class="text-truncate cb__text-xs mt-1">
-                                            これはサンプル用のグループです。
-                                        </div>
-                                        <div class="d-flex mt-1 gap-1">
-                                            <span class="badge text-primary border border-primary">
-                                                <i class="fa-regular fa-eye me-1"></i>
-                                                3,000
-                                            </span>
-                                            <span class="badge text-primary border border-primary">
-                                                <i class="fa-regular fa-user me-1"></i>
-                                                200
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="ms-auto me-3 align-self-center">
-                                        <span class="badge text-bg-danger float-end">サンプル3</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="border-top py-2 pb-3 px-1">
-                                <div class="d-flex">
-                                    <img src="assets//img/default-150x150.png" alt="Default Image" style="width: 50px;height:50px;" class="rounded-circle mx-2 mx-md-3 align-self-center">
-                                    <div class="">
-                                        <a href="#" class="fw-bold">
-                                            サンプルグループ4
-                                        </a>
-                                        <div class="text-truncate cb__text-xs mt-1">
-                                            これはサンプル用のグループです。
-                                        </div>
-                                        <div class="d-flex mt-1 gap-1">
-                                            <span class="badge text-primary border border-primary">
-                                                <i class="fa-regular fa-eye me-1"></i>
-                                                3,000
-                                            </span>
-                                            <span class="badge text-primary border border-primary">
-                                                <i class="fa-regular fa-user me-1"></i>
-                                                200
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="ms-auto me-3 align-self-center">
-                                        <span class="badge text-bg-warning float-end">サンプル4</span>
-                                    </div>
+        
+                            <div class="card-body p-0">
+                                <div class="cb-lte__direct-chat-contacts">
+                                    <ul class="contacts-list">
+                                        <li class="active">
+                                            <div>
+                                                <img class="contacts-list-img" src="assets/img/user1-128x128.jpg" alt="User Avatar">
+                                                <div class="contacts-list-info">
+                                                    <span class="contacts-list-name">
+                                                        サンプル用ユーザ1
+                                                        <small class="contacts-list-date float-right">2015/02/28</small>
+                                                    </span>
+                                                    <span class="contacts-list-msg cb__text-xs">これはサンプルメッセージで...</span>
+                                                </div>
+                                            </div>
+                                        </li>
+        
+                                        <li>
+                                            <div>
+                                                <img class="contacts-list-img" src="assets/img/user7-128x128.jpg" alt="User Avatar">
+                                                <div class="contacts-list-info">
+                                                    <span class="contacts-list-name">
+                                                        サンプル用ユーザ2
+                                                        <small class="contacts-list-date float-right">2015/02/23</small>
+                                                    </span>
+                                                    <span class="contacts-list-msg cb__text-xs">これはサンプルメッセージで...</span>
+                                                </div>
+        
+                                            </div>
+                                        </li>
+        
+                                        <li>
+                                            <a href="#">
+                                                <img class="contacts-list-img" src="assets/img/user3-128x128.jpg"
+                                                    alt="User Avatar">
+                                                <div class="contacts-list-info">
+                                                    <span class="contacts-list-name">
+                                                        サンプル用ユーザ3
+                                                        <small class="contacts-list-date float-right">2015/02/20</small>
+                                                    </span>
+                                                    <span class="contacts-list-msg cb__text-xs">これはサンプルメッセージで...</span>
+                                                </div>
+        
+                                            </a>
+                                        </li>
+        
+                                        <li>
+                                            <a href="#">
+                                                <img class="contacts-list-img" src="assets/img/user5-128x128.jpg"
+                                                    alt="User Avatar">
+                                                <div class="contacts-list-info">
+                                                    <span class="contacts-list-name">
+                                                        サンプル用ユーザ4
+                                                        <small class="contacts-list-date float-right">2015/02/10</small>
+                                                    </span>
+                                                    <span class="contacts-list-msg cb__text-xs">これはサンプルメッセージで...</span>
+                                                </div>
+        
+                                            </a>
+                                        </li>
+        
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!-- <div class="card-footer text-center">
-                        <a href="javascript:void(0)" class="uppercase">
-                            View All Products
-                        </a>
-                    </div> -->
+                    <div class="col-md-8">
+                        <div class="card cb-lte__card">
+                                <div class="card-header bg-primary text-white">
+                                    <h3 class="card-title">サンプル用ユーザ1</h3>
+                                    <!-- スマホになればツールバーを出す(PCでも×ボタンは出す) -->
+                                </div>
+                                <div class="card-body p-0">
+                                    <div class="direct-chat-messages">
+
+                                        <div class="direct-chat-msg">
+                                            <div class="direct-chat-infos clearfix">
+                                                <span class="direct-chat-name float-left">サンプル用ユーザ1</span>
+                                                <span class="direct-chat-timestamp float-right">01/23 14:00</span>
+                                            </div>
+            
+                                            <img class="direct-chat-img" src="assets/img/user1-128x128.jpg" alt="message user image">
+            
+                                            <div class="direct-chat-text">
+                                                これはサンプルメッセージです。
+                                            </div>
+            
+                                        </div>
+            
+            
+                                        <div class="direct-chat-msg right">
+                                            <div class="direct-chat-infos clearfix">
+                                                <span class="direct-chat-name float-right">サンプル用ユーザ</span>
+                                                <span class="direct-chat-timestamp float-left">01/23 14:05</span>
+                                            </div>
+            
+                                            <img class="direct-chat-img" src="assets/img/user3-128x128.jpg" alt="message user image">
+            
+                                            <div class="direct-chat-text">
+                                                これはサンプルメッセージです。
+                                            </div>
+            
+                                        </div>
+            
+            
+                                        <div class="direct-chat-msg">
+                                            <div class="direct-chat-infos clearfix">
+                                                <span class="direct-chat-name float-left">サンプル用ユーザ1</span>
+                                                <span class="direct-chat-timestamp float-right">01/23 17:37</span>
+                                            </div>
+            
+                                            <img class="direct-chat-img" src="assets/img/user1-128x128.jpg" alt="message user image">
+            
+                                            <div class="direct-chat-text">
+                                                これはサンプルメッセージです。
+                                            </div>
+            
+                                        </div>
+            
+            
+                                        <div class="direct-chat-msg right">
+                                            <div class="direct-chat-infos clearfix">
+                                                <span class="direct-chat-name float-right">サンプル用ユーザ</span>
+                                                <span class="direct-chat-timestamp float-left">01/23 18:10</span>
+                                            </div>
+            
+                                            <img class="direct-chat-img" src="assets/img/user3-128x128.jpg" alt="message user image">
+            
+                                            <div class="direct-chat-text">
+                                                これはサンプルメッセージです。
+                                            </div>
+            
+                                        </div>
+            
+                                    </div>
+                                </div>
+                    </div>
                 </div>
+                
             </section>
             <!-- トップに戻るボタン -->
-            <a id="back-to-top" href="#" class="btn btn-primary--umi cb-lte__back-to-top" role="button"
-                aria-label="Scroll to top">
+            <a id="back-to-top" href="#" class="btn btn-primary--umi cb-lte__back-to-top" role="button" aria-label="Scroll to top">
                 <i class="fas fa-chevron-up"></i>
             </a>
         </div>
