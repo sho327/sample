@@ -743,6 +743,170 @@
     font-weight: 700;
 }
 
+/* ***** メッセージ/トークルーム ***** */
+.cb-lte__direct-chat-contacts, 
+.cb-lte__direct-chat-messages {
+    transition: -webkit-transform .5s ease-in-out;
+    transition: transform .5s ease-in-out;
+    transition: transform .5s ease-in-out,-webkit-transform .5s ease-in-out;
+}
+.cb-lte__direct-chat-contacts {
+    /* -webkit-transform: translate(101%,0);
+    transform: translate(101%,0); */
+    /* background-color: #343a40; */
+    background-color: snow;
+    bottom: 0;
+    color: #fff;
+    /* height: 250px; */
+    height: 600px;
+    overflow: auto;
+    /* position: absolute; */
+    /* top: 0; */
+    /* width: 100%; */
+}
+/* .cb-lte__direct-chat-contacts .contacts-list > li.active {
+    background-color: var(--primary);
+    color: #fff;
+} */
+.cb-lte__direct-chat-contacts .direct-chat-contacts-open .direct-chat-contacts {
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+}
+.cb-lte__direct-chat-contacts .contacts-list {
+    padding-left: 0;
+    list-style: none;
+}
+.cb-lte__direct-chat-contacts .contacts-list > li {
+    border-bottom: 1px solid rgba(0,0,0,.2);
+    margin: 0;
+    padding: 15px 10px;
+}
+.cb-lte__direct-chat-contacts .contacts-list-img {
+    border-radius: 50%;
+    float: left;
+    width: 40px;
+}
+.cb-lte__direct-chat-contacts .contacts-list-info {
+    /* color: #fff; */
+    color: var(--gray-dark);
+    margin-left: 50px; /* 画像(40px) + 10px */
+}
+.cb-lte__direct-chat-contacts .contacts-list-name, 
+.cb-lte__direct-chat-contacts .contacts-list-status {
+    display: block;
+}
+.cb-lte__direct-chat-contacts .contacts-list-date {
+    /* color: #ced4da; */
+    color: var(--gray);
+    font-weight: 400;
+    font-family: var(--font-family-monospace);
+}
+.cb-lte__direct-chat-contacts .contacts-list-msg {
+    /* color: #b1bbc4; */
+    color: var(--gray);
+    margin-top: 50px;
+}
+.cb-lte__direct-chat-contacts .contacts-list > li::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+/* .cb-lte__direct-chat-contacts a:hover {
+    border: none;
+} */
+/* ***** メッセージ/トーク画面 ***** */
+/* .badge-primary {
+    color: #fff;
+    background-color: #007bff;
+} */
+.direct-chat-messages {
+    -webkit-transform: translate(0,0);
+    transform: translate(0,0);
+    /* height: 250px; */
+    height: 600px;
+    overflow: auto;
+    padding: 10px;
+}
+.direct-chat-msg {
+    margin-bottom: 10px;
+}
+.direct-chat-msg, .direct-chat-text {
+    display: block;
+}
+.direct-chat-infos {
+    display: block;
+    font-size: .875rem;
+    margin-bottom: 2px;
+}
+.direct-chat-name {
+    font-weight: 600;
+}
+.direct-chat-timestamp {
+    color: #697582;
+}
+.direct-chat-img {
+    border-radius: 50%;
+    float: left;
+    height: 40px;
+    width: 40px;
+}
+.right .direct-chat-img {
+    float: right;
+}
+.direct-chat-primary .right>.direct-chat-text {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: #fff;
+}
+.direct-chat-text {
+    border-radius: 0.3rem;
+    background-color: #d2d6de;
+    border: 1px solid #d2d6de;
+    color: #444;
+    margin: 5px 0 0 50px;
+    padding: 5px 10px;
+    position: relative;
+}
+.right .direct-chat-text {
+    margin-left: 0;
+    margin-right: 50px;
+}
+.direct-chat-text::after, 
+.direct-chat-text::before {
+    border: solid transparent;
+    border-right-color: #d2d6de;
+    content: " ";
+    height: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 100%;
+    top: 15px;
+    width: 0;
+}
+.direct-chat-text::before {
+    border-width: 6px;
+    margin-top: -6px;
+}
+.direct-chat-text::after {
+    border-width: 5px;
+    margin-top: -5px;
+}
+.right .direct-chat-text::after, .right .direct-chat-text::before {
+    border-left-color: #d2d6de;
+    border-right-color: transparent;
+    left: 100%;
+    right: auto;
+}
+.direct-chat-primary .right>.direct-chat-text::after, 
+.direct-chat-primary .right>.direct-chat-text::before {
+    border-left-color: #007bff;
+}
+.direct-chat-msg::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+
 /* ※OriginalCSS(CustomOverRide)※ */
 /* ----- ページ共通クラス ----- */
 .cb__page-title {
