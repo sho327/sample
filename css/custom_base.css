@@ -14,33 +14,46 @@
 /* AdminLTE v3.2.0 / SbAdmin2 配色 */
 /* 以下とbootstrap/umi(--bs-xxxx/--xxxx)の配色がベースとなる */
 :root {
-    /* 黒に関しては「--bs-dark」を使用 */
-    /* AdminLte3 配色 */
-    --cb-lte__indigo: #6610f2;
-    --cb-lte__purple: #6f42c1;
-    --cb-lte__pink: #e83e8c;
-    --cb-lte__orange: #fd7e14;
-    --cb-lte__teal: #20c997;
+    --blue: #2C3E50;
+    --indigo: #6610f2;
+    --purple: #6f42c1;
+    --pink: #e83e8c;
+    --red: #E74C3C;
+    --orange: #fd7e14;
+    --yellow: #F39C12;
+    /* --green: #4e73df; */
+    --teal: #20c997;
+    --cyan: #3498DB;
+    --white: #fff;
+    --gray: #95a5a6;
+    --gray-dark: #343a40;
+    --primary: #2C3E50;
+    --secondary: #95a5a6;
+    /* --success: #4e73df; */
+    --info: #3498DB;
+    --warning: #F39C12;
+    --danger: #E74C3C;
+    --light: #ecf0f1;
+    --dark: #7b8a8b;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, "Arial", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    /* AdminLte3 配色+フォント */
     --cb-lte__primary: #007bff;
-    --cb-lte__secondary: #6c757d;
-    --cb-lte__success: #28a745;
+    --cb-lte__secondary: #6c757d; /* 使用(パンくずリスト/濃いグレーとして使用) */
+    --cb-lte__success: #28a745; /* ホーム(infoにて使用) */
     --cb-lte__info: #17a2b8;
-    --cb-lte__warning: #ffc107;
-    --cb-lte__danger: #dc3545;
+    --cb-lte__warning: #ffc107; /* ホーム(infoにて使用) */
+    --cb-lte__danger: #dc3545; /* ホーム(infoにて使用) */
     --cb-lte__light: #f8f9fa;
-    /* --cb-lte__dark: #343a40; */ /* umi: gray-darkと同一配色 */
-    /* メディアクエリ内でCSS変数は使用できない(サイズ感だけ基本的に以下に沿って作成) */
-    /* --cb-lte__breakpoint-xs: 0;
-    --cb-lte__breakpoint-sm: 576px;
-    --cb-lte__breakpoint-md: 768px;
-    --cb-lte__breakpoint-lg: 992px;
-    --cb-lte__breakpoint-xl: 1200px; */
     --cb-lte__font-family-sans-serif: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    /* --cb-lte__font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
-
-    /* SbAdmin2 配色(ベースはumi/AdminLteの配色とする/基本的に使わない) */
+    /* SbAdmin2 配色+フォント */
     --cb-sb__teal: #20c9a6;
-    --cb-sb__primary: #4e73df;
+    --cb-sb__primary: #4e73df;  /* 使用(info/濃いブルーとして使用) */
     --cb-sb__secondary: #858796;
     --cb-sb__success: #1cc88a;
     --cb-sb__info: #36b9cc;
@@ -49,9 +62,10 @@
     --cb-sb__light: #f8f9fc;
     --cb-sb__dark: #5a5c69;
     --cb-sb__font-family-sans-serif: "Nunito", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    /* --cb-sb__font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
-
+  }
+:root {
     /* カスタマイズ可能なCSS定数(定数化する予定/未対応) */
+    --cb__body-background-color: #f4f6f9;
     --cb__topbar-nav-link-color: snow;
     --cb__topbar-nav-link-hover-color: snow;
     --cb__sidebar-nav-link-color: snow;
@@ -149,7 +163,7 @@
     padding-left: 0;
     padding-right: 0;
     border-top:1px solid #eee;
-    background-color: #f4f6f9;
+    background-color: var(--cb__body-background-color);
 }
 .datepicker {
     z-index: 9999 !important; /* Datepickerのz-indexを高く設定する */
@@ -413,7 +427,7 @@
 .cb-lte__content-wrapper {
     margin-top: 70px;
     height: 100%;
-    background-color: #f4f6f9;
+    background-color: var(--cb__body-background-color);
 }
 .cb-lte__content-header {
     padding: 15px 0.5rem;
@@ -568,7 +582,7 @@
     border-radius: 50px;
     flex-flow: column;
     /* background: #EC6C45; */
-    background: var(--cb-lte__orange);
+    background: var(--orange);
     color: var(--white);
     font-size: .95rem;
     width: 24px;
@@ -668,7 +682,7 @@
 }
 /* スケジュール内のlink設定の更新 */
 .fc a {
-    color: #333333;
+    color: var(--gray-dark);
 }
 /* 本日の背景(元のスタイルの初期化) */
 .fc .fc-daygrid-day.fc-day-today {
@@ -754,7 +768,7 @@
     /* -webkit-transform: translate(101%,0);
     transform: translate(101%,0); */
     /* background-color: #343a40; */
-    background-color: snow;
+    background-color: #fff;
     bottom: 0;
     color: #fff;
     /* height: 250px; */
@@ -811,68 +825,48 @@
     clear: both;
     content: "";
 }
-/* .cb-lte__direct-chat-contacts a:hover {
-    border: none;
-} */
+.cb-lte__direct-chat-contacts a:hover {
+    /* border: none;
+    outline: none; */
+    text-decoration: none;
+}
 /* ***** メッセージ/トーク画面 ***** */
-/* .badge-primary {
-    color: #fff;
-    background-color: #007bff;
-} */
-.direct-chat-messages {
+.cb-lte__direct-chat-messages {
     -webkit-transform: translate(0,0);
     transform: translate(0,0);
-    /* height: 250px; */
     height: 600px;
     overflow: auto;
-    padding: 10px;
+    padding: 15px;
 }
-.direct-chat-msg {
+.cb-lte__direct-chat-messages .direct-chat-msg {
     margin-bottom: 10px;
 }
-.direct-chat-msg, .direct-chat-text {
-    display: block;
-}
-.direct-chat-infos {
-    display: block;
-    font-size: .875rem;
-    margin-bottom: 2px;
-}
-.direct-chat-name {
-    font-weight: 600;
-}
-.direct-chat-timestamp {
-    color: #697582;
-}
-.direct-chat-img {
+.cb-lte__direct-chat-messages .direct-chat-img {
     border-radius: 50%;
-    float: left;
     height: 40px;
     width: 40px;
+    margin-top: calc(1rem);
 }
-.right .direct-chat-img {
-    float: right;
+.cb-lte__direct-chat-messages .direct-chat-name-text-box {
+    margin-left: 15px;
+    margin-right: 0;
 }
-.direct-chat-primary .right>.direct-chat-text {
-    background-color: #007bff;
-    border-color: #007bff;
-    color: #fff;
-}
-.direct-chat-text {
+.cb-lte__direct-chat-messages .direct-chat-text {
     border-radius: 0.3rem;
     background-color: #d2d6de;
     border: 1px solid #d2d6de;
-    color: #444;
-    margin: 5px 0 0 50px;
+    color: var(--gray-dark);
     padding: 5px 10px;
+    max-width: 350px;
     position: relative;
 }
-.right .direct-chat-text {
-    margin-left: 0;
-    margin-right: 50px;
+.cb-lte__direct-chat-messages .direct-chat-supplement {
+    color: var(--gray);
+    margin-right: 0;
+    margin-left: 55px;
 }
-.direct-chat-text::after, 
-.direct-chat-text::before {
+.cb-lte__direct-chat-messages .direct-chat-text::after, 
+.cb-lte__direct-chat-messages .direct-chat-text::before {
     border: solid transparent;
     border-right-color: #d2d6de;
     content: " ";
@@ -883,28 +877,38 @@
     top: 15px;
     width: 0;
 }
-.direct-chat-text::before {
+.cb-lte__direct-chat-messages .direct-chat-text::before {
     border-width: 6px;
     margin-top: -6px;
 }
-.direct-chat-text::after {
+.cb-lte__direct-chat-messages .direct-chat-text::after {
     border-width: 5px;
     margin-top: -5px;
 }
-.right .direct-chat-text::after, .right .direct-chat-text::before {
+.cb-lte__direct-chat-messages .right .direct-chat-name-text-box {
+    margin-left: 0;
+    margin-right: 15px;
+}
+.direct-chat-primary .cb-lte__direct-chat-messages .right .direct-chat-text {
+    background-color: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+.cb-lte__direct-chat-messages .right .direct-chat-supplement {
+    color: var(--gray);
+    margin-right: 15px;
+    margin-left: 0;
+}
+.cb-lte__direct-chat-messages .right .direct-chat-text::after, 
+.cb-lte__direct-chat-messages .right .direct-chat-text::before {
     border-left-color: #d2d6de;
     border-right-color: transparent;
     left: 100%;
     right: auto;
 }
-.direct-chat-primary .right>.direct-chat-text::after, 
-.direct-chat-primary .right>.direct-chat-text::before {
-    border-left-color: #007bff;
-}
-.direct-chat-msg::after {
-    display: block;
-    clear: both;
-    content: "";
+.direct-chat-primary .cb-lte__direct-chat-messages .right .direct-chat-text::after, 
+.direct-chat-primary .cb-lte__direct-chat-messages .right .direct-chat-text::before {
+    border-left-color: var(--primary);
 }
 
 /* ※OriginalCSS(CustomOverRide)※ */
