@@ -294,8 +294,17 @@
                         <div class="card cb-lte__card">
                         <!-- <div class="card direct-chat direct-chat-primary"> -->
                             <!-- <div class="card-header ui-sortable-handle" style="cursor: move;"> -->
-                            <div class="card-header">
-                                <h3 class="card-title">ユーザ/グループ</h3>
+                            <div class="card-header pt-0 pb-0 mb-0">
+                                <!-- <h3 class="card-title">ユーザ/グループ</h3> -->
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link active show" data-toggle="tab">グループ</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="#" class="nav-link" data-toggle="tab">ユーザ</a>
+                                    </li>
+                                </ul>
+
                                 <!-- <div class="card-tools">
                                     <span title="3 New Messages" class="badge badge-primary">3</span>
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -311,7 +320,7 @@
                             </div>
         
                             <div class="card-body p-0">
-                                <div class="cb-lte__direct-chat-contacts">
+                                <div id="tab-content-group" class="tab-content cb-lte__direct-chat-contacts">
                                     <ul class="contacts-list">
                                         <li class="active">
                                             <div>
@@ -376,75 +385,47 @@
                         </div>
                     </div>
                     <div class="col-md-8">
-                        <div class="card cb-lte__card">
+                        <div class="card cb-lte__card direct-chat-primary">
                                 <div class="card-header bg-primary text-white">
                                     <h3 class="card-title">サンプル用ユーザ1</h3>
                                     <!-- スマホになればツールバーを出す(PCでも×ボタンは出す) -->
                                 </div>
                                 <div class="card-body p-0">
-                                    <div class="direct-chat-messages">
+                                    <div class="cb-lte__direct-chat-messages">
 
                                         <div class="direct-chat-msg">
-                                            <div class="direct-chat-infos clearfix">
-                                                <span class="direct-chat-name float-left">サンプル用ユーザ1</span>
-                                                <span class="direct-chat-timestamp float-right">01/23 14:00</span>
+                                            <div class="d-flex">
+                                                <img class="direct-chat-img align-self-start" src="assets/img/user1-128x128.jpg" alt="message user image">
+                                                <div class="direct-chat-name-text-box">
+                                                    <div class="direct-chat-name">サンプル用ユーザ1</div>
+                                                    <div class="direct-chat-text">
+                                                        これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです
+                                                    </div>
+                                                </div>
                                             </div>
-            
-                                            <img class="direct-chat-img" src="assets/img/user1-128x128.jpg" alt="message user image">
-            
-                                            <div class="direct-chat-text">
-                                                これはサンプルメッセージです。
+                                            <div class="d-flex direct-chat-supplement">
+                                                <div class="cb__text-xs">01/23 14:00</div>
                                             </div>
-            
                                         </div>
-            
-            
+
                                         <div class="direct-chat-msg right">
-                                            <div class="direct-chat-infos clearfix">
-                                                <span class="direct-chat-name float-right">サンプル用ユーザ</span>
-                                                <span class="direct-chat-timestamp float-left">01/23 14:05</span>
+                                            <div class="d-flex justify-content-end">
+                                                <div class="direct-chat-name-text-box">
+                                                    <div class="direct-chat-text">
+                                                        これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです
+                                                    </div>
+                                                </div>
+                                                <!-- <img class="direct-chat-img align-self-start" src="assets/img/user3-128x128.jpg" alt="message user image"> -->
                                             </div>
-            
-                                            <img class="direct-chat-img" src="assets/img/user3-128x128.jpg" alt="message user image">
-            
-                                            <div class="direct-chat-text">
-                                                これはサンプルメッセージです。
+                                            <div class="d-flex justify-content-end direct-chat-supplement">
+                                                <div class="cb__text-xs me-2">01/23 14:05</div>
+                                                <div class="cb__text-xs">既読</div>
                                             </div>
-            
                                         </div>
-            
-            
-                                        <div class="direct-chat-msg">
-                                            <div class="direct-chat-infos clearfix">
-                                                <span class="direct-chat-name float-left">サンプル用ユーザ1</span>
-                                                <span class="direct-chat-timestamp float-right">01/23 17:37</span>
-                                            </div>
-            
-                                            <img class="direct-chat-img" src="assets/img/user1-128x128.jpg" alt="message user image">
-            
-                                            <div class="direct-chat-text">
-                                                これはサンプルメッセージです。
-                                            </div>
-            
-                                        </div>
-            
-            
-                                        <div class="direct-chat-msg right">
-                                            <div class="direct-chat-infos clearfix">
-                                                <span class="direct-chat-name float-right">サンプル用ユーザ</span>
-                                                <span class="direct-chat-timestamp float-left">01/23 18:10</span>
-                                            </div>
-            
-                                            <img class="direct-chat-img" src="assets/img/user3-128x128.jpg" alt="message user image">
-            
-                                            <div class="direct-chat-text">
-                                                これはサンプルメッセージです。
-                                            </div>
-            
-                                        </div>
-            
                                     </div>
+                                    <!-- <input type="text"> -->
                                 </div>
+                            </div>
                     </div>
                 </div>
                 
