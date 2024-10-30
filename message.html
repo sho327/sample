@@ -266,7 +266,7 @@
     </div>
     <!-- ページコンテンツ -->
     <!-- <main class="content-wrapper pt-4" style="min-height: 1604.08px;"> -->
-    <main class="cb-lte__content-wrapper pt-4" style="min-height: 100vh;">
+    <main class="cb-lte__content-wrapper pt-4" style="min-height: calc(100vh - 225px);">
         <div class="container">
             <!-- ヘッダー(タイトル/パンくずリスト) -->
             <section class="cb-lte__content-header">
@@ -294,16 +294,26 @@
                         <div class="card cb-lte__card">
                         <!-- <div class="card direct-chat direct-chat-primary"> -->
                             <!-- <div class="card-header ui-sortable-handle" style="cursor: move;"> -->
-                            <div class="card-header pt-0 pb-0 mb-0">
+                            <div class="card-header px-2 px-md-3">
                                 <!-- <h3 class="card-title">ユーザ/グループ</h3> -->
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link active show" data-toggle="tab">グループ</a>
+                                <!-- <ul class="nav nav-tabs border-0">
+                                    <li class="nav-item border-0" style="">
+                                        <a href="#" class="nav-link active show border-0" data-toggle="tab">グループ</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="#" class="nav-link" data-toggle="tab">ユーザ</a>
+                                        <a href="#" class="nav-link border-0" data-toggle="tab">ユーザ</a>
                                     </li>
-                                </ul>
+                                </ul> -->
+                                <div class="border">
+                                    <ul class="nav">
+                                        <li class="nav-item bg-primary text-center" style="width:50%">
+                                            <a href="#" class="nav-link text-white">グループ</a>
+                                        </li>
+                                        <li class="nav-item text-center" style="width:50%">
+                                            <a href="#" class="nav-link text-black">ユーザ</a>
+                                        </li>
+                                    </ul>
+                                </div>
 
                                 <!-- <div class="card-tools">
                                     <span title="3 New Messages" class="badge badge-primary">3</span>
@@ -322,31 +332,32 @@
                             <div class="card-body p-0">
                                 <div id="tab-content-group" class="tab-content cb-lte__direct-chat-contacts">
                                     <ul class="contacts-list">
-                                        <li class="active">
-                                            <div>
+                                        <li class="active bg-primary">
+                                            <a href="#">
                                                 <img class="contacts-list-img" src="assets/img/user1-128x128.jpg" alt="User Avatar">
                                                 <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
+                                                    <span class="contacts-list-name text-white">
                                                         サンプル用ユーザ1
                                                         <small class="contacts-list-date float-right">2015/02/28</small>
                                                     </span>
                                                     <span class="contacts-list-msg cb__text-xs">これはサンプルメッセージで...</span>
                                                 </div>
-                                            </div>
+                                            </a>
                                         </li>
         
                                         <li>
-                                            <div>
+                                            <a href="#">
                                                 <img class="contacts-list-img" src="assets/img/user7-128x128.jpg" alt="User Avatar">
                                                 <div class="contacts-list-info">
                                                     <span class="contacts-list-name">
                                                         サンプル用ユーザ2
                                                         <small class="contacts-list-date float-right">2015/02/23</small>
                                                     </span>
+                                                    <span class="badge text-bg-danger rounded-circle float-right">10</span>
                                                     <span class="contacts-list-msg cb__text-xs">これはサンプルメッセージで...</span>
                                                 </div>
         
-                                            </div>
+                                            </a>
                                         </li>
         
                                         <li>
@@ -389,6 +400,19 @@
                                 <div class="card-header bg-primary text-white">
                                     <h3 class="card-title">サンプル用ユーザ1</h3>
                                     <!-- スマホになればツールバーを出す(PCでも×ボタンは出す) -->
+                                    <div class="card-tools">
+                                        <!-- トークルーム選択・検索ボタン・×ボタン -->
+                                        <!-- <span title="3 New Messages" class="badge badge-primary">3</span> -->
+                                        <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
+                                            <i class="fas fa-comments"></i>
+                                        </button> -->
+                                        <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
+                                            <i class="fas fa-times"></i>
+                                        </button> -->
+                                    </div>
                                 </div>
                                 <div class="card-body p-0">
                                     <div class="cb-lte__direct-chat-messages">
@@ -423,7 +447,18 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <input type="text"> -->
+                                </div>
+                                <div class="card-footer">
+                                    <form action="#" method="post">
+                                        <div class="input-group">
+                                            <input type="text" name="message" placeholder="Type Message ..." class="form-control" />
+                                            <span class="input-group-append">
+                                                <button type="button" class="btn btn-primary">
+                                                    Send
+                                                </button>
+                                            </span>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                     </div>
