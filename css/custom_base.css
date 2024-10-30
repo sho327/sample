@@ -772,7 +772,7 @@
     bottom: 0;
     color: #fff;
     /* height: 250px; */
-    height: 600px;
+    height: 590px;
     overflow: auto;
     /* position: absolute; */
     /* top: 0; */
@@ -834,7 +834,7 @@
 .cb-lte__direct-chat-messages {
     -webkit-transform: translate(0,0);
     transform: translate(0,0);
-    height: 600px;
+    height: 550px;
     overflow: auto;
     padding: 15px;
 }
@@ -859,6 +859,7 @@
     padding: 5px 10px;
     max-width: 350px;
     position: relative;
+    /* font-size: .95rem; */
 }
 .cb-lte__direct-chat-messages .direct-chat-supplement {
     color: var(--gray);
