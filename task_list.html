@@ -188,7 +188,7 @@
         <div class="offcanvas-body">
             <ul class="navbar-nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="./base.html">
+                    <a class="nav-link" aria-current="page" href="./base.html">
                         <i class="bi bi-box me-2" style="font-size: 16px;"></i>
                         Base
                     </a>
@@ -228,7 +228,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="./project_list.html">
+                    <a class="nav-link active" href="./project_list.html">
                         <i class="bi bi-list-task me-2" style="font-size: 16px"></i>
                         タスク管理
                     </a>
@@ -266,19 +266,20 @@
     </div>
     <!-- ページコンテンツ -->
     <!-- <main class="content-wrapper pt-4" style="min-height: 1604.08px;"> -->
-    <main class="cb-lte__content-wrapper pt-4" style="min-height: calc(100vh - 225px);">
+    <main class="cb-lte__content-wrapper pt-4" style="min-height: 100vh;">
         <div class="container">
             <!-- ヘッダー(タイトル/パンくずリスト) -->
             <section class="cb-lte__content-header">
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                            <h1 class="h3 cb__page-title">メッセージ</h1>
+                            <h1 class="h3 cb__page-title">Sample1</h1>
                         </div>
                         <div class="col-sm-6">
                             <ol class="breadcrumb cb-lte__breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./home.html">ホーム</a></li>
-                                <li class="breadcrumb-item active">メッセージ</li>
+                                <li class="breadcrumb-item"><a href="./project_list.html">タスク管理</a></li>
+                                <li class="breadcrumb-item active">Sample1</li>
                             </ol>
                         </div>
                     </div>
@@ -288,182 +289,180 @@
 
             <!-- コンテンツ -->
             <section class="content">
-                <div class="row">
-                    <div class="col-md-4">
-                        <!-- トークルーム選択 -->
-                        <div class="card cb-lte__card">
-                        <!-- <div class="card direct-chat direct-chat-primary"> -->
-                            <!-- <div class="card-header ui-sortable-handle" style="cursor: move;"> -->
-                            <div class="card-header px-2 px-md-3">
-                                <!-- <h3 class="card-title">ユーザ/グループ</h3> -->
-                                <!-- <ul class="nav nav-tabs border-0">
-                                    <li class="nav-item border-0" style="">
-                                        <a href="#" class="nav-link active show border-0" data-toggle="tab">グループ</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="#" class="nav-link border-0" data-toggle="tab">ユーザ</a>
-                                    </li>
-                                </ul> -->
-                                <div class="border">
-                                    <ul class="nav">
-                                        <li class="nav-item bg-primary text-center" style="width:50%">
-                                            <a href="#" class="nav-link text-white">グループ</a>
-                                        </li>
-                                        <li class="nav-item text-center" style="width:50%">
-                                            <a href="#" class="nav-link text-black">ユーザ</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
-                                <!-- <div class="card-tools">
-                                    <span title="3 New Messages" class="badge badge-primary">3</span>
-                                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
-                                        <i class="fas fa-comments"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div> -->
-                            </div>
-        
-                            <div class="card-body p-0">
-                                <div id="tab-content-group" class="tab-content cb-lte__direct-chat-contacts">
-                                    <ul class="contacts-list">
-                                        <li class="active bg-primary">
-                                            <a href="#">
-                                                <img class="contacts-list-img" src="assets/img/user1-128x128.jpg" alt="User Avatar">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name text-white">
-                                                        サンプル用ユーザ1
-                                                        <small class="contacts-list-date float-right">2015/02/28</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg cb__text-xs">これはサンプルメッセージで...</span>
-                                                </div>
-                                            </a>
-                                        </li>
-        
-                                        <li>
-                                            <a href="#">
-                                                <img class="contacts-list-img" src="assets/img/user7-128x128.jpg" alt="User Avatar">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                        サンプル用ユーザ2
-                                                        <small class="contacts-list-date float-right">2015/02/23</small>
-                                                    </span>
-                                                    <span class="badge text-bg-danger rounded-circle float-right">10</span>
-                                                    <span class="contacts-list-msg cb__text-xs">これはサンプルメッセージで...</span>
-                                                </div>
-        
-                                            </a>
-                                        </li>
-        
-                                        <li>
-                                            <a href="#">
-                                                <img class="contacts-list-img" src="assets/img/user3-128x128.jpg"
-                                                    alt="User Avatar">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                        サンプル用ユーザ3
-                                                        <small class="contacts-list-date float-right">2015/02/20</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg cb__text-xs">これはサンプルメッセージで...</span>
-                                                </div>
-        
-                                            </a>
-                                        </li>
-        
-                                        <li>
-                                            <a href="#">
-                                                <img class="contacts-list-img" src="assets/img/user5-128x128.jpg"
-                                                    alt="User Avatar">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                        サンプル用ユーザ4
-                                                        <small class="contacts-list-date float-right">2015/02/10</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg cb__text-xs">これはサンプルメッセージで...</span>
-                                                </div>
-        
-                                            </a>
-                                        </li>
-        
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card cb-lte__card direct-chat-primary">
-                                <div class="card-header bg-primary text-white">
-                                    <h3 class="card-title">サンプル用ユーザ1</h3>
-                                    <!-- スマホになればツールバーを出す(PCでも×ボタンは出す) -->
-                                    <div class="card-tools">
-                                        <!-- トークルーム選択・検索ボタン・×ボタン -->
-                                        <!-- <span title="3 New Messages" class="badge badge-primary">3</span> -->
-                                        <!-- <button type="button" class="btn btn-tool" data-card-widget="collapse">
-                                            <i class="fas fa-minus"></i>
-                                        </button>
-                                        <button type="button" class="btn btn-tool" title="Contacts" data-widget="chat-pane-toggle">
-                                            <i class="fas fa-comments"></i>
-                                        </button> -->
-                                        <!-- <button type="button" class="btn btn-tool" data-card-widget="remove">
-                                            <i class="fas fa-times"></i>
-                                        </button> -->
-                                    </div>
-                                </div>
-                                <div class="card-body p-0">
-                                    <div class="cb-lte__direct-chat-messages">
-
-                                        <div class="direct-chat-msg">
-                                            <div class="d-flex">
-                                                <img class="direct-chat-img align-self-start" src="assets/img/user1-128x128.jpg" alt="message user image">
-                                                <div class="direct-chat-name-text-box">
-                                                    <div class="direct-chat-name">サンプル用ユーザ1</div>
-                                                    <div class="direct-chat-text">
-                                                        これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-flex direct-chat-supplement">
-                                                <div class="cb__text-xs">01/23 14:00</div>
-                                            </div>
-                                        </div>
-
-                                        <div class="direct-chat-msg right">
-                                            <div class="d-flex justify-content-end">
-                                                <div class="direct-chat-name-text-box">
-                                                    <div class="direct-chat-text">
-                                                        これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです。これはサンプルメッセージです
-                                                    </div>
-                                                </div>
-                                                <!-- <img class="direct-chat-img align-self-start" src="assets/img/user3-128x128.jpg" alt="message user image"> -->
-                                            </div>
-                                            <div class="d-flex justify-content-end direct-chat-supplement">
-                                                <div class="cb__text-xs me-2">01/23 14:05</div>
-                                                <div class="cb__text-xs">既読</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="card-footer">
-                                    <form action="#" method="post">
-                                        <div class="input-group">
-                                            <input type="text" name="message" placeholder="Type Message ..." class="form-control" />
-                                            <span class="input-group-append">
-                                                <button type="button" class="btn btn-primary">
-                                                    Send
-                                                </button>
-                                            </span>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                    </div>
+                <div class="mb-2 text-end d-block">
+                    <a href="./group_save.html" class="btn btn-warning">
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                        新規登録
+                    </a>
                 </div>
-                
+                <div class="card cb-lte__card">
+                    <div class="card-header bg-success text-white">
+                        <h3 class="card-title">タスク一覧</h3>
+                        <!-- <div class="card-tools">
+                            <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div> -->
+                    </div>
+                    <div class="card-body p-0">
+                        <table class="table table-striped cb-lte__projects">
+                            <thead>
+                                <tr>
+                                    <th style="width: 1%">No.</th>
+                                    <th style="width: 20%">タスク名</th>
+                                    <th style="width: 30%">メンバー</th>
+                                    <th>進捗率</th>
+                                    <th style="width: 8%" class="text-center">状態</th>
+                                    <th style="width: 20%"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>
+                                        <a href="#">Sample1</a>
+                                        <br>
+                                        <small>作成日 2028/01/12</small>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar.png">
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar2.png">
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar3.png">
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar4.png">
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="project_progress">
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="57"
+                                                aria-valuemin="0" aria-valuemax="100" style="width: 57%">
+                                            </div>
+                                        </div>
+                                        <small>57%</small>
+                                    </td>
+                                    <td class="project-state">
+                                        <span class="badge badge-success">完了</span>
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                            <i class="fas fa-folder"></i>
+                                            詳細
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            編集
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash"></i>
+                                            削除
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>
+                                        <a href="#">Sample2</a>
+                                        <br>
+                                        <small>作成日 2029/03/27</small>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar.png">
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar2.png">
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="project_progress">
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="47"
+                                                aria-valuemin="0" aria-valuemax="100" style="width: 47%">
+                                            </div>
+                                        </div>
+                                        <small>47%</small>
+                                    </td>
+                                    <td class="project-state">
+                                        <span class="badge badge-secondary">着手中</span>
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                            <i class="fas fa-folder"></i>
+                                            詳細
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            編集
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash"></i>
+                                            削除
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>
+                                        <a href="#">Sample3</a>
+                                        <br>
+                                        <small>作成日 2030/03/27</small>
+                                    </td>
+                                    <td>
+                                        <ul class="list-inline">
+                                            <li class="list-inline-item">
+                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar.png">
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar2.png">
+                                            </li>
+                                            <li class="list-inline-item">
+                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar3.png">
+                                            </li>
+                                        </ul>
+                                    </td>
+                                    <td class="project_progress">
+                                        <div class="progress progress-sm">
+                                            <div class="progress-bar bg-green" role="progressbar" aria-valuenow="80"
+                                                aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                            </div>
+                                        </div>
+                                        <small>80%</small>
+                                    </td>
+                                    <td class="project-state">
+                                        <span class="badge badge-warning">検収待ち</span>
+                                    </td>
+                                    <td class="project-actions text-right">
+                                        <a class="btn btn-primary btn-sm" href="#">
+                                            <i class="fas fa-folder"></i>
+                                            詳細
+                                        </a>
+                                        <a class="btn btn-info btn-sm" href="#">
+                                            <i class="fas fa-pencil-alt"></i>
+                                            編集
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash"></i>
+                                            削除
+                                        </a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </div>
             </section>
             <!-- トップに戻るボタン -->
             <a id="back-to-top" href="#" class="btn btn-primary--umi cb-lte__back-to-top" role="button" aria-label="Scroll to top">
