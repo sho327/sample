@@ -911,6 +911,67 @@
 .direct-chat-primary .cb-lte__direct-chat-messages .right .direct-chat-text::before {
     border-left-color: var(--primary);
 }
+/* プロジェクト一覧 */
+.cb-lte__card .card-body > .table > thead > tr > td, 
+.cb-lte__card .card-body > .table > thead > tr > th {
+    border-top-width: 0;
+}
+.cb-lte__card .card-body.p-0 .table tbody > tr > td:first-of-type, 
+.cb-lte__card .card-body.p-0 .table tbody > tr > th:first-of-type, 
+.cb-lte__card .card-body.p-0 .table tfoot > tr > td:first-of-type, 
+.cb-lte__card .card-body.p-0 .table tfoot > tr > th:first-of-type, 
+.cb-lte__card .card-body.p-0 .table thead > tr > td:first-of-type, 
+.cb-lte__card .card-body.p-0 .table thead > tr > th:first-of-type {
+    padding-left: 1.5rem;
+}
+.cb-lte__projects td {
+    vertical-align: middle;
+}
+.cb-lte__projects .list-inline {
+    margin-bottom: 0;
+}
+.cb-lte__projects .list-inline {
+    padding-left: 0;
+    list-style: none;
+}
+.cb-lte__projects .list-inline-item:not(:last-child) {
+    margin-right: 0.5rem;
+}
+.cb-lte__projects .list-inline-item {
+    display: inline-block;
+}
+.cb-lte__projects .table-avatar img, 
+.cb-lte__projects img.table-avatar {
+    border-radius: 50%;
+    display: inline;
+    width: 2.5rem;
+}
+.cb-lte__projects.table tr > td .progress {
+    margin: 0;
+}
+.cb-lte__projects .progress-sm {
+    height: 10px;
+}
+.cb-lte__projects .progress {
+    border-radius: 1px;
+    line-height: 0;
+    background-color: #e9ecef;
+    box-shadow: inset 0 0.1rem 0.1rem rgba(0,0,0,.1);
+}
+.cb-lte__projects .project-state {
+    text-align: center;
+}
+.card-body.p-0 .cb-lte__projects.table tbody > tr > td:last-of-type, 
+.card-body.p-0 .cb-lte__projects.table tbody > tr > th:last-of-type, 
+.card-body.p-0 .cb-lte__projects.table tfoot > tr > td:last-of-type, 
+.card-body.p-0 .cb-lte__projects.table tfoot > tr > th:last-of-type, 
+.card-body.p-0 .cb-lte__projects.table thead > tr > td:last-of-type, 
+.card-body.p-0 .cb-lte__projects.table thead > tr > th:last-of-type {
+    padding-right: 1.5rem;
+}
+.card-body .cb-lte__projects.table {
+    margin-bottom: 0;
+}
 
 /* ※OriginalCSS(CustomOverRide)※ */
 /* ----- ページ共通クラス ----- */
