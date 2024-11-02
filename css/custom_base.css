@@ -639,7 +639,7 @@
 /* 月表示：イベントタイトルのスタイル */
 .fc .fc-event-title {
     /* font-size: 1rem; */
-    font-size: .25rem;
+    font-size: .8rem;
     font-family: var(--font-family-sans-serif);
     font-weight: bold;
     overflow: hidden;
