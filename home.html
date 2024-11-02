@@ -435,7 +435,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="cb-lte__info-box">
-                            <span class="info-box-icon cb-sb__bg-primary shadow-sm">
+                            <span class="info-box-icon cb-sb__text-bg-primary shadow-sm">
                                 <i class="bi bi-gear-fill"></i>
                             </span>
                             <div class="info-box-content">
@@ -446,7 +446,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="cb-lte__info-box">
-                            <span class="info-box-icon cb-lte__bg-danger shadow-sm">
+                            <span class="info-box-icon cb-lte__text-bg-danger shadow-sm">
                                 <i class="bi bi-hand-thumbs-up-fill"></i>
                             </span>
                             <div class="info-box-content">
@@ -457,7 +457,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="cb-lte__info-box">
-                            <span class="info-box-icon cb-lte__bg-success shadow-sm">
+                            <span class="info-box-icon cb-lte__text-bg-success shadow-sm">
                                 <i class="bi bi-cart-fill"></i>
                             </span>
                             <div class="info-box-content">
@@ -468,7 +468,7 @@
                     </div>
                     <div class="col-12 col-sm-6 col-md-3">
                         <div class="cb-lte__info-box">
-                            <span class="info-box-icon cb-lte__bg-warning shadow-sm">
+                            <span class="info-box-icon cb-lte__text-bg-warning shadow-sm">
                                 <i class="bi bi-people-fill"></i>
                             </span>
                             <div class="info-box-content">
@@ -481,8 +481,15 @@
 
                 <!-- Schedule -->
                 <div class="card cb-lte__card">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="card-title">直近2週間の予定</h3>
+                    <div class="card-header bg-primary text-white py-2">
+                        <h3 class="card-title" style="line-height: 1.6;">直近2週間の予定</h3>
+                        <!-- スマホになればツールバーを出す(PCでも×ボタンは出す) -->
+                        <div class="card-tools">
+                            <!-- トークルーム選択・検索ボタン・×ボタン -->
+                            <button type="button" class="btn btn-tool py-0" title="talk-search">
+                                <i class="fas fa-minus text-white"></i>
+                            </button>
+                        </div>
                     </div>
                     <div class="card-body pb-3 pt-2">
                         <div class="fs-5 fw-semibold">
