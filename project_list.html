@@ -278,7 +278,7 @@
                         <div class="col-sm-6">
                             <ol class="breadcrumb cb-lte__breadcrumb float-sm-right">
                                 <li class="breadcrumb-item"><a href="./home.html">ホーム</a></li>
-                                <li class="breadcrumb-item active">タスク管理</li>
+                                <li class="breadcrumb-item">タスク管理</li>
                             </ol>
                         </div>
                     </div>
@@ -294,9 +294,9 @@
                         新規登録
                     </a>
                 </div>
-                <div class="card cb-lte__card">
-                    <div class="card-header bg-primary text-white">
-                        <h3 class="card-title">プロジェクト一覧</h3>
+                <div class="card cb-lte__card card-primary card-outline">
+                    <!-- <div class="card-header">
+                        <h3 class="card-title">プロジェクト一覧</h3> -->
                         <!-- <div class="card-tools">
                             <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                 <i class="fas fa-minus"></i>
@@ -305,17 +305,17 @@
                                 <i class="fas fa-times"></i>
                             </button>
                         </div> -->
-                    </div>
+                    <!-- </div> -->
                     <div class="card-body p-0">
                         <table class="table table-striped cb-lte__projects">
                             <thead>
                                 <tr>
                                     <th style="width: 1%">No.</th>
                                     <th style="width: 20%">プロジェクト名</th>
-                                    <th style="width: 30%">メンバー</th>
+                                    <th style="width: 15%">参加者</th>
                                     <th>進捗率</th>
                                     <th style="width: 8%" class="text-center">状態</th>
-                                    <th style="width: 20%"></th>
+                                    <th style="width: 35%"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -327,20 +327,14 @@
                                         <small>作成日 2028/01/12</small>
                                     </td>
                                     <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">
-                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar.png">
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar2.png">
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar3.png">
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar4.png">
-                                            </li>
-                                        </ul>
+                                        <span class="badge text-secondary border border-secondary">
+                                            <i class="fa-solid fa-user-group me-1"></i>
+                                            2
+                                        </span>
+                                        <span class="badge text-secondary border border-secondary">
+                                            <i class="fa-regular fa-user me-1"></i>
+                                            20
+                                        </span>
                                     </td>
                                     <td class="project_progress">
                                         <div class="progress progress-sm">
@@ -354,18 +348,7 @@
                                         <span class="badge badge-success">完了</span>
                                     </td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                            <i class="fas fa-folder"></i>
-                                            詳細
-                                        </a>
-                                        <a class="btn btn-info btn-sm" href="#">
-                                            <i class="fas fa-pencil-alt"></i>
-                                            編集
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                            <i class="fas fa-trash"></i>
-                                            削除
-                                        </a>
+                                        <i class="fa-solid fa-gear"></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -376,14 +359,14 @@
                                         <small>作成日 2029/03/27</small>
                                     </td>
                                     <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">
-                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar.png">
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar2.png">
-                                            </li>
-                                        </ul>
+                                        <span class="badge text-secondary border border-secondary">
+                                            <i class="fa-solid fa-user-group me-1"></i>
+                                            1
+                                        </span>
+                                        <span class="badge text-secondary border border-secondary">
+                                            <i class="fa-regular fa-user me-1"></i>
+                                            5
+                                        </span>
                                     </td>
                                     <td class="project_progress">
                                         <div class="progress progress-sm">
@@ -397,18 +380,7 @@
                                         <span class="badge badge-secondary">着手中</span>
                                     </td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                            <i class="fas fa-folder"></i>
-                                            詳細
-                                        </a>
-                                        <a class="btn btn-info btn-sm" href="#">
-                                            <i class="fas fa-pencil-alt"></i>
-                                            編集
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                            <i class="fas fa-trash"></i>
-                                            削除
-                                        </a>
+                                        <i class="fa-solid fa-gear"></i>
                                     </td>
                                 </tr>
                                 <tr>
@@ -419,17 +391,14 @@
                                         <small>作成日 2030/03/27</small>
                                     </td>
                                     <td>
-                                        <ul class="list-inline">
-                                            <li class="list-inline-item">
-                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar.png">
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar2.png">
-                                            </li>
-                                            <li class="list-inline-item">
-                                                <img alt="Avatar" class="table-avatar" src="assets/img/avatar3.png">
-                                            </li>
-                                        </ul>
+                                        <span class="badge text-secondary border border-secondary">
+                                            <i class="fa-solid fa-user-group me-1"></i>
+                                            0
+                                        </span>
+                                        <span class="badge text-secondary border border-secondary">
+                                            <i class="fa-regular fa-user me-1"></i>
+                                            3
+                                        </span>
                                     </td>
                                     <td class="project_progress">
                                         <div class="progress progress-sm">
@@ -443,18 +412,7 @@
                                         <span class="badge badge-warning">検収待ち</span>
                                     </td>
                                     <td class="project-actions text-right">
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                            <i class="fas fa-folder"></i>
-                                            詳細
-                                        </a>
-                                        <a class="btn btn-info btn-sm" href="#">
-                                            <i class="fas fa-pencil-alt"></i>
-                                            編集
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
-                                            <i class="fas fa-trash"></i>
-                                            削除
-                                        </a>
+                                        <i class="fa-solid fa-gear"></i>
                                     </td>
                                 </tr>
                             </tbody>
