@@ -14,6 +14,7 @@
 /* AdminLTE v3.2.0 / SbAdmin2 配色 */
 /* 以下とbootstrap/umi(--bs-xxxx/--xxxx)の配色がベースとなる */
 :root {
+    /* umi/bootstrap */
     /* --bs-dark: #212529; */ /* 基本のColor */
     --blue: #2C3E50;
     --indigo: #6610f2;
@@ -36,13 +37,14 @@
     --danger: #E74C3C;
     --light: #ecf0f1;
     --dark: #7b8a8b;
-    --breakpoint-xs: 0;
+    /* --breakpoint-xs: 0;
     --breakpoint-sm: 576px;
     --breakpoint-md: 768px;
     --breakpoint-lg: 992px;
     --breakpoint-xl: 1200px;
     --font-family-sans-serif: "Open Sans", "Helvetica Neue", Helvetica, "Arial", "ヒラギノ角ゴ ProN W3", "Hiragino Kaku Gothic ProN", "メイリオ", Meiryo, sans-serif;
-    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; */
+
     /* AdminLte3 配色+フォント */
     --cb-lte__primary: #007bff;
     --cb-lte__secondary: #6c757d; /* 使用(パンくずリスト/濃いグレーとして使用) */
@@ -66,6 +68,7 @@
   }
 :root {
     /* カスタマイズ可能なCSS定数(定数化する予定/未対応) */
+    --cb__light-gray: #EAEAEA;
     --cb__body-background-color: #f4f6f9;
     --cb__topbar-nav-link-color: snow;
     --cb__topbar-nav-link-hover-color: snow;
@@ -110,8 +113,8 @@
 }
 .btn-primary--umi:hover {
     color: var(--white);
-    background-color: #1e2b37;
-    border-color: #1a252f;
+    background-color: var(--cb__primary-btn-hover-background-color);
+    border-color: var(--cb__primary-btn-hover-border-color);
 }
 .btn-primary--umi:focus, 
 .btn-primary--umi.focus {
@@ -127,8 +130,9 @@
 .btn-primary--umi:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
     color: var(--white);
-    background-color: #1a252f;
-    border-color: #151e27;
+    background-color: var(--cb__primary-btn-hover-background-color);
+    border-color: var(--cb__primary-btn-hover-border-color);
+    /* border-color: #151e27; */
 }
 .btn-primary--umi:not(:disabled):not(.disabled):active:focus, 
 .btn-primary--umi:not(:disabled):not(.disabled).active:focus,
@@ -163,7 +167,7 @@
     margin-top: 70px;
     padding-left: 0;
     padding-right: 0;
-    border-top:1px solid #eee;
+    border-top:1px solid #EEE;
     background-color: var(--cb__body-background-color);
 }
 .datepicker {
@@ -239,9 +243,9 @@
 .topbar #sidebar-toggle {
     width: 24px;
 }
-.topbar #sidebar-toggle #sidebar-toggle-icon.bi.bi-x-lg {
+/* .topbar #sidebar-toggle #sidebar-toggle-icon.bi.bi-x-lg {
     font-size: 20px;
-}
+} */
 /* ヘッダー(ドロップダウンボタン) */
 .dropdown.no-arrow .dropdown-toggle::after {
     display: none;
@@ -329,9 +333,9 @@
     white-space: normal;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
-    border-left: 1px solid #e3e6f0;
-    border-right: 1px solid #e3e6f0;
-    border-bottom: 1px solid #e3e6f0;
+    border-left: 1px solid #E3E6F0;
+    border-right: 1px solid #E3E6F0;
+    border-bottom: 1px solid #E3E6F0;
     line-height: 1.3rem;
 }
 .icon-circle {
@@ -353,14 +357,14 @@
     width: 2.5rem;
 }
 .topbar .dropdown-list .dropdown-item .dropdown-list-image .status-indicator {
-    background-color: #eaecf4;
+    background-color: #EAECF4;
     height: 0.75rem;
     width: 0.75rem;
     border-radius: 100%;
     position: absolute;
     bottom: 0;
     right: 0;
-    border: 0.125rem solid #fff;
+    border: 0.125rem solid var(--white);
 }
 .text-truncate {
     overflow: hidden;
@@ -505,11 +509,11 @@
     color: var(--white)!important;
 }
 .cb-lte__text-bg-warning {
-    color: #1f2d3d !important;
+    color: var(--bs-dark) !important;
     background-color: var(--cb-lte__warning)!important;
 }
 .cb-lte__text-bg-warning > a {
-    color: #1f2d3d!important;
+    color: var(--bs-dark) !important;
 }
 .cb-lte__text-bg-danger {
     color: var(--white)!important;
@@ -566,7 +570,7 @@
 /* ***** スケジュール ****** */
 .fc {
     margin-top: 5px;
-    border-color: #EAEAEA;
+    border-color: var(--cb__light-gray);
 }
 /* 月表示：ヘッダーの曜日表示セル */
 .fc th.fc-col-header-cell {
@@ -625,7 +629,7 @@
 }
 /* 時間指定イベントの文字色を指定 */
 .fc .fc-daygrid-dot-event {
-    border: 1px solid #EAEAEA;
+    border: 1px solid var(--cb__light-gray);
 }
 /* 月表示：イベント枠のスタイル */
 .fc .fc-event {
@@ -790,9 +794,9 @@
     /* -webkit-transform: translate(101%,0);
     transform: translate(101%,0); */
     /* background-color: #343a40; */
-    background-color: #fff;
+    background-color: var(--white);
     bottom: 0;
-    color: #fff;
+    color: var(--white);
     /* height: 250px; */
     height: 590px;
     overflow: auto;
@@ -875,8 +879,8 @@
 }
 .cb-lte__direct-chat-messages .direct-chat-text {
     border-radius: 0.3rem;
-    background-color: #d2d6de;
-    border: 1px solid #d2d6de;
+    background-color: #D2D6DE;
+    border: 1px solid #D2D6DE;
     color: var(--gray-dark);
     padding: 5px 10px;
     max-width: 350px;
@@ -891,7 +895,7 @@
 .cb-lte__direct-chat-messages .direct-chat-text::after, 
 .cb-lte__direct-chat-messages .direct-chat-text::before {
     border: solid transparent;
-    border-right-color: #d2d6de;
+    border-right-color: #D2D6DE;
     content: " ";
     height: 0;
     pointer-events: none;
@@ -915,7 +919,7 @@
 .direct-chat-primary .cb-lte__direct-chat-messages .right .direct-chat-text {
     background-color: var(--primary);
     border-color: var(--primary);
-    color: #fff;
+    color: var(--white);
 }
 .cb-lte__direct-chat-messages .right .direct-chat-supplement {
     color: var(--gray);
@@ -924,7 +928,7 @@
 }
 .cb-lte__direct-chat-messages .right .direct-chat-text::after, 
 .cb-lte__direct-chat-messages .right .direct-chat-text::before {
-    border-left-color: #d2d6de;
+    border-left-color: #D2D6DE;
     border-right-color: transparent;
     left: 100%;
     right: auto;
@@ -977,7 +981,7 @@
 .cb-lte__projects .progress {
     border-radius: 1px;
     line-height: 0;
-    background-color: #e9ecef;
+    background-color: #E9ECEF;
     box-shadow: inset 0 0.1rem 0.1rem rgba(0,0,0,.1);
 }
 .cb-lte__projects .project-state {
@@ -998,7 +1002,7 @@
 /* ※OriginalCSS(CustomOverRide)※ */
 /* ----- ページ共通クラス ----- */
 .cb__page-title {
-    color:#5a5c69;
+    color: var(--cb-sb__dark);
 }
 /* ***** fontSize ***** */
 .cb__text-lg {
@@ -1074,9 +1078,64 @@
     color: var(--white);
 }
 .cb__talkroom .contacts-list li.active {
-    background-color: #EAEAEA;
+    background-color: var(--cb__light-gray);
     border-left:5px solid var(--cb-sb__dark);
 }
 .cb__talkroom .contacts-list li .contacts-list-info .contacts-list-date {
     font-size: 75%;
+}
+
+#sidebar-toggle-btn {
+    height: 30px;
+}
+#sidebar-toggle-icon {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    cursor: pointer;
+    height: 100%;
+}
+#sidebar-toggle-icon .icon-bar {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+}
+#sidebar-toggle-icon .horizontal {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+    margin-top: 3px;
+}
+#sidebar-toggle-icon .diagonal.part-1 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+}
+#sidebar-toggle-icon .diagonal.part-2 {
+    position: relative;
+    transition: all 0.3s;
+    box-sizing: border-box;
+    float: left;
+    margin-top: 3px;
+}
+#sidebar-toggle-icon.open .horizontal {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    opacity: 0;
+}
+#sidebar-toggle-icon.open .diagonal.part-1 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(135deg);
+    margin-top: 8px;
+}
+#sidebar-toggle-icon.open .diagonal.part-2 {
+    transition: all 0.3s;
+    box-sizing: border-box;
+    transform: rotate(-135deg);
+    margin-top: -9px;
 }
