@@ -9,14 +9,18 @@ $(document).ready(function() {
 
         const topbar = $('.topbar');
         const icon = $('#sidebar-toggle #sidebar-toggle-icon');
-        if (icon.hasClass('navbar-toggler-icon')) {
-            icon.removeClass('navbar-toggler-icon').addClass('bi bi-x-lg'); // ハンバーガーボタンからクローズボタンに切り替え
-            topbar.toggleClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
-        } else {
-            icon.removeClass('bi bi-x-lg').addClass('navbar-toggler-icon'); // クローズボタンからハンバーガーボタンに切り替え
-            topbar.toggleClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
+        if (icon.hasClass('open')) {
+            icon.removeClass('open'); // クローズボタンからハンバーガーボタンに切り替え
+            if (!topbar.hasClass('shadow-sm')) {
+                topbar.addClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
+            }
             // Closeボタンイベントが動いた際はhiddenイベントは不要
             isHiddenIgnition = false;
+        } else {
+            icon.addClass('open'); // ハンバーガーボタンからクローズボタンに切り替え
+            if (topbar.hasClass('shadow-sm')) {
+                topbar.removeClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
+            }
         }
     });
     $('#offcanvas').on('hidden.bs.offcanvas', function () {
@@ -28,15 +32,15 @@ $(document).ready(function() {
         if (isHiddenIgnition) {
             const topbar = $('.topbar');
             const icon = $('#sidebar-toggle #sidebar-toggle-icon');
-            if (icon.hasClass('navbar-toggler-icon')) {
-                icon.removeClass('navbar-toggler-icon').addClass('bi bi-x-lg'); // ハンバーガーボタンからクローズボタンに切り替え
-                if (topbar.hasClass('shadow-sm')) {
-                    topbar.removeClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
-                }
-            } else {
-                icon.removeClass('bi bi-x-lg').addClass('navbar-toggler-icon'); // クローズボタンからハンバーガーボタンに切り替え
+            if (icon.hasClass('open')) {
+                icon.removeClass('open'); // クローズボタンからハンバーガーボタンに切り替え
                 if (!topbar.hasClass('shadow-sm')) {
                     topbar.addClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
+                }
+            } else {
+                icon.addClass('open'); // ハンバーガーボタンからクローズボタンに切り替え
+                if (topbar.hasClass('shadow-sm')) {
+                    topbar.removeClass('shadow-sm'); // ハンバーガーメニューを開く際はシャドウも切り替え
                 }
             }
         }
@@ -44,3 +48,21 @@ $(document).ready(function() {
         isHiddenIgnition = true;
     });
 });
+
+(() => {
+    'use strict'
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    const forms = document.querySelectorAll('.needs-validation');
+  
+    // Loop over them and prevent submission
+    Array.from(forms).forEach(form => {
+      form.addEventListener('submit', event => {
+        if (!form.checkValidity()) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+  
+        form.classList.add('was-validated');
+      }, false);
+    });
+  })();
