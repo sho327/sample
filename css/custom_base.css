@@ -1108,6 +1108,8 @@
     box-sizing: border-box;
     float: left;
     margin-top: 3px;
+    height: 0;
+    opacity: 0;
 }
 #sidebar-toggle-icon .diagonal.part-1 {
     position: relative;
@@ -1121,10 +1123,12 @@
     box-sizing: border-box;
     float: left;
     margin-top: 3px;
+    width: 70%;
 }
 #sidebar-toggle-icon.open .horizontal {
     transition: all 0.3s;
     box-sizing: border-box;
+    height: 3px;
     opacity: 0;
 }
 #sidebar-toggle-icon.open .diagonal.part-1 {
@@ -1138,4 +1142,5 @@
     box-sizing: border-box;
     transform: rotate(-135deg);
     margin-top: -9px;
+    width: 100%;
 }
